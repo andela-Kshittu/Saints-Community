@@ -25,6 +25,7 @@
 		42C1F2AF1BE4C4420070C39C /* ArticlesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42C1F2AE1BE4C4420070C39C /* ArticlesViewController.m */; settings = {ASSET_TAGS = (); }; };
 		42C1F2B21BE4C4540070C39C /* AboutUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42C1F2B11BE4C4540070C39C /* AboutUsViewController.m */; settings = {ASSET_TAGS = (); }; };
 		42C1F2BE1BE4CFEB0070C39C /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 42C1F2BD1BE4CFEB0070C39C /* Utils.m */; settings = {ASSET_TAGS = (); }; };
+		42C1F2C11BE4E67D0070C39C /* SideBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42C1F2C01BE4E67D0070C39C /* SideBarViewController.m */; settings = {ASSET_TAGS = (); }; };
 		D7E415DF26B7881C2B2C9FBF /* libPods-Saints Community.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 89CF894516391BD176AB3C5A /* libPods-Saints Community.a */; };
 /* End PBXBuildFile section */
 
@@ -81,6 +82,8 @@
 		42C1F2B11BE4C4540070C39C /* AboutUsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutUsViewController.m; sourceTree = "<group>"; };
 		42C1F2BC1BE4CFEB0070C39C /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
 		42C1F2BD1BE4CFEB0070C39C /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
+		42C1F2BF1BE4E67D0070C39C /* SideBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SideBarViewController.h; sourceTree = "<group>"; };
+		42C1F2C01BE4E67D0070C39C /* SideBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SideBarViewController.m; sourceTree = "<group>"; };
 		4CC6A131BCA0D88D6BD8B26B /* Pods-Saints Community.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Saints Community.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Saints Community/Pods-Saints Community.debug.xcconfig"; sourceTree = "<group>"; };
 		89CF894516391BD176AB3C5A /* libPods-Saints Community.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Saints Community.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F99E17757DD386AC3D57C915 /* Pods-Saints Community.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Saints Community.release.xcconfig"; path = "Pods/Target Support Files/Pods-Saints Community/Pods-Saints Community.release.xcconfig"; sourceTree = "<group>"; };
@@ -222,6 +225,8 @@
 				42C1F2AE1BE4C4420070C39C /* ArticlesViewController.m */,
 				42C1F2B01BE4C4540070C39C /* AboutUsViewController.h */,
 				42C1F2B11BE4C4540070C39C /* AboutUsViewController.m */,
+				42C1F2BF1BE4E67D0070C39C /* SideBarViewController.h */,
+				42C1F2C01BE4E67D0070C39C /* SideBarViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -448,6 +453,7 @@
 				42C1F2AF1BE4C4420070C39C /* ArticlesViewController.m in Sources */,
 				42C1F2671BE4A3B30070C39C /* AppDelegate.m in Sources */,
 				42C1F29C1BE4B5F80070C39C /* SWRevealViewController.m in Sources */,
+				42C1F2C11BE4E67D0070C39C /* SideBarViewController.m in Sources */,
 				42C1F2A21BE4C39C0070C39C /* EventsViewController.m in Sources */,
 				42C1F29F1BE4C3770070C39C /* UpdatesViewController.m in Sources */,
 				42C1F2B21BE4C4540070C39C /* AboutUsViewController.m in Sources */,
