@@ -10,15 +10,15 @@
 #import "Utils.h"
 
 @interface OnlineRadioViewController ()
-
 @end
 
 @implementation OnlineRadioViewController
-
+static NSString * RADIO_URL = @"http://lwm.radiojar.com/";
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [Utils initSidebar:self barButton:self.sidebarButton];
+    [Utils loadUIWebView:self.view url:RADIO_URL];
 }
 
 - (void)didReceiveMemoryWarning {

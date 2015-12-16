@@ -11,15 +11,15 @@
 
 
 @interface HomeViewController ()
-
 @end
 
 @implementation HomeViewController
-
+static NSString * HOME_URl = @"http://livingwordmedia.org";
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     [Utils initSidebar:self barButton:self.sidebarButton];
+    [Utils loadUIWebView:self.view url:HOME_URl];
 }
 
 - (void)didReceiveMemoryWarning {

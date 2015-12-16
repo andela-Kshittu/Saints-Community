@@ -11,6 +11,15 @@
 
 
 @interface Utils : NSObject
+@property (nonatomic, strong) NSManagedObjectContext  *managedObjectContext;
+@property (nonatomic, assign) BOOL isEventsNetworkError;
+@property (nonatomic, assign) BOOL isUpdatesNetworkError;
++(Utils *)sharedInstance;
 +(void)initSidebar:(UIViewController *) vc
          barButton:(UIBarButtonItem *) barButton;
++(void)loadUIWebView:(UIView *) view
+                 url:(NSString *) destinationUrl;
+-(NSArray *)fetchData:(NSString *)entityName;
+-(void) getAllUpdates;
+-(void) getAllEvents;
 @end

@@ -8,19 +8,62 @@
 
 #import "EventsViewController.h"
 #import "Utils.h"
+#import <CoreData/CoreData.h>
 
-@interface EventsViewController ()
-
+@interface EventsViewController (){
+    NSArray * events;
+}
 @end
 
 @implementation EventsViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    if ([Utils sharedInstance].isEventsNetworkError) {
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            [[Utils sharedInstance] getAllEvents];
+        });
+    }
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
+    
     // Do any additional setup after loading the view.
     [Utils initSidebar:self barButton:self.sidebarButton];
+    events = [[Utils sharedInstance] fetchData:@"Events"];
+}
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
 }
 
+- (NSInteger)tableView:(UITableView *)tableView
+ numberOfRowsInSection:(NSInteger)section {
+    return [events count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView
+         cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    static NSString *CellIdentifier = @"EventsTableCell";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
+    // Set up the cell...
+    //    FailedBankInfo *info = [failedBankInfos objectAtIndex:indexPath.row];
+    //    cell.textLabel.text = info.name;
+    //    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@, %@",
+    //                                 info.city, info.state];
+    NSManagedObject *info = events[indexPath.row];
+    UIImageView * eventImage = (UIImageView *)[cell viewWithTag:1];
+    UILabel * title = (UILabel *)[cell viewWithTag:2];
+    UILabel * date = (UILabel *)[cell viewWithTag:3];
+   
+    
+    eventImage.image = [UIImage imageWithData:[info valueForKey:@"image_url"]];
+    title.text = [info valueForKey:@"title"];
+    date.text = [info valueForKey:@"updated_date"];
+    return cell;
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

@@ -10,15 +10,15 @@
 #import "Utils.h"
 
 @interface LiveStreamingViewController ()
-
 @end
 
 @implementation LiveStreamingViewController
-
+static NSString * LIVE_STREAMING_URl = @"http://live.livingwordmedia.org";
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [Utils initSidebar:self barButton:self.sidebarButton];
+    [Utils loadUIWebView:self.view url:LIVE_STREAMING_URl];
 }
 
 - (void)didReceiveMemoryWarning {

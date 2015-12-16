@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UpdatesViewController : UIViewController
+@interface UpdatesViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *sidebarButton;
 @end
