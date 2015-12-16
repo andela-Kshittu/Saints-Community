@@ -85,8 +85,10 @@ return sharedObject;
     CGRect frame = CGRectMake(view.layer.frame.origin.x, view.layer.frame.origin.y, view.layer.frame.size.width, view.layer.frame.size.height);
     UIWebView *webView = [[UIWebView alloc] initWithFrame: frame];  //Change self.view.bounds to a smaller CGRect if you don't want it to take up the whole screen
     [view addSubview:webView];
-    [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:destinationUrl]]];
+    NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:destinationUrl] cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:15.0];
+    [webView loadRequest:theRequest];
     
+//     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:destinationUrl]]];
 }
 
 -(NSArray *)fetchData:(NSString *)entityName{
