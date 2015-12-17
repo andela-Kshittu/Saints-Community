@@ -16,17 +16,17 @@
 		42C1F2751BE4A3B40070C39C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42C1F2731BE4A3B40070C39C /* LaunchScreen.storyboard */; };
 		42C1F2801BE4A3B40070C39C /* Saints_CommunityTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 42C1F27F1BE4A3B40070C39C /* Saints_CommunityTests.m */; };
 		42C1F28B1BE4A3B40070C39C /* Saints_CommunityUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 42C1F28A1BE4A3B40070C39C /* Saints_CommunityUITests.m */; };
-		42C1F29C1BE4B5F80070C39C /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42C1F29B1BE4B5F80070C39C /* SWRevealViewController.m */; settings = {ASSET_TAGS = (); }; };
-		42C1F29F1BE4C3770070C39C /* UpdatesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42C1F29E1BE4C3770070C39C /* UpdatesViewController.m */; settings = {ASSET_TAGS = (); }; };
-		42C1F2A21BE4C39C0070C39C /* EventsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42C1F2A11BE4C39C0070C39C /* EventsViewController.m */; settings = {ASSET_TAGS = (); }; };
-		42C1F2A51BE4C3B80070C39C /* OnlineRadioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42C1F2A41BE4C3B80070C39C /* OnlineRadioViewController.m */; settings = {ASSET_TAGS = (); }; };
-		42C1F2A81BE4C3D20070C39C /* LiveStreamingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42C1F2A71BE4C3D20070C39C /* LiveStreamingViewController.m */; settings = {ASSET_TAGS = (); }; };
-		42C1F2AC1BE4C42A0070C39C /* TelecastViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42C1F2AB1BE4C42A0070C39C /* TelecastViewController.m */; settings = {ASSET_TAGS = (); }; };
-		42C1F2AF1BE4C4420070C39C /* ArticlesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42C1F2AE1BE4C4420070C39C /* ArticlesViewController.m */; settings = {ASSET_TAGS = (); }; };
-		42C1F2B21BE4C4540070C39C /* AboutUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42C1F2B11BE4C4540070C39C /* AboutUsViewController.m */; settings = {ASSET_TAGS = (); }; };
-		42C1F2BE1BE4CFEB0070C39C /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 42C1F2BD1BE4CFEB0070C39C /* Utils.m */; settings = {ASSET_TAGS = (); }; };
-		42C1F2C11BE4E67D0070C39C /* SideBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42C1F2C01BE4E67D0070C39C /* SideBarViewController.m */; settings = {ASSET_TAGS = (); }; };
-		42D297611C1780C7001E2CF7 /* client_320679354628-pglr1q5ei94697lud0kr31keu5oh95gk.apps.googleusercontent.com.plist in Resources */ = {isa = PBXBuildFile; fileRef = 42D297601C1780C7001E2CF7 /* client_320679354628-pglr1q5ei94697lud0kr31keu5oh95gk.apps.googleusercontent.com.plist */; settings = {ASSET_TAGS = (); }; };
+		42C1F29C1BE4B5F80070C39C /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42C1F29B1BE4B5F80070C39C /* SWRevealViewController.m */; };
+		42C1F29F1BE4C3770070C39C /* UpdatesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42C1F29E1BE4C3770070C39C /* UpdatesViewController.m */; };
+		42C1F2A21BE4C39C0070C39C /* EventsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42C1F2A11BE4C39C0070C39C /* EventsViewController.m */; };
+		42C1F2A51BE4C3B80070C39C /* OnlineRadioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42C1F2A41BE4C3B80070C39C /* OnlineRadioViewController.m */; };
+		42C1F2A81BE4C3D20070C39C /* LiveStreamingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42C1F2A71BE4C3D20070C39C /* LiveStreamingViewController.m */; };
+		42C1F2AC1BE4C42A0070C39C /* TelecastViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42C1F2AB1BE4C42A0070C39C /* TelecastViewController.m */; };
+		42C1F2AF1BE4C4420070C39C /* ArticlesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42C1F2AE1BE4C4420070C39C /* ArticlesViewController.m */; };
+		42C1F2B21BE4C4540070C39C /* AboutUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42C1F2B11BE4C4540070C39C /* AboutUsViewController.m */; };
+		42C1F2BE1BE4CFEB0070C39C /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 42C1F2BD1BE4CFEB0070C39C /* Utils.m */; };
+		42C1F2C11BE4E67D0070C39C /* SideBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42C1F2C01BE4E67D0070C39C /* SideBarViewController.m */; };
+		42D297611C1780C7001E2CF7 /* client_320679354628-pglr1q5ei94697lud0kr31keu5oh95gk.apps.googleusercontent.com.plist in Resources */ = {isa = PBXBuildFile; fileRef = 42D297601C1780C7001E2CF7 /* client_320679354628-pglr1q5ei94697lud0kr31keu5oh95gk.apps.googleusercontent.com.plist */; };
 		D7E415DF26B7881C2B2C9FBF /* libPods-Saints Community.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 89CF894516391BD176AB3C5A /* libPods-Saints Community.a */; };
 /* End PBXBuildFile section */
 
@@ -338,6 +338,7 @@
 				TargetAttributes = {
 					42C1F25E1BE4A3B30070C39C = {
 						CreatedOnToolsVersion = 7.0.1;
+						DevelopmentTeam = 4644UP3453;
 					};
 					42C1F27A1BE4A3B40070C39C = {
 						CreatedOnToolsVersion = 7.0.1;
@@ -603,11 +604,13 @@
 			baseConfigurationReference = 4CC6A131BCA0D88D6BD8B26B /* Pods-Saints Community.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "Saints Community/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.kehesjay.Saints-Community";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -616,11 +619,13 @@
 			baseConfigurationReference = F99E17757DD386AC3D57C915 /* Pods-Saints Community.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "Saints Community/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.kehesjay.Saints-Community";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

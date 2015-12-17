@@ -87,8 +87,6 @@ return sharedObject;
     [view addSubview:webView];
     NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:destinationUrl] cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:15.0];
     [webView loadRequest:theRequest];
-    
-//     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:destinationUrl]]];
 }
 
 -(NSArray *)fetchData:(NSString *)entityName{
