@@ -38,6 +38,7 @@ static CGFloat statusBarAdjustment( UIView* view )
     CGFloat adjustment = 0.0f;
     UIApplication *app = [UIApplication sharedApplication];
     CGRect viewFrame = [view convertRect:view.bounds toView:[app keyWindow]];
+    viewFrame.size.width -= 150;
     CGRect statusBarFrame = [app statusBarFrame];
     
     if ( CGRectIntersectsRect(viewFrame, statusBarFrame) )

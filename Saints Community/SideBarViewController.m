@@ -26,7 +26,7 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    menuItems = @[@"title", @"home", @"updates", @"events", @"radio", @"streaming", @"telecast", @"articles", @"about"];
+    menuItems = @[@"title", @"home", @"updates", @"events", @"radio", @"streaming"];
 
 }
 

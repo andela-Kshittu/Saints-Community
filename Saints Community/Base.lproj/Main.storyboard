@@ -34,12 +34,11 @@
         <scene sceneID="mTk-JO-0mo">
             <objects>
                 <tableViewController id="vFB-Ur-lJe" customClass="SideBarViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" alwaysBounceHorizontal="YES" indicatorStyle="black" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="7NZ-8m-dUy">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" directionalLockEnabled="YES" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="default" sectionIndexMinimumDisplayRowCount="5" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="7NZ-8m-dUy">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
-                        <color key="backgroundColor" red="0.74117647060000003" green="0.63921568630000003" blue="0.1137254902" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="sectionIndexBackgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="title" id="uhX-MX-R5G">
                                 <rect key="frame" x="0.0" y="28" width="600" height="44"/>
@@ -66,14 +65,14 @@
                                 <animations/>
                                 <color key="backgroundColor" red="0.74117647060000003" green="0.63921568630000003" blue="0.1137254902" alpha="1" colorSpace="calibratedRGB"/>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="home" rowHeight="64" id="OSe-oA-BP1">
-                                <rect key="frame" x="0.0" y="72" width="600" height="64"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="home" rowHeight="74" id="OSe-oA-BP1">
+                                <rect key="frame" x="0.0" y="72" width="600" height="74"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OSe-oA-BP1" id="DcE-Fs-00r">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="63.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="73.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="news" translatesAutoresizingMaskIntoConstraints="NO" id="Jqa-fO-hTD">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="home" translatesAutoresizingMaskIntoConstraints="NO" id="Jqa-fO-hTD">
                                             <rect key="frame" x="8" y="2" width="38" height="38"/>
                                             <animations/>
                                             <constraints>
@@ -110,14 +109,14 @@
                                     <segue destination="XuS-OO-LtJ" kind="custom" identifier="goHome" customClass="SWRevealViewControllerSeguePushController" id="RSu-de-RLS"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="updates" rowHeight="64" id="QiZ-TD-rhD">
-                                <rect key="frame" x="0.0" y="136" width="600" height="64"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="updates" rowHeight="74" id="QiZ-TD-rhD">
+                                <rect key="frame" x="0.0" y="146" width="600" height="74"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="QiZ-TD-rhD" id="IL4-PC-fmR">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="63.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="73.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="news" translatesAutoresizingMaskIntoConstraints="NO" id="hQd-os-iAM">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="info" translatesAutoresizingMaskIntoConstraints="NO" id="hQd-os-iAM">
                                             <rect key="frame" x="8" y="2" width="38" height="38"/>
                                             <animations/>
                                             <constraints>
@@ -150,18 +149,19 @@
                                 </tableViewCellContentView>
                                 <animations/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <connections>
                                     <segue destination="5pi-Gy-G7j" kind="custom" identifier="showUpdates" customClass="SWRevealViewControllerSeguePushController" id="2Xl-GO-MMy"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="events" rowHeight="64" id="Usi-Dh-3gU">
-                                <rect key="frame" x="0.0" y="200" width="600" height="64"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="events" rowHeight="74" id="Usi-Dh-3gU">
+                                <rect key="frame" x="0.0" y="220" width="600" height="74"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Usi-Dh-3gU" id="HYN-2r-L8M">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="63.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="73.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="news" translatesAutoresizingMaskIntoConstraints="NO" id="iH6-8H-a1g">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="upcoming" translatesAutoresizingMaskIntoConstraints="NO" id="iH6-8H-a1g">
                                             <rect key="frame" x="8" y="2" width="38" height="38"/>
                                             <animations/>
                                             <constraints>
@@ -194,18 +194,19 @@
                                 </tableViewCellContentView>
                                 <animations/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <connections>
                                     <segue destination="LN4-ab-SwQ" kind="custom" identifier="showEvents" customClass="SWRevealViewControllerSeguePushController" id="kpy-16-YJP"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="radio" rowHeight="64" id="se4-zV-0tl">
-                                <rect key="frame" x="0.0" y="264" width="600" height="64"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="radio" rowHeight="74" id="se4-zV-0tl">
+                                <rect key="frame" x="0.0" y="294" width="600" height="74"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="se4-zV-0tl" id="g2N-rN-HMO">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="63.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="73.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="news" translatesAutoresizingMaskIntoConstraints="NO" id="aFq-hp-1We">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="radio" translatesAutoresizingMaskIntoConstraints="NO" id="aFq-hp-1We">
                                             <rect key="frame" x="8" y="2" width="38" height="38"/>
                                             <animations/>
                                             <constraints>
@@ -242,14 +243,14 @@
                                     <segue destination="96P-hR-jW9" kind="custom" identifier="showRadio" customClass="SWRevealViewControllerSeguePushController" id="z48-ak-odx"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="streaming" rowHeight="64" id="TI1-Vi-Fmj">
-                                <rect key="frame" x="0.0" y="328" width="600" height="64"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="streaming" rowHeight="74" id="TI1-Vi-Fmj">
+                                <rect key="frame" x="0.0" y="368" width="600" height="74"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="TI1-Vi-Fmj" id="6KW-Ev-J4y">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="63.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="73.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="news" translatesAutoresizingMaskIntoConstraints="NO" id="8Yo-8Q-dJ6">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="live" translatesAutoresizingMaskIntoConstraints="NO" id="8Yo-8Q-dJ6">
                                             <rect key="frame" x="8" y="2" width="38" height="38"/>
                                             <animations/>
                                             <constraints>
@@ -286,139 +287,8 @@
                                     <segue destination="pxT-c4-rvK" kind="custom" identifier="showStreaming" customClass="SWRevealViewControllerSeguePushController" id="XOi-ef-MPQ"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="telecast" rowHeight="64" id="0Ia-EH-paz">
-                                <rect key="frame" x="0.0" y="392" width="600" height="64"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0Ia-EH-paz" id="dWi-e4-NRu">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="63.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="news" translatesAutoresizingMaskIntoConstraints="NO" id="qAh-cL-Inv">
-                                            <rect key="frame" x="8" y="2" width="38" height="38"/>
-                                            <animations/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="38" id="ecN-1X-M8V"/>
-                                                <constraint firstAttribute="height" constant="38" id="mbK-YP-15E"/>
-                                            </constraints>
-                                        </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Living World Telecast" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fhr-Xq-Nt7">
-                                            <rect key="frame" x="62" y="8" width="180" height="27.5"/>
-                                            <animations/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <animations/>
-                                    <constraints>
-                                        <constraint firstItem="qAh-cL-Inv" firstAttribute="centerY" secondItem="dWi-e4-NRu" secondAttribute="centerY" id="MqO-1S-YSb"/>
-                                        <constraint firstItem="Fhr-Xq-Nt7" firstAttribute="leading" secondItem="dWi-e4-NRu" secondAttribute="leadingMargin" id="P6m-O0-FjD"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="Fhr-Xq-Nt7" secondAttribute="bottom" id="Y7o-bW-zRC"/>
-                                        <constraint firstItem="qAh-cL-Inv" firstAttribute="leading" secondItem="dWi-e4-NRu" secondAttribute="leadingMargin" id="dxd-yC-U3R"/>
-                                        <constraint firstItem="Fhr-Xq-Nt7" firstAttribute="top" secondItem="dWi-e4-NRu" secondAttribute="topMargin" id="mOm-jX-PrZ"/>
-                                        <constraint firstItem="Fhr-Xq-Nt7" firstAttribute="leading" secondItem="qAh-cL-Inv" secondAttribute="trailing" constant="16" id="v0O-FF-KmN"/>
-                                    </constraints>
-                                    <variation key="default">
-                                        <mask key="constraints">
-                                            <exclude reference="P6m-O0-FjD"/>
-                                        </mask>
-                                    </variation>
-                                </tableViewCellContentView>
-                                <animations/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                <connections>
-                                    <segue destination="iPz-Bp-WoF" kind="custom" identifier="showTelecast" customClass="SWRevealViewControllerSeguePushController" id="RUp-Lx-8Yc"/>
-                                </connections>
-                            </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="articles" rowHeight="64" id="IVD-0W-ssM">
-                                <rect key="frame" x="0.0" y="456" width="600" height="64"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="IVD-0W-ssM" id="S2q-76-Q6n">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="63.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="news" translatesAutoresizingMaskIntoConstraints="NO" id="qwp-4x-dHd">
-                                            <rect key="frame" x="8" y="2" width="38" height="38"/>
-                                            <animations/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="38" id="Es7-zY-S4S"/>
-                                                <constraint firstAttribute="width" constant="38" id="NQU-f6-sEY"/>
-                                            </constraints>
-                                        </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Articles" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XRM-le-R5m">
-                                            <rect key="frame" x="62" y="8" width="65.5" height="27.5"/>
-                                            <animations/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <animations/>
-                                    <constraints>
-                                        <constraint firstItem="XRM-le-R5m" firstAttribute="top" secondItem="S2q-76-Q6n" secondAttribute="topMargin" id="7nL-pb-qen"/>
-                                        <constraint firstItem="XRM-le-R5m" firstAttribute="leading" secondItem="qwp-4x-dHd" secondAttribute="trailing" constant="16" id="9M1-w4-Z24"/>
-                                        <constraint firstItem="XRM-le-R5m" firstAttribute="leading" secondItem="S2q-76-Q6n" secondAttribute="leadingMargin" id="Egx-Mo-ejb"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="XRM-le-R5m" secondAttribute="bottom" id="Lwc-aO-LXs"/>
-                                        <constraint firstItem="qwp-4x-dHd" firstAttribute="centerY" secondItem="S2q-76-Q6n" secondAttribute="centerY" id="jtf-6O-vby"/>
-                                        <constraint firstItem="qwp-4x-dHd" firstAttribute="leading" secondItem="S2q-76-Q6n" secondAttribute="leadingMargin" id="lOl-id-RbR"/>
-                                    </constraints>
-                                    <variation key="default">
-                                        <mask key="constraints">
-                                            <exclude reference="Egx-Mo-ejb"/>
-                                        </mask>
-                                    </variation>
-                                </tableViewCellContentView>
-                                <animations/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                <connections>
-                                    <segue destination="5Ri-u9-rn9" kind="custom" identifier="showArticles" customClass="SWRevealViewControllerSeguePushController" id="QY7-oe-gO8"/>
-                                </connections>
-                            </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="about" rowHeight="64" id="WXc-pf-6KF">
-                                <rect key="frame" x="0.0" y="520" width="600" height="64"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WXc-pf-6KF" id="3m8-hz-q4i">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="63.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="About Us" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FZt-W0-N0q">
-                                            <rect key="frame" x="62" y="8" width="78.5" height="27.5"/>
-                                            <animations/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="news" translatesAutoresizingMaskIntoConstraints="NO" id="yHB-2A-6Iv">
-                                            <rect key="frame" x="8" y="3" width="38" height="38"/>
-                                            <animations/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="38" id="A66-Mv-9y5"/>
-                                                <constraint firstAttribute="height" constant="38" id="ewr-tK-qTD"/>
-                                            </constraints>
-                                        </imageView>
-                                    </subviews>
-                                    <animations/>
-                                    <constraints>
-                                        <constraint firstItem="yHB-2A-6Iv" firstAttribute="centerY" secondItem="3m8-hz-q4i" secondAttribute="centerY" id="8QD-Ea-bn3"/>
-                                        <constraint firstItem="FZt-W0-N0q" firstAttribute="leading" secondItem="3m8-hz-q4i" secondAttribute="leadingMargin" id="9Xw-9F-1Rq"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="FZt-W0-N0q" secondAttribute="bottom" id="LXb-KR-1yC"/>
-                                        <constraint firstItem="FZt-W0-N0q" firstAttribute="top" secondItem="3m8-hz-q4i" secondAttribute="topMargin" id="YIc-Al-yl2"/>
-                                        <constraint firstItem="yHB-2A-6Iv" firstAttribute="leading" secondItem="3m8-hz-q4i" secondAttribute="leadingMargin" id="icu-Qg-LsR"/>
-                                        <constraint firstItem="FZt-W0-N0q" firstAttribute="leading" secondItem="yHB-2A-6Iv" secondAttribute="trailing" constant="16" id="zJh-xt-Ofc"/>
-                                    </constraints>
-                                    <variation key="default">
-                                        <mask key="constraints">
-                                            <exclude reference="9Xw-9F-1Rq"/>
-                                        </mask>
-                                    </variation>
-                                </tableViewCellContentView>
-                                <animations/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                <connections>
-                                    <segue destination="csl-UC-Vq4" kind="custom" identifier="showAbout" customClass="SWRevealViewControllerSeguePushController" id="VRO-39-zmx"/>
-                                </connections>
-                            </tableViewCell>
                         </prototypes>
+                        <sections/>
                         <connections>
                             <outlet property="dataSource" destination="vFB-Ur-lJe" id="VxP-Wr-4Lp"/>
                             <outlet property="delegate" destination="vFB-Ur-lJe" id="aQR-jd-CYf"/>
@@ -444,7 +314,9 @@
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Home" id="ZbJ-Eh-jfk">
-                        <barButtonItem key="leftBarButtonItem" image="menu" id="eAg-zS-15H"/>
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="menu" style="plain" id="eAg-zS-15H">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="sidebarButton" destination="eAg-zS-15H" id="kO0-qT-cxT"/>
@@ -554,7 +426,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Events" id="5S6-so-PaS">
-                        <barButtonItem key="leftBarButtonItem" image="menu" id="jJQ-Cw-1qM"/>
+                        <barButtonItem key="leftBarButtonItem" image="menu" id="jJQ-Cw-1qM">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="sidebarButton" destination="jJQ-Cw-1qM" id="nf3-lK-tIR"/>
@@ -580,7 +454,9 @@
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="About Us" id="Afa-wi-cz5">
-                        <barButtonItem key="leftBarButtonItem" image="menu" id="un4-Fh-s3g"/>
+                        <barButtonItem key="leftBarButtonItem" image="menu" id="un4-Fh-s3g">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="sidebarButton" destination="un4-Fh-s3g" id="v1e-cc-LJ3"/>
@@ -605,7 +481,9 @@
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Live Streaming" id="vxf-fb-tN7">
-                        <barButtonItem key="leftBarButtonItem" image="menu" id="uOi-og-lke"/>
+                        <barButtonItem key="leftBarButtonItem" image="menu" id="uOi-og-lke">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="sidebarButton" destination="uOi-og-lke" id="xII-9U-7qL"/>
@@ -630,7 +508,9 @@
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Online Radio" id="MeB-HP-6bE">
-                        <barButtonItem key="leftBarButtonItem" image="menu" id="SBS-Z8-CcO"/>
+                        <barButtonItem key="leftBarButtonItem" image="menu" id="SBS-Z8-CcO">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="sidebarButton" destination="SBS-Z8-CcO" id="ZOH-fH-yfj"/>
@@ -655,7 +535,9 @@
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Articles" id="j6d-CS-szv">
-                        <barButtonItem key="leftBarButtonItem" image="menu" id="AWk-e3-flU"/>
+                        <barButtonItem key="leftBarButtonItem" image="menu" id="AWk-e3-flU">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="sidebarButton" destination="AWk-e3-flU" id="QMg-GS-Wgb"/>
@@ -680,7 +562,9 @@
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Telecast" id="Lnw-vw-Wzh">
-                        <barButtonItem key="leftBarButtonItem" image="menu" id="1Qc-h4-w8B"/>
+                        <barButtonItem key="leftBarButtonItem" image="menu" id="1Qc-h4-w8B">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="sidebarButton" destination="1Qc-h4-w8B" id="pDy-4e-8Zf"/>
@@ -766,7 +650,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Updates" id="hbb-1E-erk">
-                        <barButtonItem key="leftBarButtonItem" image="menu" id="gsS-pq-4Cl"/>
+                        <barButtonItem key="leftBarButtonItem" image="menu" id="gsS-pq-4Cl">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="sidebarButton" destination="gsS-pq-4Cl" id="Cfe-Ac-yub"/>
@@ -920,8 +806,12 @@
     </scenes>
     <resources>
         <image name="comments" width="1024" height="1024"/>
-        <image name="menu" width="28" height="20"/>
-        <image name="news" width="1024" height="1024"/>
+        <image name="home" width="52" height="48"/>
+        <image name="info" width="25" height="28"/>
+        <image name="live" width="60" height="47"/>
+        <image name="menu" width="48" height="48"/>
+        <image name="radio" width="30" height="31"/>
+        <image name="upcoming" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="RSu-de-RLS"/>
