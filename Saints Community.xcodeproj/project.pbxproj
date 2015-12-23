@@ -26,7 +26,9 @@
 		42C1F2B21BE4C4540070C39C /* AboutUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42C1F2B11BE4C4540070C39C /* AboutUsViewController.m */; };
 		42C1F2BE1BE4CFEB0070C39C /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 42C1F2BD1BE4CFEB0070C39C /* Utils.m */; };
 		42C1F2C11BE4E67D0070C39C /* SideBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42C1F2C01BE4E67D0070C39C /* SideBarViewController.m */; };
-		42D297611C1780C7001E2CF7 /* client_320679354628-pglr1q5ei94697lud0kr31keu5oh95gk.apps.googleusercontent.com.plist in Resources */ = {isa = PBXBuildFile; fileRef = 42D297601C1780C7001E2CF7 /* client_320679354628-pglr1q5ei94697lud0kr31keu5oh95gk.apps.googleusercontent.com.plist */; };
+		42E00ACB1C2A213A0066A3D1 /* UpdateDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42E00ACA1C2A213A0066A3D1 /* UpdateDetailsViewController.m */; };
+		42E00ACE1C2A217B0066A3D1 /* EventDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42E00ACD1C2A217B0066A3D1 /* EventDetailsViewController.m */; };
+		42E00AD11C2A517B0066A3D1 /* CardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 42E00AD01C2A517B0066A3D1 /* CardView.m */; };
 		D7E415DF26B7881C2B2C9FBF /* libPods-Saints Community.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 89CF894516391BD176AB3C5A /* libPods-Saints Community.a */; };
 /* End PBXBuildFile section */
 
@@ -85,7 +87,12 @@
 		42C1F2BD1BE4CFEB0070C39C /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
 		42C1F2BF1BE4E67D0070C39C /* SideBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SideBarViewController.h; sourceTree = "<group>"; };
 		42C1F2C01BE4E67D0070C39C /* SideBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SideBarViewController.m; sourceTree = "<group>"; };
-		42D297601C1780C7001E2CF7 /* client_320679354628-pglr1q5ei94697lud0kr31keu5oh95gk.apps.googleusercontent.com.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "client_320679354628-pglr1q5ei94697lud0kr31keu5oh95gk.apps.googleusercontent.com.plist"; sourceTree = "<group>"; };
+		42E00AC91C2A213A0066A3D1 /* UpdateDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpdateDetailsViewController.h; sourceTree = "<group>"; };
+		42E00ACA1C2A213A0066A3D1 /* UpdateDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpdateDetailsViewController.m; sourceTree = "<group>"; };
+		42E00ACC1C2A217B0066A3D1 /* EventDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventDetailsViewController.h; sourceTree = "<group>"; };
+		42E00ACD1C2A217B0066A3D1 /* EventDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventDetailsViewController.m; sourceTree = "<group>"; };
+		42E00ACF1C2A517B0066A3D1 /* CardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardView.h; sourceTree = "<group>"; };
+		42E00AD01C2A517B0066A3D1 /* CardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardView.m; sourceTree = "<group>"; };
 		4CC6A131BCA0D88D6BD8B26B /* Pods-Saints Community.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Saints Community.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Saints Community/Pods-Saints Community.debug.xcconfig"; sourceTree = "<group>"; };
 		89CF894516391BD176AB3C5A /* libPods-Saints Community.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Saints Community.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F99E17757DD386AC3D57C915 /* Pods-Saints Community.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Saints Community.release.xcconfig"; path = "Pods/Target Support Files/Pods-Saints Community/Pods-Saints Community.release.xcconfig"; sourceTree = "<group>"; };
@@ -160,7 +167,6 @@
 				42C1F2711BE4A3B40070C39C /* Assets.xcassets */,
 				42C1F2761BE4A3B40070C39C /* Info.plist */,
 				42C1F26E1BE4A3B30070C39C /* Saints_Community.xcdatamodeld */,
-				42D297601C1780C7001E2CF7 /* client_320679354628-pglr1q5ei94697lud0kr31keu5oh95gk.apps.googleusercontent.com.plist */,
 				42C1F2621BE4A3B30070C39C /* Supporting Files */,
 			);
 			path = "Saints Community";
@@ -230,6 +236,10 @@
 				42C1F2B11BE4C4540070C39C /* AboutUsViewController.m */,
 				42C1F2BF1BE4E67D0070C39C /* SideBarViewController.h */,
 				42C1F2C01BE4E67D0070C39C /* SideBarViewController.m */,
+				42E00AC91C2A213A0066A3D1 /* UpdateDetailsViewController.h */,
+				42E00ACA1C2A213A0066A3D1 /* UpdateDetailsViewController.m */,
+				42E00ACC1C2A217B0066A3D1 /* EventDetailsViewController.h */,
+				42E00ACD1C2A217B0066A3D1 /* EventDetailsViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -255,6 +265,8 @@
 			children = (
 				42C1F2BC1BE4CFEB0070C39C /* Utils.h */,
 				42C1F2BD1BE4CFEB0070C39C /* Utils.m */,
+				42E00ACF1C2A517B0066A3D1 /* CardView.h */,
+				42E00AD01C2A517B0066A3D1 /* CardView.m */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -376,7 +388,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				42C1F2751BE4A3B40070C39C /* LaunchScreen.storyboard in Resources */,
-				42D297611C1780C7001E2CF7 /* client_320679354628-pglr1q5ei94697lud0kr31keu5oh95gk.apps.googleusercontent.com.plist in Resources */,
 				42C1F2721BE4A3B40070C39C /* Assets.xcassets in Resources */,
 				42C1F26D1BE4A3B30070C39C /* Main.storyboard in Resources */,
 			);
@@ -460,10 +471,13 @@
 				42C1F29C1BE4B5F80070C39C /* SWRevealViewController.m in Sources */,
 				42C1F2C11BE4E67D0070C39C /* SideBarViewController.m in Sources */,
 				42C1F2A21BE4C39C0070C39C /* EventsViewController.m in Sources */,
+				42E00ACB1C2A213A0066A3D1 /* UpdateDetailsViewController.m in Sources */,
 				42C1F29F1BE4C3770070C39C /* UpdatesViewController.m in Sources */,
 				42C1F2B21BE4C4540070C39C /* AboutUsViewController.m in Sources */,
 				42C1F2A81BE4C3D20070C39C /* LiveStreamingViewController.m in Sources */,
 				42C1F2641BE4A3B30070C39C /* main.m in Sources */,
+				42E00ACE1C2A217B0066A3D1 /* EventDetailsViewController.m in Sources */,
+				42E00AD11C2A517B0066A3D1 /* CardView.m in Sources */,
 				42C1F2701BE4A3B30070C39C /* Saints_Community.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

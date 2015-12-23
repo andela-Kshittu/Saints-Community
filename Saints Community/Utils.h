@@ -14,6 +14,9 @@
 @property (nonatomic, strong) NSManagedObjectContext  *managedObjectContext;
 @property (nonatomic, assign) BOOL isEventsNetworkError;
 @property (nonatomic, assign) BOOL isUpdatesNetworkError;
+@property (nonatomic, strong) NSArray* fetchedUpdates;
+@property (nonatomic, strong) NSArray* fetchedEvents;
+@property (nonatomic, assign) NSInteger selectedIndex;
 +(Utils *)sharedInstance;
 +(void)initSidebar:(UIViewController *) vc
          barButton:(UIBarButtonItem *) barButton;

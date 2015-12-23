@@ -10,9 +10,7 @@
 #import "Utils.h"
 #import <CoreData/CoreData.h>
 
-@interface EventsViewController (){
-    NSArray * events;
-}
+@interface EventsViewController ()
 @end
 
 @implementation EventsViewController
@@ -30,7 +28,7 @@
     
     // Do any additional setup after loading the view.
     [Utils initSidebar:self barButton:self.sidebarButton];
-    events = [[Utils sharedInstance] fetchData:@"Events"];
+     [Utils sharedInstance].fetchedEvents = [[Utils sharedInstance] fetchData:@"Events"];
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
@@ -38,7 +36,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section {
-    return [events count];
+    return [[Utils sharedInstance].fetchedEvents count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
@@ -53,7 +51,7 @@
     //    cell.textLabel.text = info.name;
     //    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@, %@",
     //                                 info.city, info.state];
-    NSManagedObject *info = events[indexPath.row];
+    NSManagedObject *info = [Utils sharedInstance].fetchedEvents[indexPath.row];
     UIImageView * eventImage = (UIImageView *)[cell viewWithTag:1];
     UILabel * title = (UILabel *)[cell viewWithTag:2];
     UILabel * date = (UILabel *)[cell viewWithTag:3];
@@ -67,6 +65,11 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [Utils sharedInstance].selectedIndex = indexPath.row;
+    [self performSegueWithIdentifier:@"EventDetails" sender:nil];
 }
 
 /*

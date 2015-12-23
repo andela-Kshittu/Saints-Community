@@ -27,7 +27,14 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     menuItems = @[@"title", @"home", @"updates", @"events", @"radio", @"streaming"];
-
+//    CGRect frame = self.tableView.frame;
+//    
+//    frame.origin.y -= 20.0;
+//    
+//    self.tableView.frame = frame;
+    UIImageView *tempImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"nav_background.png"]];
+    [tempImageView setFrame:self.tableView.frame];
+    self.tableView.backgroundView = tempImageView;
 }
 
 - (void)didReceiveMemoryWarning {

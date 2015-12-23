@@ -10,9 +10,7 @@
 #import "Utils.h"
 #import <CoreData/CoreData.h>
 
-@interface UpdatesViewController (){
-NSArray * updates;
-}
+@interface UpdatesViewController ()
 @end
 
 @implementation UpdatesViewController
@@ -30,7 +28,7 @@ NSArray * updates;
     
     self.tableView.tableHeaderView.hidden = YES;
     [Utils initSidebar:self barButton:self.sidebarButton];
-    updates = [[Utils sharedInstance] fetchData:@"Updates"];
+    [Utils sharedInstance].fetchedUpdates = [[Utils sharedInstance] fetchData:@"Updates"];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -44,7 +42,7 @@ NSArray * updates;
 
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section {
-    return [updates count];
+    return [[Utils sharedInstance].fetchedUpdates count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
@@ -59,7 +57,7 @@ NSArray * updates;
 //    cell.textLabel.text = info.name;
 //    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@, %@",
 //                                 info.city, info.state];
-    NSManagedObject *info = updates[indexPath.row];
+    NSManagedObject *info =  [Utils sharedInstance].fetchedUpdates[indexPath.row];
     UIImageView * updateImage = (UIImageView *)[cell viewWithTag:1];
     UILabel * title = (UILabel *)[cell viewWithTag:2];
     UILabel * date = (UILabel *)[cell viewWithTag:3];
@@ -68,6 +66,11 @@ NSArray * updates;
     title.text = [info valueForKey:@"title"];
     date.text = [info valueForKey:@"updated_date"];
     return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [Utils sharedInstance].selectedIndex = indexPath.row;
+    [self performSegueWithIdentifier:@"UpdateDetails" sender:nil];
 }
 /*
 #pragma mark - Navigation
