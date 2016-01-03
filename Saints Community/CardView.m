@@ -20,10 +20,7 @@
 -(void)layoutSubviews{
     
     CGFloat radius = 2.0;
-    
     self.layer.cornerRadius = radius;
-//    CGRect shadowPath = UIBezierPath(roundedRect: bounds, cornerRadius: radius)
-    
     UIBezierPath *shadowPath = [UIBezierPath bezierPathWithRoundedRect:self.bounds cornerRadius:radius];
     
     self.layer.masksToBounds = false;

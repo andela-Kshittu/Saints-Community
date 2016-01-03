@@ -25,7 +25,8 @@
     }
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
-    
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+
     // Do any additional setup after loading the view.
     [Utils initSidebar:self barButton:self.sidebarButton];
      [Utils sharedInstance].fetchedEvents = [[Utils sharedInstance] fetchData:@"Events"];
@@ -46,11 +47,6 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
-    // Set up the cell...
-    //    FailedBankInfo *info = [failedBankInfos objectAtIndex:indexPath.row];
-    //    cell.textLabel.text = info.name;
-    //    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@, %@",
-    //                                 info.city, info.state];
     NSManagedObject *info = [Utils sharedInstance].fetchedEvents[indexPath.row];
     UIImageView * eventImage = (UIImageView *)[cell viewWithTag:1];
     UILabel * title = (UILabel *)[cell viewWithTag:2];

@@ -39,8 +39,10 @@ return sharedObject;
     [manager GET:url  parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"JSON: %@", responseObject[@"success"]);
         [events addObjectsFromArray:responseObject[@"success"]];
-        [self deleteEntityRecords:@"Events"];
-        [self updateCoreData:events withEntity:@"Events"];
+         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            [self deleteEntityRecords:@"Events"];
+            [self updateCoreData:events withEntity:@"Events"];
+         });
         self.isEventsNetworkError = NO;
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error: %ld", (long)error.code);
@@ -57,9 +59,10 @@ return sharedObject;
     [manager GET:url  parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"JSON: %@", responseObject[@"success"]);
         [updates addObjectsFromArray:responseObject[@"success"]];
-        
-        [self deleteEntityRecords:@"Updates"];
-        [self updateCoreData:updates withEntity:@"Updates"];
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            [self deleteEntityRecords:@"Updates"];
+            [self updateCoreData:updates withEntity:@"Updates"];
+        });
         self.isUpdatesNetworkError = NO;
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error: %@", error);

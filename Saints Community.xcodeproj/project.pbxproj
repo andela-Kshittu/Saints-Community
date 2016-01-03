@@ -21,9 +21,6 @@
 		42C1F2A21BE4C39C0070C39C /* EventsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42C1F2A11BE4C39C0070C39C /* EventsViewController.m */; };
 		42C1F2A51BE4C3B80070C39C /* OnlineRadioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42C1F2A41BE4C3B80070C39C /* OnlineRadioViewController.m */; };
 		42C1F2A81BE4C3D20070C39C /* LiveStreamingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42C1F2A71BE4C3D20070C39C /* LiveStreamingViewController.m */; };
-		42C1F2AC1BE4C42A0070C39C /* TelecastViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42C1F2AB1BE4C42A0070C39C /* TelecastViewController.m */; };
-		42C1F2AF1BE4C4420070C39C /* ArticlesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42C1F2AE1BE4C4420070C39C /* ArticlesViewController.m */; };
-		42C1F2B21BE4C4540070C39C /* AboutUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42C1F2B11BE4C4540070C39C /* AboutUsViewController.m */; };
 		42C1F2BE1BE4CFEB0070C39C /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 42C1F2BD1BE4CFEB0070C39C /* Utils.m */; };
 		42C1F2C11BE4E67D0070C39C /* SideBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42C1F2C01BE4E67D0070C39C /* SideBarViewController.m */; };
 		42E00ACB1C2A213A0066A3D1 /* UpdateDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42E00ACA1C2A213A0066A3D1 /* UpdateDetailsViewController.m */; };
@@ -77,12 +74,6 @@
 		42C1F2A41BE4C3B80070C39C /* OnlineRadioViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OnlineRadioViewController.m; sourceTree = "<group>"; };
 		42C1F2A61BE4C3D20070C39C /* LiveStreamingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LiveStreamingViewController.h; sourceTree = "<group>"; };
 		42C1F2A71BE4C3D20070C39C /* LiveStreamingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LiveStreamingViewController.m; sourceTree = "<group>"; };
-		42C1F2AA1BE4C42A0070C39C /* TelecastViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TelecastViewController.h; sourceTree = "<group>"; };
-		42C1F2AB1BE4C42A0070C39C /* TelecastViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TelecastViewController.m; sourceTree = "<group>"; };
-		42C1F2AD1BE4C4420070C39C /* ArticlesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticlesViewController.h; sourceTree = "<group>"; };
-		42C1F2AE1BE4C4420070C39C /* ArticlesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticlesViewController.m; sourceTree = "<group>"; };
-		42C1F2B01BE4C4540070C39C /* AboutUsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutUsViewController.h; sourceTree = "<group>"; };
-		42C1F2B11BE4C4540070C39C /* AboutUsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutUsViewController.m; sourceTree = "<group>"; };
 		42C1F2BC1BE4CFEB0070C39C /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
 		42C1F2BD1BE4CFEB0070C39C /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
 		42C1F2BF1BE4E67D0070C39C /* SideBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SideBarViewController.h; sourceTree = "<group>"; };
@@ -166,7 +157,6 @@
 				42C1F2661BE4A3B30070C39C /* AppDelegate.m */,
 				42C1F2711BE4A3B40070C39C /* Assets.xcassets */,
 				42C1F2761BE4A3B40070C39C /* Info.plist */,
-				42C1F26E1BE4A3B30070C39C /* Saints_Community.xcdatamodeld */,
 				42C1F2621BE4A3B30070C39C /* Supporting Files */,
 			);
 			path = "Saints Community";
@@ -228,12 +218,6 @@
 				42C1F2A41BE4C3B80070C39C /* OnlineRadioViewController.m */,
 				42C1F2A61BE4C3D20070C39C /* LiveStreamingViewController.h */,
 				42C1F2A71BE4C3D20070C39C /* LiveStreamingViewController.m */,
-				42C1F2AA1BE4C42A0070C39C /* TelecastViewController.h */,
-				42C1F2AB1BE4C42A0070C39C /* TelecastViewController.m */,
-				42C1F2AD1BE4C4420070C39C /* ArticlesViewController.h */,
-				42C1F2AE1BE4C4420070C39C /* ArticlesViewController.m */,
-				42C1F2B01BE4C4540070C39C /* AboutUsViewController.h */,
-				42C1F2B11BE4C4540070C39C /* AboutUsViewController.m */,
 				42C1F2BF1BE4E67D0070C39C /* SideBarViewController.h */,
 				42C1F2C01BE4E67D0070C39C /* SideBarViewController.m */,
 				42E00AC91C2A213A0066A3D1 /* UpdateDetailsViewController.h */,
@@ -247,6 +231,7 @@
 		42C1F2B31BE4C4630070C39C /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				42C1F26E1BE4A3B30070C39C /* Saints_Community.xcdatamodeld */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -463,17 +448,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				42C1F26A1BE4A3B30070C39C /* HomeViewController.m in Sources */,
-				42C1F2AC1BE4C42A0070C39C /* TelecastViewController.m in Sources */,
 				42C1F2A51BE4C3B80070C39C /* OnlineRadioViewController.m in Sources */,
 				42C1F2BE1BE4CFEB0070C39C /* Utils.m in Sources */,
-				42C1F2AF1BE4C4420070C39C /* ArticlesViewController.m in Sources */,
 				42C1F2671BE4A3B30070C39C /* AppDelegate.m in Sources */,
 				42C1F29C1BE4B5F80070C39C /* SWRevealViewController.m in Sources */,
 				42C1F2C11BE4E67D0070C39C /* SideBarViewController.m in Sources */,
 				42C1F2A21BE4C39C0070C39C /* EventsViewController.m in Sources */,
 				42E00ACB1C2A213A0066A3D1 /* UpdateDetailsViewController.m in Sources */,
 				42C1F29F1BE4C3770070C39C /* UpdatesViewController.m in Sources */,
-				42C1F2B21BE4C4540070C39C /* AboutUsViewController.m in Sources */,
 				42C1F2A81BE4C3D20070C39C /* LiveStreamingViewController.m in Sources */,
 				42C1F2641BE4A3B30070C39C /* main.m in Sources */,
 				42E00ACE1C2A217B0066A3D1 /* EventDetailsViewController.m in Sources */,

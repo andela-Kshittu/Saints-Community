@@ -26,15 +26,28 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     menuItems = @[@"title", @"home", @"updates", @"events", @"radio", @"streaming"];
-//    CGRect frame = self.tableView.frame;
-//    
-//    frame.origin.y -= 20.0;
-//    
-//    self.tableView.frame = frame;
     UIImageView *tempImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"nav_background.png"]];
     [tempImageView setFrame:self.tableView.frame];
     self.tableView.backgroundView = tempImageView;
+}
+
+- (void)tableView:(UITableView *)tableView
+  willDisplayCell:(UITableViewCell *)cell
+forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UIColor *headerCellColor = [UIColor colorWithRed:189.0/255 green:163.0/255 blue:29.0/255 alpha:1.00];
+    if (indexPath.row > 0) {
+        [cell setBackgroundColor:[UIColor clearColor]];
+    }else{
+        [cell setBackgroundColor:headerCellColor];
+    }
+    
+    UIView * additionalSeparator = [[UIView alloc] initWithFrame:CGRectMake(0,cell.frame.size.height-1,cell.frame.size.width,1)];
+    additionalSeparator.backgroundColor = [UIColor blackColor];
+    [cell addSubview:additionalSeparator];
+
 }
 
 - (void)didReceiveMemoryWarning {

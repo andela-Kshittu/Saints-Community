@@ -32,7 +32,8 @@
 
 -(void)viewDidAppear:(BOOL)animated{
     self.scrollView.delegate = self;
-    self.scrollView.contentSize =  CGSizeMake(self.scrollView.frame.size.width * [Utils sharedInstance].fetchedUpdates.count, self.scrollView.frame.size.height);
+    self.scrollView.contentSize =  CGSizeMake(self.scrollView.frame.size.width * [Utils sharedInstance].fetchedUpdates.count,
+                                              self.scrollView.frame.size.height);
     
     pageWidth = self.scrollView.contentSize.width / [Utils sharedInstance].fetchedUpdates.count;
     for (NSInteger i = 0; i < [Utils sharedInstance].fetchedUpdates.count; i++)
@@ -48,16 +49,8 @@
         
         [self.scrollView addSubview:updateImage];
     }
-    NSLog(@"selected index is : %ld" , (long)[Utils sharedInstance].selectedIndex);
     [self scrollTo:[Utils sharedInstance].selectedIndex];
-
 }
-
--(void)viewDidLayoutSubviews{
-
-
-}
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -66,8 +59,6 @@
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
     NSInteger pageIndex = round(self.scrollView.contentOffset.x / pageWidth);
-    
-    NSLog(@"scroll index  : %ld", (long)pageIndex );
     [self scrollTo:pageIndex];
 }
 
@@ -76,8 +67,6 @@
     CGRect frame = self.scrollView.frame;
     frame.origin.x = pageWidth * index;
     frame.origin.y = 0;
-    
-    NSLog(@"scroll index  : %f", frame.origin.x);
     [self.scrollView scrollRectToVisible:frame animated:YES];
     
     NSManagedObject *info =  [Utils sharedInstance].fetchedUpdates[index];

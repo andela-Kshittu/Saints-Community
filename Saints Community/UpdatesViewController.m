@@ -25,8 +25,8 @@
     // Do any additional setup after loading the view.
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
-    
-    self.tableView.tableHeaderView.hidden = YES;
+//    self.tableView.tableHeaderView.hidden = YES;
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     [Utils initSidebar:self barButton:self.sidebarButton];
     [Utils sharedInstance].fetchedUpdates = [[Utils sharedInstance] fetchData:@"Updates"];
 }
@@ -52,11 +52,6 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
-    // Set up the cell...
-//    FailedBankInfo *info = [failedBankInfos objectAtIndex:indexPath.row];
-//    cell.textLabel.text = info.name;
-//    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@, %@",
-//                                 info.city, info.state];
     NSManagedObject *info =  [Utils sharedInstance].fetchedUpdates[indexPath.row];
     UIImageView * updateImage = (UIImageView *)[cell viewWithTag:1];
     UILabel * title = (UILabel *)[cell viewWithTag:2];
