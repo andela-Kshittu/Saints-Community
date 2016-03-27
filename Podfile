@@ -5,6 +5,7 @@
 
 target 'Saints Community' do
 pod "AFNetworking", "~> 2.0"
+pod "StreamingKit", "~> 0.1"
 
 end
 

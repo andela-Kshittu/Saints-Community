@@ -8,6 +8,7 @@
 
 #import "SongsViewController.h"
 #import <MediaPlayer/MediaPlayer.h>
+#import "NowPlayingViewController.h"
 
 @interface SongsViewController ()
 
@@ -71,14 +72,17 @@
     
     int selectedIndex = [[self.tableView indexPathForSelectedRow] row];
     
-    MPMediaItem *selectedItem = [[songs objectAtIndex:selectedIndex] representativeItem];
+     NowPlayingViewController *detailViewController = [segue destinationViewController];
+        detailViewController.albumTitle = @"Album Name";
     
-    MPMusicPlayerController *musicPlayer = [MPMusicPlayerController iPodMusicPlayer];
-    
-    [musicPlayer setQueueWithItemCollection:[MPMediaItemCollection collectionWithItems:[songsQuery items]]];
-    [musicPlayer setNowPlayingItem:selectedItem];
-    
-    [musicPlayer play];
+//    MPMediaItem *selectedItem = [[songs objectAtIndex:selectedIndex] representativeItem];
+//    
+//    MPMusicPlayerController *musicPlayer = [MPMusicPlayerController iPodMusicPlayer];
+//    
+//    [musicPlayer setQueueWithItemCollection:[MPMediaItemCollection collectionWithItems:[songsQuery items]]];
+//    [musicPlayer setNowPlayingItem:selectedItem];
+//    
+//    [musicPlayer play];
 }
 
 

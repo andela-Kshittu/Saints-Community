@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		427159E41CA36E70000D27B4 /* OJURI.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 427159E31CA36E70000D27B4 /* OJURI.mp3 */; };
+		427159E71CA70F3E000D27B4 /* Tracks.m in Sources */ = {isa = PBXBuildFile; fileRef = 427159E61CA70F3D000D27B4 /* Tracks.m */; };
+		427159EA1CA7FB19000D27B4 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 427159E91CA7FB19000D27B4 /* MainViewController.m */; };
 		42C1F2641BE4A3B30070C39C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 42C1F2631BE4A3B30070C39C /* main.m */; };
 		42C1F2671BE4A3B30070C39C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 42C1F2661BE4A3B30070C39C /* AppDelegate.m */; };
 		42C1F26A1BE4A3B30070C39C /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42C1F2691BE4A3B30070C39C /* HomeViewController.m */; };
@@ -55,6 +57,10 @@
 
 /* Begin PBXFileReference section */
 		427159E31CA36E70000D27B4 /* OJURI.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = OJURI.mp3; sourceTree = "<group>"; };
+		427159E51CA70F3D000D27B4 /* Tracks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tracks.h; sourceTree = "<group>"; };
+		427159E61CA70F3D000D27B4 /* Tracks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tracks.m; sourceTree = "<group>"; };
+		427159E81CA7FB19000D27B4 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		427159E91CA7FB19000D27B4 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		42C1F25F1BE4A3B30070C39C /* Saints Community.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Saints Community.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		42C1F2631BE4A3B30070C39C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		42C1F2651BE4A3B30070C39C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -256,6 +262,8 @@
 				42E5B6B91CA2F90900981797 /* SCAudioPlayerViewController.m */,
 				42E5B6BB1CA2F95300981797 /* NowPlayingViewController.h */,
 				42E5B6BC1CA2F95300981797 /* NowPlayingViewController.m */,
+				427159E81CA7FB19000D27B4 /* MainViewController.h */,
+				427159E91CA7FB19000D27B4 /* MainViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -264,6 +272,8 @@
 			isa = PBXGroup;
 			children = (
 				42C1F26E1BE4A3B30070C39C /* Saints_Community.xcdatamodeld */,
+				427159E51CA70F3D000D27B4 /* Tracks.h */,
+				427159E61CA70F3D000D27B4 /* Tracks.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -368,6 +378,11 @@
 					42C1F25E1BE4A3B30070C39C = {
 						CreatedOnToolsVersion = 7.0.1;
 						DevelopmentTeam = 4644UP3453;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					42C1F27A1BE4A3B40070C39C = {
 						CreatedOnToolsVersion = 7.0.1;
@@ -483,6 +498,8 @@
 				42C1F26A1BE4A3B30070C39C /* HomeViewController.m in Sources */,
 				42C1F2A51BE4C3B80070C39C /* OnlineRadioViewController.m in Sources */,
 				42E5B6B11CA2D80B00981797 /* SongsViewController.m in Sources */,
+				427159E71CA70F3E000D27B4 /* Tracks.m in Sources */,
+				427159EA1CA7FB19000D27B4 /* MainViewController.m in Sources */,
 				42C1F2BE1BE4CFEB0070C39C /* Utils.m in Sources */,
 				42E5B6BA1CA2F90900981797 /* SCAudioPlayerViewController.m in Sources */,
 				42E5B6B41CA2DB9F00981797 /* AlbumsViewController.m in Sources */,

@@ -8,17 +8,22 @@
 
 #import <UIKit/UIKit.h>
 #import <AVFoundation/AVFoundation.h>
+#import <STKAudioPlayer.h>
 
 @interface SCAudioPlayerViewController : UIViewController
 
 @property (nonatomic, retain) AVAudioPlayer *audioPlayer;
+@property (nonatomic, retain) STKAudioPlayer *customAudioPlayer;
+@property (nonatomic, retain) NSURL *musicUrl;
 
 // Public methods
-- (void)initPlayer:(NSString*) audioFile fileExtension:(NSString*)fileExtension;
+- (void)initPlayer:(NSString*) url;
 - (void)playAudio;
 - (void)pauseAudio;
-- (void)setCurrentAudioTime:(float)value;
-- (float)getAudioDuration;
-- (NSString*)timeFormat:(float)value;
+- (void)stopAudio;
+- (void)resumeAudio;
+- (void)setCurrentAudioTime:(double)value;
+- (double)getAudioDuration;
+- (NSString*)timeFormat:(double)value;
 - (NSTimeInterval)getCurrentAudioTime;
 @end

@@ -9,6 +9,8 @@
 #import "AlbumsViewController.h"
 #import "AlbumViewController.h"
 #import <MediaPlayer/MediaPlayer.h>
+#import "Utils.h"
+#import "Tracks.h"
 
 @interface AlbumsViewController ()
 
@@ -18,12 +20,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    [Utils initSidebar:self barButton:self.sidebarButton];
+    self.tabBarController.tabBarItem.title = @"Audio Folders";
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -40,10 +44,10 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 #warning Incomplete implementation, return the number of rows
-    MPMediaQuery *albumsQuery = [MPMediaQuery albumsQuery];
-    NSArray *albums = [albumsQuery collections];
+//    MPMediaQuery *albumsQuery = [MPMediaQuery albumsQuery];
+//    NSArray *albums = [albumsQuery collections];
     
-    return [albums count];
+    return [[Tracks albums] count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -56,20 +60,20 @@
     MPMediaQuery *albumsQuery = [MPMediaQuery albumsQuery];
     NSArray *albums = [albumsQuery collections];
     
-    MPMediaItem *rowItem = [[albums objectAtIndex:indexPath.row] representativeItem];
+    NSDictionary *rowItem = [[Tracks albums] objectAtIndex:indexPath.row];
     
-    cell.textLabel.text = [rowItem valueForProperty:MPMediaItemPropertyAlbumTitle];
-    cell.detailTextLabel.text = [rowItem valueForProperty:MPMediaItemPropertyAlbumArtist];
+    cell.textLabel.text = [rowItem objectForKey:@"name"];
+    cell.detailTextLabel.text = [NSString stringWithFormat: @"Sermon by: %@", [rowItem objectForKey:@"artist"]];
     
-    MPMediaItemArtwork *artwork = [rowItem valueForProperty:MPMediaItemPropertyArtwork];
+//    MPMediaItemArtwork *artwork = [rowItem valueForProperty:MPMediaItemPropertyArtwork];
     
-    UIImage *artworkImage = [artwork imageWithSize: CGSizeMake (44, 44)];
+//    UIImage *artworkImage = [artwork imageWithSize: CGSizeMake (44, 44)];
     
-    if (artworkImage) {
-        cell.imageView.image = artworkImage;
-    } else {
-        cell.imageView.image = [UIImage imageNamed:@"radio.png"];
-    }
+//    if (artworkImage) {
+//        cell.imageView.image = artworkImage;
+//    } else {
+        cell.imageView.image = [UIImage imageNamed:@"music_folder.png"];
+//    }
     
     return cell;
 }
@@ -79,14 +83,14 @@
 {
     AlbumViewController *detailViewController = [segue destinationViewController];
     
-    MPMediaQuery *albumsQuery = [MPMediaQuery albumsQuery];
-    NSArray *albums = [albumsQuery collections];
+//    MPMediaQuery *albumsQuery = [MPMediaQuery albumsQuery];
+//    NSArray *albums = [albumsQuery collections];
     
     int selectedIndex = [[self.tableView indexPathForSelectedRow] row];
-    MPMediaItem *selectedItem = [[albums objectAtIndex:selectedIndex] representativeItem];
-    NSString *albumTitle = [selectedItem valueForProperty:MPMediaItemPropertyAlbumTitle];
+//    MPMediaItem *selectedItem = [[albums objectAtIndex:selectedIndex] representativeItem];
+//    NSString *albumTitle = [selectedItem valueForProperty:MPMediaItemPropertyAlbumTitle];
     
-    detailViewController.albumTitle = albumTitle;
+    detailViewController.selectedAlbum = selectedIndex;
 }
 
 /*

@@ -10,9 +10,7 @@
 #import <MediaPlayer/MediaPlayer.h>
 
 @interface AlbumViewController : UITableViewController
-{
-    NSString *albumTitle;
-}
-
-@property NSString *albumTitle;
+@property (nonatomic, assign) int selectedAlbum;
+@property (nonatomic, strong) NSDictionary* album;
+@property (nonatomic, strong) NSArray* tracks;
 @end
