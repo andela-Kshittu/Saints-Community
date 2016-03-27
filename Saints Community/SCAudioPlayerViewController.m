@@ -35,7 +35,7 @@
 //    http://www.notjustok.com/wp-content/uploads/2012/12/OJURI.mp3
    
     
-    NSURL *musicUrl = [NSURL URLWithString:@"http://www.notjustok.com/wp-content/uploads/2012/12/OJURI.mp3"];
+    NSURL *musicUrl = [NSURL URLWithString:url];
     self.musicUrl = musicUrl;
 //    NSData *musicData = [NSData dataWithContentsOfURL:musicUrl];
 //    NSError *error;
@@ -103,7 +103,7 @@
  */
 - (NSTimeInterval)getCurrentAudioTime {
 //    return [self.audioPlayer currentTime];
-     return [self.customAudioPlayer progress];
+    return [self.customAudioPlayer progress];
 }
 
 /*

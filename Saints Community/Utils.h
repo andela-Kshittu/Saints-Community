@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "SWRevealViewController.h"
+#import "SCAudioPlayerViewController.h"
 
 
 @interface Utils : NSObject
@@ -17,6 +18,20 @@
 @property (nonatomic, strong) NSArray* fetchedUpdates;
 @property (nonatomic, strong) NSArray* fetchedEvents;
 @property (nonatomic, assign) NSInteger selectedIndex;
+
+@property (nonatomic, strong) SCAudioPlayerViewController *audioPlayer;
+@property BOOL isPaused;
+@property BOOL isResume;
+@property BOOL scrubbing;
+@property int currentTrack;
+@property NSArray* albumTracks;
+
+@property NSString *albumTitle;
+
+@property NSTimer *timer;
+
+
+
 +(Utils *)sharedInstance;
 +(void)initSidebar:(UIViewController *) vc
          barButton:(UIBarButtonItem *) barButton;

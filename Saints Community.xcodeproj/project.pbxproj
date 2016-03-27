@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		427159E41CA36E70000D27B4 /* OJURI.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 427159E31CA36E70000D27B4 /* OJURI.mp3 */; };
 		427159E71CA70F3E000D27B4 /* Tracks.m in Sources */ = {isa = PBXBuildFile; fileRef = 427159E61CA70F3D000D27B4 /* Tracks.m */; };
 		427159EA1CA7FB19000D27B4 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 427159E91CA7FB19000D27B4 /* MainViewController.m */; };
 		42C1F2641BE4A3B30070C39C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 42C1F2631BE4A3B30070C39C /* main.m */; };
@@ -56,11 +55,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		427159E31CA36E70000D27B4 /* OJURI.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = OJURI.mp3; sourceTree = "<group>"; };
 		427159E51CA70F3D000D27B4 /* Tracks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tracks.h; sourceTree = "<group>"; };
 		427159E61CA70F3D000D27B4 /* Tracks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tracks.m; sourceTree = "<group>"; };
 		427159E81CA7FB19000D27B4 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		427159E91CA7FB19000D27B4 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		427159EB1CA86D17000D27B4 /* Quicksand-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quicksand-Bold.otf"; sourceTree = "<group>"; };
+		427159EC1CA86D27000D27B4 /* JosefinSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JosefinSans-Light.ttf"; sourceTree = "<group>"; };
 		42C1F25F1BE4A3B30070C39C /* Saints Community.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Saints Community.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		42C1F2631BE4A3B30070C39C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		42C1F2651BE4A3B30070C39C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -150,6 +150,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		427159ED1CA86D79000D27B4 /* resources */ = {
+			isa = PBXGroup;
+			children = (
+				427159EB1CA86D17000D27B4 /* Quicksand-Bold.otf */,
+				427159EC1CA86D27000D27B4 /* JosefinSans-Light.ttf */,
+			);
+			name = resources;
+			sourceTree = "<group>";
+		};
 		42C1F2561BE4A3B30070C39C = {
 			isa = PBXGroup;
 			children = (
@@ -175,13 +184,13 @@
 		42C1F2611BE4A3B30070C39C /* Saints Community */ = {
 			isa = PBXGroup;
 			children = (
+				427159ED1CA86D79000D27B4 /* resources */,
 				42C1F2B51BE4CAA40070C39C /* Utils */,
 				42C1F2B41BE4C4830070C39C /* Views */,
 				42C1F2B31BE4C4630070C39C /* Models */,
 				42C1F2A91BE4C3DE0070C39C /* Controllers */,
 				42C1F2981BE4B5600070C39C /* Libraries */,
 				42C1F2651BE4A3B30070C39C /* AppDelegate.h */,
-				427159E31CA36E70000D27B4 /* OJURI.mp3 */,
 				42C1F2661BE4A3B30070C39C /* AppDelegate.m */,
 				42C1F2711BE4A3B40070C39C /* Assets.xcassets */,
 				42C1F2761BE4A3B40070C39C /* Info.plist */,
@@ -419,7 +428,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				427159E41CA36E70000D27B4 /* OJURI.mp3 in Resources */,
 				42C1F2751BE4A3B40070C39C /* LaunchScreen.storyboard in Resources */,
 				42C1F2721BE4A3B40070C39C /* Assets.xcassets in Resources */,
 				42C1F26D1BE4A3B30070C39C /* Main.storyboard in Resources */,

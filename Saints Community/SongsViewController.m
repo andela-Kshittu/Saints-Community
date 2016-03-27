@@ -9,6 +9,7 @@
 #import "SongsViewController.h"
 #import <MediaPlayer/MediaPlayer.h>
 #import "NowPlayingViewController.h"
+#import "Utils.h"
 
 @interface SongsViewController ()
 
@@ -67,13 +68,13 @@
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    MPMediaQuery *songsQuery = [MPMediaQuery songsQuery];
-    NSArray *songs = [songsQuery items];
+//    MPMediaQuery *songsQuery = [MPMediaQuery songsQuery];
+//    NSArray *songs = [songsQuery items];
     
-    int selectedIndex = [[self.tableView indexPathForSelectedRow] row];
+//    int selectedIndex = [[self.tableView indexPathForSelectedRow] row];
     
-     NowPlayingViewController *detailViewController = [segue destinationViewController];
-        detailViewController.albumTitle = @"Album Name";
+//     NowPlayingViewController *detailViewController = [segue destinationViewController];
+//        [Utils sharedInstance].albumTitle = @"Album Name";
     
 //    MPMediaItem *selectedItem = [[songs objectAtIndex:selectedIndex] representativeItem];
 //    
