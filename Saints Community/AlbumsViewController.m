@@ -11,6 +11,8 @@
 #import <MediaPlayer/MediaPlayer.h>
 #import "Utils.h"
 #import "Tracks.h"
+#import <SDWebImage/UIImageView+WebCache.h>
+#import <ChameleonFramework/Chameleon.h>
 
 @interface AlbumsViewController ()
 
@@ -22,6 +24,7 @@
     [super viewDidLoad];
     [Utils initSidebar:self barButton:self.sidebarButton];
     self.tabBarController.tabBarItem.title = @"Audio Folders";
+//    self.tableView.backgroundColor = AverageColorFromImage([UIImage imageNamed:@"music_folder.png"]);
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -47,7 +50,7 @@
 //    MPMediaQuery *albumsQuery = [MPMediaQuery albumsQuery];
 //    NSArray *albums = [albumsQuery collections];
     
-    return [[Tracks albums] count];
+    return [[Utils sharedInstance].fetchedTracks count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -57,23 +60,21 @@
     
     // Configure the cell...
     
-    MPMediaQuery *albumsQuery = [MPMediaQuery albumsQuery];
-    NSArray *albums = [albumsQuery collections];
     
-    NSDictionary *rowItem = [[Tracks albums] objectAtIndex:indexPath.row];
+    NSDictionary *rowItem = [[Utils sharedInstance].fetchedTracks objectAtIndex:indexPath.row];
+
+    UIImageView * albumImage = (UIImageView *)[cell viewWithTag:1];
+    UILabel * title = (UILabel *)[cell viewWithTag:2];
+    UILabel * date = (UILabel *)[cell viewWithTag:3];
+
+    title.text = [rowItem objectForKey:@"name"];
+    date.text = [NSString stringWithFormat: @"Sermon by: %@", [rowItem objectForKey:@"artist"]];
     
-    cell.textLabel.text = [rowItem objectForKey:@"name"];
-    cell.detailTextLabel.text = [NSString stringWithFormat: @"Sermon by: %@", [rowItem objectForKey:@"artist"]];
     
-//    MPMediaItemArtwork *artwork = [rowItem valueForProperty:MPMediaItemPropertyArtwork];
     
-//    UIImage *artworkImage = [artwork imageWithSize: CGSizeMake (44, 44)];
-    
-//    if (artworkImage) {
-//        cell.imageView.image = artworkImage;
-//    } else {
-        cell.imageView.image = [UIImage imageNamed:@"music_folder.png"];
-//    }
+        // Here we use the new provided sd_setImageWithURL: method to load the web image
+    [albumImage sd_setImageWithURL:[NSURL URLWithString:[rowItem objectForKey:@"coverImage"]]
+                      placeholderImage:[UIImage imageNamed:@"music_folder.png"]];
     
     return cell;
 }

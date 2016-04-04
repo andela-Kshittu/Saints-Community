@@ -9,6 +9,9 @@
 #import "AlbumViewController.h"
 #import "NowPlayingViewController.h"
 #import "Tracks.h"
+#import "Utils.h"
+#import <SDWebImage/UIImageView+WebCache.h>
+#import <ChameleonFramework/Chameleon.h>
 
 @interface AlbumViewController ()
 
@@ -21,7 +24,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.album = [[Tracks albums] objectAtIndex:selectedAlbum];
+    self.album = [[Utils sharedInstance].fetchedTracks objectAtIndex:selectedAlbum];
     self.title = [self.album objectForKey:@"name"];
     self.tracks = [self.album objectForKey:@"tracks"];
      self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
@@ -32,8 +35,8 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
-- (UIImage *) getAlbumArtworkWithSize: (CGSize) albumSize
-{
+//- (UIImage *) getAlbumArtworkWithSize: (CGSize) albumSize
+//{
 //    MPMediaQuery *albumQuery = [MPMediaQuery albumsQuery];
 //    MPMediaPropertyPredicate *albumPredicate = [MPMediaPropertyPredicate predicateWithValue: albumTitle forProperty: MPMediaItemPropertyAlbumTitle];
 //    [albumQuery addFilterPredicate:albumPredicate];
@@ -54,8 +57,8 @@
 //        
 //    }
     
-    return [UIImage imageNamed:@"music_folder-1.png"];
-}
+//   return 
+//    }
 
 - (NSString *) getAlbumArtist
 {
@@ -73,7 +76,7 @@
 //        }
 //    }
     
-    return @"Unknown artist";
+    return [self.album objectForKey:@"artist"];
 }
 
 - (NSString *) getAlbumInfo
@@ -108,7 +111,7 @@
 //        albumDuration = [NSString stringWithFormat:@"1 Min."];
 //    }
     
-    return [NSString stringWithFormat:@"Total tracks: %lu", [[[[Tracks albums] objectAtIndex:selectedAlbum] objectForKey:@"tracks"] count]];
+    return [NSString stringWithFormat:@"Total tracks: %u", [[self.album objectForKey:@"tracks"] count]];
     
 }
 
@@ -170,13 +173,16 @@
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
         
         UIImageView *albumArtworkImageView = (UIImageView *)[cell viewWithTag:100];
-        albumArtworkImageView.image = [self getAlbumArtworkWithSize:albumArtworkImageView.frame.size];
+        [albumArtworkImageView sd_setImageWithURL:[NSURL URLWithString:[self.album objectForKey:@"coverImage"]]
+                                               placeholderImage:[UIImage imageNamed:@"music_folder.png"]];
         
         UILabel *albumArtistLabel = (UILabel *)[cell viewWithTag:101];
         albumArtistLabel.text = [self.album objectForKey:@"artist"];
         
         UILabel *albumInfoLabel = (UILabel *)[cell viewWithTag:102];
         albumInfoLabel.text = [self getAlbumInfo];
+        
+//        self.tableView.backgroundColor = AverageColorFromImage(albumArtworkImageView.image);
         
         return cell;
     } else {

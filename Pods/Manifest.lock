@@ -20,14 +20,50 @@ PODS:
   - AFNetworking/UIKit (2.6.1):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - ChameleonFramework (2.0.4):
+    - ChameleonFramework/Default (= 2.0.4)
+  - ChameleonFramework/Default (2.0.4)
+  - libwebp (0.5.0):
+    - libwebp/core (= 0.5.0)
+    - libwebp/dec (= 0.5.0)
+    - libwebp/demux (= 0.5.0)
+    - libwebp/dsp (= 0.5.0)
+    - libwebp/enc (= 0.5.0)
+    - libwebp/mux (= 0.5.0)
+    - libwebp/utils (= 0.5.0)
+    - libwebp/webp (= 0.5.0)
+  - libwebp/core (0.5.0):
+    - libwebp/webp
+  - libwebp/dec (0.5.0):
+    - libwebp/core
+  - libwebp/demux (0.5.0):
+    - libwebp/core
+  - libwebp/dsp (0.5.0):
+    - libwebp/core
+  - libwebp/enc (0.5.0):
+    - libwebp/core
+  - libwebp/mux (0.5.0):
+    - libwebp/core
+  - libwebp/utils (0.5.0):
+    - libwebp/core
+  - libwebp/webp (0.5.0)
+  - SDWebImage/Core (3.7.5)
+  - SDWebImage/WebP (3.7.5):
+    - libwebp
+    - SDWebImage/Core
   - StreamingKit (0.1.29)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.0)
+  - ChameleonFramework
+  - SDWebImage/WebP
   - StreamingKit (~> 0.1)
 
 SPEC CHECKSUMS:
   AFNetworking: 8e4e60500beb8bec644cf575beee72990a76d399
+  ChameleonFramework: 5abe69b1f2a6cc79c3c435fcd9d3d855748225ee
+  libwebp: 68ba2001ba6806ee52837ebd77a551a0b6567e4e
+  SDWebImage: 69c6303e3348fba97e03f65d65d4fbc26740f461
   StreamingKit: c329785aaef3ac142d4ae388345bfe1ed23cfd45
 
 COCOAPODS: 0.39.0

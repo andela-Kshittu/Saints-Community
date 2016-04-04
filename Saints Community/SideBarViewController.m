@@ -27,12 +27,33 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    
+    self.tableView.tableHeaderView.backgroundColor = [UIColor blueColor];
+    
     menuItems = @[@"title", @"home", @"updates", @"events", @"radio", @"streaming"];
     UIImageView *tempImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"nav_background.png"]];
-    [tempImageView setFrame:self.tableView.frame];
+    
     self.tableView.backgroundView = tempImageView;
+    
+//    
+//    CGRect oldFrame = self.tableView.tableHeaderView.frame;
+//    CGRect newFrame = CGRectMake(oldFrame.origin.x, oldFrame.origin.y + 44.0, oldFrame.size.width, oldFrame.size.height+44);
+    
+//    
+//    [self.tableView.tableHeaderView setFrame:newFrame];
+    
+//    [self.tableView.tableHeaderView layoutIfNeeded];
+//    [self.tableView layoutSubviews];
+//      [self.tableView layoutIfNeeded];
+
+    
+
 }
 
+-(void)viewWillLayoutSubviews{
+   
+
+}
 - (void)tableView:(UITableView *)tableView
   willDisplayCell:(UITableViewCell *)cell
 forRowAtIndexPath:(NSIndexPath *)indexPath
@@ -75,6 +96,8 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     return cell;
 }
 
+//-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+//}
 
 /*
 // Override to support conditional editing of the table view.

@@ -26,8 +26,8 @@
      if (![Utils sharedInstance].isResume) {
          
     [Utils sharedInstance].currentTrack = 1;
-    [Utils sharedInstance].albumTracks = [[[Tracks albums] objectAtIndex:0] objectForKey:@"tracks"];
-    [Utils sharedInstance].albumTitle = [[[Tracks albums] objectAtIndex:0] objectForKey:@"name"];
+    [Utils sharedInstance].albumTracks = [[[Utils sharedInstance].fetchedTracks  objectAtIndex:0] objectForKey:@"tracks"];
+    [Utils sharedInstance].albumTitle = [[[Utils sharedInstance].fetchedTracks  objectAtIndex:0] objectForKey:@"name"];
     
     self.albumName.text = [Utils sharedInstance].albumTitle;
     self.trackName.text = [NSString stringWithFormat:@"Track %d", [Utils sharedInstance].currentTrack];

@@ -9,7 +9,17 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>ChameleonFramework.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-Saints Community.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>SDWebImage.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -19,10 +29,15 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>libwebp.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>24CC8D44FB7B7DF84119F262D299972E</key>
+		<key>0E44717E0BD8FDC2D8BFA4C4E4AECCDA</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -32,7 +47,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>BC948C9AA6A7C3688D220A7104FA2B78</key>
+		<key>43FE871D4590DE54D05DE127CD6BBA2D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>61BEFE7BAD8ABFE34029116016433E98</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E64619280BA45EA54A28CE1197936E0E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F0F723C4A5A8A0AD81DFF028AC7A5A0C</key>
 		<dict>
 			<key>primary</key>
 			<true/>

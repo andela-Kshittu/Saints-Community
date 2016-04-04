@@ -15,7 +15,6 @@
       @"name":@"What are you really doing? (Spiritual Aparthy)",
       @"artist":@"Unknown",
       @"tracks":@[
-              @"https://content-na.drive.amazonaws.com/cdproxy/templink/c2y25hbHXeEggDQVJY2yWbFcMNjWAiO-BNY3ADli0bYLAYspN?download=true",
               @"https://content-na.drive.amazonaws.com/cdproxy/templink/c2y25hbHXeEggDQVJY2yWbFcMNjWAiO-BNY3ADli0bYLAYspN?download=true"
               ]
       },

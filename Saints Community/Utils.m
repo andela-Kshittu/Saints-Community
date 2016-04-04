@@ -50,6 +50,21 @@ return sharedObject;
     }];
 }
 
+-(void) getAllTracks{
+
+    NSMutableArray * events = [[NSMutableArray alloc] init];
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    NSString * url = @"https://scmobileapi.herokuapp.com/messages";
+    
+    [manager GET:url  parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        self.fetchedTracks = [[NSMutableArray alloc] init];
+        [self.fetchedTracks addObjectsFromArray:responseObject];
+         NSLog(@"JSON: %@", self.fetchedTracks);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error: %ld", (long)error.code);
+    }];
+}
+
 -(void) getAllUpdates{
     
     NSMutableArray * updates = [[NSMutableArray alloc] init];

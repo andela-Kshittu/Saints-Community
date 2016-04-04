@@ -15,8 +15,10 @@
 @property (nonatomic, strong) NSManagedObjectContext  *managedObjectContext;
 @property (nonatomic, assign) BOOL isEventsNetworkError;
 @property (nonatomic, assign) BOOL isUpdatesNetworkError;
+@property (nonatomic, assign) BOOL isTracksNetworkError;
 @property (nonatomic, strong) NSArray* fetchedUpdates;
 @property (nonatomic, strong) NSArray* fetchedEvents;
+@property (nonatomic, strong) NSMutableArray* fetchedTracks;
 @property (nonatomic, assign) NSInteger selectedIndex;
 
 @property (nonatomic, strong) SCAudioPlayerViewController *audioPlayer;
@@ -40,4 +42,5 @@
 -(NSArray *)fetchData:(NSString *)entityName;
 -(void) getAllUpdates;
 -(void) getAllEvents;
+-(void) getAllTracks;
 @end
