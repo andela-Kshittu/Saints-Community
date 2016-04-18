@@ -9,6 +9,7 @@
 #import "UpdateDetailsViewController.h"
 #import "Utils.h"
 #import <CoreData/CoreData.h>
+#import <SDWebImage/UIImageView+WebCache.h>
 
 
 @interface UpdateDetailsViewController (){
@@ -26,8 +27,6 @@
     self.headerLabel.text = [info valueForKey:@"title"];
     self.descriptionLabel.text = [info valueForKey:@"entity_description"];
     self.dateLabel.text = [info valueForKey:@"updated_date"];
-    
-
 }
 
 -(void)viewDidAppear:(BOOL)animated{
@@ -45,7 +44,8 @@
 
         
         UIImageView * updateImage = [[UIImageView alloc] initWithFrame:frame];
-        updateImage.image = [UIImage imageWithData:[info valueForKey:@"image_url"]];
+        [updateImage sd_setImageWithURL:[NSURL URLWithString:[info valueForKey:@"image_url"]]
+                       placeholderImage:[UIImage imageNamed:@"news.png"]];
         
         [self.scrollView addSubview:updateImage];
     }

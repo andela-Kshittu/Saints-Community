@@ -9,6 +9,7 @@
 #import "EventsViewController.h"
 #import "Utils.h"
 #import <CoreData/CoreData.h>
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface EventsViewController ()
 @end
@@ -53,9 +54,13 @@
     UILabel * date = (UILabel *)[cell viewWithTag:3];
    
     
-    eventImage.image = [UIImage imageWithData:[info valueForKey:@"image_url"]];
+    [eventImage sd_setImageWithURL:[NSURL URLWithString:[info valueForKey:@"image_url"]]
+                   placeholderImage:[UIImage imageNamed:@"upcoming.png"]];
     title.text = [info valueForKey:@"title"];
     date.text = [info valueForKey:@"updated_date"];
+    
+    //this is an hack for table cells bg on ipad
+    cell.backgroundColor = cell.contentView.backgroundColor;
     return cell;
 }
 - (void)didReceiveMemoryWarning {

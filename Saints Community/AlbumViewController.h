@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import <MediaPlayer/MediaPlayer.h>
+#import <CoreData/CoreData.h>
 
 @interface AlbumViewController : UITableViewController
-@property (nonatomic, assign) int selectedAlbum;
-@property (nonatomic, strong) NSDictionary* album;
+@property (nonatomic, strong) NSManagedObject* album;
 @property (nonatomic, strong) NSArray* tracks;
 @end

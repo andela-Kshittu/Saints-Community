@@ -14,8 +14,8 @@
 @interface Utils : NSObject
 @property (nonatomic, strong) NSManagedObjectContext  *managedObjectContext;
 @property (nonatomic, assign) BOOL isEventsNetworkError;
-@property (nonatomic, assign) BOOL isUpdatesNetworkError;
-@property (nonatomic, assign) BOOL isTracksNetworkError;
+@property (nonatomic, assign)  BOOL isUpdatesNetworkError;
+@property (nonatomic, assign) BOOL isAlbumsNetworkError;
 @property (nonatomic, strong) NSArray* fetchedUpdates;
 @property (nonatomic, strong) NSArray* fetchedEvents;
 @property (nonatomic, strong) NSMutableArray* fetchedTracks;

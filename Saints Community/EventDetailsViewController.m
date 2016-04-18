@@ -9,6 +9,7 @@
 #import "EventDetailsViewController.h"
 #import "Utils.h"
 #import <CoreData/CoreData.h>
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface EventDetailsViewController (){
     CGFloat pageWidth;
@@ -48,10 +49,11 @@
         frame.size = self.scrollView.frame.size;
         
         
-        UIImageView * updateImage = [[UIImageView alloc] initWithFrame:frame];
-        updateImage.image = [UIImage imageWithData:[info valueForKey:@"image_url"]];
+        UIImageView * eventImage = [[UIImageView alloc] initWithFrame:frame];
+        [eventImage sd_setImageWithURL:[NSURL URLWithString:[info valueForKey:@"image_url"]]
+                      placeholderImage:[UIImage imageNamed:@"upcoming.png"]];
         
-        [self.scrollView addSubview:updateImage];
+        [self.scrollView addSubview:eventImage];
     }
     [self scrollTo:[Utils sharedInstance].selectedIndex];
     
@@ -63,7 +65,6 @@
 }
 
 -(void)scrollTo:(NSInteger)index{
-    
     CGRect frame = self.scrollView.frame;
     frame.origin.x = pageWidth * index;
     frame.origin.y = 0;

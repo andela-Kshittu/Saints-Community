@@ -19,14 +19,12 @@
 
 @implementation AlbumViewController
 
-@synthesize selectedAlbum;
-
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.album = [[Utils sharedInstance].fetchedTracks objectAtIndex:selectedAlbum];
-    self.title = [self.album objectForKey:@"name"];
-    self.tracks = [self.album objectForKey:@"tracks"];
+//    self.album = [[Utils sharedInstance].fetchedTracks objectAtIndex:selectedAlbum];
+    self.title = [self.album valueForKey:@"name"];
+    self.tracks = [self.album valueForKey:@"tracks"];
      self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
     // Uncomment the following line to preserve selection between presentations.
@@ -76,7 +74,7 @@
 //        }
 //    }
     
-    return [self.album objectForKey:@"artist"];
+    return [self.album valueForKey:@"artist"];
 }
 
 - (NSString *) getAlbumInfo
@@ -111,7 +109,7 @@
 //        albumDuration = [NSString stringWithFormat:@"1 Min."];
 //    }
     
-    return [NSString stringWithFormat:@"Total tracks: %u", [[self.album objectForKey:@"tracks"] count]];
+    return [NSString stringWithFormat:@"Total tracks: %lu", [[self.album valueForKey:@"tracks"] count]];
     
 }
 
@@ -173,11 +171,11 @@
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
         
         UIImageView *albumArtworkImageView = (UIImageView *)[cell viewWithTag:100];
-        [albumArtworkImageView sd_setImageWithURL:[NSURL URLWithString:[self.album objectForKey:@"coverImage"]]
+        [albumArtworkImageView sd_setImageWithURL:[NSURL URLWithString:[self.album valueForKey:@"coverImage"]]
                                                placeholderImage:[UIImage imageNamed:@"music_folder.png"]];
         
         UILabel *albumArtistLabel = (UILabel *)[cell viewWithTag:101];
-        albumArtistLabel.text = [self.album objectForKey:@"artist"];
+        albumArtistLabel.text = [self.album valueForKey:@"artist"];
         
         UILabel *albumInfoLabel = (UILabel *)[cell viewWithTag:102];
         albumInfoLabel.text = [self getAlbumInfo];
@@ -191,7 +189,7 @@
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
         
         cell.textLabel.text = [NSString stringWithFormat:@"Track %ld", (long)indexPath.row];
-        cell.detailTextLabel.text = [self.album objectForKey:@"artist"];
+        cell.detailTextLabel.text = [self.album valueForKey:@"artist"];
         cell.imageView.image = [UIImage imageNamed:@"music-1.png"];
 //        MPMediaQuery *albumQuery = [MPMediaQuery albumsQuery];
 //        MPMediaPropertyPredicate *albumPredicate = [MPMediaPropertyPredicate predicateWithValue: albumTitle forProperty: MPMediaItemPropertyAlbumTitle];
@@ -220,6 +218,8 @@
 //            }
 //            
 //        }
+        //this is an hack for table cells bg on ipad
+        cell.backgroundColor = cell.contentView.backgroundColor;
         
         return cell;
     }
@@ -229,7 +229,7 @@
     
     NSMutableDictionary *data = [[NSMutableDictionary alloc] init]; // Populate this with your data.
     
-    [data setValue:[self.album objectForKey:@"name"] forKey:@"album"];
+    [data setValue:[self.album valueForKey:@"name"] forKey:@"album"];
     [data setValue:self.tracks forKey:@"tracks"];
     [data setValue:[NSNumber numberWithInteger:indexPath.row] forKey:@"currentTrack"];
     

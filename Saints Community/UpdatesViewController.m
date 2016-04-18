@@ -9,6 +9,7 @@
 #import "UpdatesViewController.h"
 #import "Utils.h"
 #import <CoreData/CoreData.h>
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface UpdatesViewController ()
 @end
@@ -57,9 +58,13 @@
     UILabel * title = (UILabel *)[cell viewWithTag:2];
     UILabel * date = (UILabel *)[cell viewWithTag:3];
     
-    updateImage.image = [UIImage imageWithData:[info valueForKey:@"image_url"]];
+    [updateImage sd_setImageWithURL:[NSURL URLWithString:[info valueForKey:@"image_url"]]
+                   placeholderImage:[UIImage imageNamed:@"news.png"]];
     title.text = [info valueForKey:@"title"];
     date.text = [info valueForKey:@"updated_date"];
+    
+    //this is an hack for table cells bg on ipad
+    cell.backgroundColor = cell.contentView.backgroundColor;
     return cell;
 }
 

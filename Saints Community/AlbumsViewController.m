@@ -13,16 +13,24 @@
 #import "Tracks.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <ChameleonFramework/Chameleon.h>
+#import <CoreData/CoreData.h>
 
 @interface AlbumsViewController ()
 
 @end
 
 @implementation AlbumsViewController
-
+{
+    NSArray *searchResults;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     [Utils initSidebar:self barButton:self.sidebarButton];
+    if ([Utils sharedInstance].isAlbumsNetworkError) {
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            [[Utils sharedInstance] getAllTracks];
+        });
+    }
     self.tabBarController.tabBarItem.title = @"Audio Folders";
 //    self.tableView.backgroundColor = AverageColorFromImage([UIImage imageNamed:@"music_folder.png"]);
     // Uncomment the following line to preserve selection between presentations.
@@ -31,6 +39,7 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
      self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    [Utils sharedInstance].fetchedTracks = [[NSMutableArray alloc] initWithArray:[[Utils sharedInstance] fetchData:@"Albums"]];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -49,49 +58,93 @@
 #warning Incomplete implementation, return the number of rows
 //    MPMediaQuery *albumsQuery = [MPMediaQuery albumsQuery];
 //    NSArray *albums = [albumsQuery collections];
+    if (tableView == self.searchDisplayController.searchResultsTableView) {
+        return [searchResults count];
+        
+    } else {
+        return [[Utils sharedInstance].fetchedTracks count];
+    }
+}
+
+- (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope
+{
+    NSPredicate *resultPredicate = [NSPredicate predicateWithFormat:@"name contains[c] %@", searchText];
+    searchResults = [[Utils sharedInstance].fetchedTracks filteredArrayUsingPredicate:resultPredicate];
+}
+
+-(BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
+{
+    [self filterContentForSearchText:searchString
+                               scope:[[self.searchDisplayController.searchBar scopeButtonTitles]
+                                      objectAtIndex:[self.searchDisplayController.searchBar
+                                                     selectedScopeButtonIndex]]];
     
-    return [[Utils sharedInstance].fetchedTracks count];
+    return YES;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 
     static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    // Configure the cell...
+//    // Configure the cell...
+//    if (cell == nil) {
+//        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+//    }
     
-    
-    NSDictionary *rowItem = [[Utils sharedInstance].fetchedTracks objectAtIndex:indexPath.row];
+//    if(tableView == self.searchDisplayController.searchResultsTableView){
+//    }
+    NSManagedObject *rowItem = nil;
+//    NSManagedObject *info = nil;
+//    info =  [Utils sharedInstance].fetchedTracks[indexPath.row];
+    if (tableView == self.searchDisplayController.searchResultsTableView) {
+         rowItem = searchResults[indexPath.row];
+         self.searchDisplayController.searchResultsTableView.backgroundColor = self.searchDisplayController.searchBar.backgroundColor;
+        self.searchDisplayController.searchResultsTableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+         cell.backgroundColor = [UIColor clearColor];
+    } else {
+         rowItem = [Utils sharedInstance].fetchedTracks[indexPath.row];
+    }
 
     UIImageView * albumImage = (UIImageView *)[cell viewWithTag:1];
     UILabel * title = (UILabel *)[cell viewWithTag:2];
     UILabel * date = (UILabel *)[cell viewWithTag:3];
 
-    title.text = [rowItem objectForKey:@"name"];
-    date.text = [NSString stringWithFormat: @"Sermon by: %@", [rowItem objectForKey:@"artist"]];
+    title.text = [rowItem valueForKey:@"name"];
+    date.text = [NSString stringWithFormat: @"Sermon by: %@", [rowItem valueForKey:@"artist"]];
     
     
     
         // Here we use the new provided sd_setImageWithURL: method to load the web image
-    [albumImage sd_setImageWithURL:[NSURL URLWithString:[rowItem objectForKey:@"coverImage"]]
+    [albumImage sd_setImageWithURL:[NSURL URLWithString:[rowItem valueForKey:@"coverImage"]]
                       placeholderImage:[UIImage imageNamed:@"music_folder.png"]];
+    
+    //this is an hack for table cells bg on ipad
+    cell.backgroundColor = cell.contentView.backgroundColor;
     
     return cell;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 80;
+}
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    NSIndexPath *indexPath = nil;
+    NSManagedObject * selectedAlbum = nil;
+    
+    if (self.searchDisplayController.active) {
+        indexPath = [self.searchDisplayController.searchResultsTableView indexPathForSelectedRow];
+        selectedAlbum = [searchResults objectAtIndex:indexPath.row];
+    } else {
+        indexPath = [self.tableView indexPathForSelectedRow];
+        selectedAlbum = [[Utils sharedInstance].fetchedTracks objectAtIndex:indexPath.row];
+    }
+    
     AlbumViewController *detailViewController = [segue destinationViewController];
-    
-//    MPMediaQuery *albumsQuery = [MPMediaQuery albumsQuery];
-//    NSArray *albums = [albumsQuery collections];
-    
-    int selectedIndex = [[self.tableView indexPathForSelectedRow] row];
-//    MPMediaItem *selectedItem = [[albums objectAtIndex:selectedIndex] representativeItem];
-//    NSString *albumTitle = [selectedItem valueForProperty:MPMediaItemPropertyAlbumTitle];
-    
-    detailViewController.selectedAlbum = selectedIndex;
+    detailViewController.album = selectedAlbum;
 }
 
 /*

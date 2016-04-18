@@ -52,16 +52,23 @@ return sharedObject;
 
 -(void) getAllTracks{
 
-    NSMutableArray * events = [[NSMutableArray alloc] init];
+    NSMutableArray * albums = [[NSMutableArray alloc] init];
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     NSString * url = @"https://scmobileapi.herokuapp.com/messages";
     
     [manager GET:url  parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        self.fetchedTracks = [[NSMutableArray alloc] init];
-        [self.fetchedTracks addObjectsFromArray:responseObject];
+//        self.fetchedTracks = [[NSMutableArray alloc] init];
+//        [self.fetchedTracks addObjectsFromArray:responseObject];
+        [albums addObjectsFromArray:responseObject];
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            [self deleteEntityRecords:@"Albums"];
+            [self updateCoreDataAlbums:albums];
+        });
+        self.isAlbumsNetworkError = NO;
          NSLog(@"JSON: %@", self.fetchedTracks);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error: %ld", (long)error.code);
+        self.isAlbumsNetworkError = YES;
     }];
 }
 
@@ -111,6 +118,7 @@ return sharedObject;
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription
                                    entityForName:entityName inManagedObjectContext:self.managedObjectContext];
+    [fetchRequest returnsDistinctResults];
     [fetchRequest setEntity:entity];
     NSError *error;
     NSArray *fetchedObjects = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
@@ -123,6 +131,22 @@ return sharedObject;
     return fetchedObjects;
 }
 
+-(void)download{
+    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
+    
+    NSURL *URL = [NSURL URLWithString:@"http://example.com/download.zip"];
+    NSURLRequest *request = [NSURLRequest requestWithURL:URL];
+    
+    NSURLSessionDownloadTask *downloadTask = [manager downloadTaskWithRequest:request progress:nil destination:^NSURL *(NSURL *targetPath, NSURLResponse *response) {
+        NSURL *documentsDirectoryURL = [[NSFileManager defaultManager] URLForDirectory:NSDocumentDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:NO error:nil];
+        return [documentsDirectoryURL URLByAppendingPathComponent:[response suggestedFilename]];
+    } completionHandler:^(NSURLResponse *response, NSURL *filePath, NSError *error) {
+        NSLog(@"File downloaded to: %@", filePath);
+    }];
+    [downloadTask resume];
+}
+
 -(void)updateCoreData:(NSMutableArray *) dataObjects
            withEntity:(NSString *)entityName{
     
@@ -130,23 +154,45 @@ return sharedObject;
         NSManagedObject *managedObject = [NSEntityDescription
                                           insertNewObjectForEntityForName:entityName
                                           inManagedObjectContext:[Utils sharedInstance].managedObjectContext];
-        
         NSString * imageUrl = [NSString stringWithFormat:@"http://charmms.sensorbitgroup.info/src/images/uploads/%@",dataObject[@"imagepath"]];
         
         NSLog(@"image url is : %@", imageUrl);
         
-        NSData * imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: imageUrl]];
+//        NSData * imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: imageUrl]];
         
         [managedObject setValue:dataObject[@"id"] forKey:@"id"];
-        [managedObject setValue:imageData forKey:@"image_url"];
+        [managedObject setValue:imageUrl forKey:@"image_url"];
         [managedObject setValue:dataObject[@"title"] forKey:@"title"];
         [managedObject setValue:dataObject[@"description"] forKey:@"entity_description"];
         [managedObject setValue:dataObject[@"created_date"] forKey:@"created_date"];
         [managedObject setValue:dataObject[@"updated_date"] forKey:@"updated_date"];
         
+        
+        
         NSError *error;
         if (![[Utils sharedInstance].managedObjectContext save:&error]) {
             NSLog(@"Updating Whoops, couldn't save: %@", [error localizedDescription]);
+        }
+    }
+}
+
+-(void)updateCoreDataAlbums:(NSMutableArray *) dataObjects{
+    
+    for (NSDictionary * dataObject in dataObjects){
+        NSManagedObject *managedObject = [NSEntityDescription
+                                          insertNewObjectForEntityForName:@"Albums"
+                                          inManagedObjectContext:[Utils sharedInstance].managedObjectContext];
+        
+        [managedObject setValue:dataObject[@"id"] forKey:@"id"];
+        [managedObject setValue:dataObject[@"coverImage"] forKey:@"coverImage"];
+        [managedObject setValue:dataObject[@"artist"] forKey:@"artist"];
+        [managedObject setValue:dataObject[@"name"] forKey:@"name"];
+        [managedObject setValue:dataObject[@"tracks"] forKey:@"tracks"];
+        [managedObject setValue:dataObject[@"year"] forKey:@"year"];
+        
+        NSError *error;
+        if (![[Utils sharedInstance].managedObjectContext save:&error]) {
+            NSLog(@"Updating Whoops, couldn't save Album: %@ : %@", dataObject[@"name"],  [error localizedDescription]);
         }
     }
 }
