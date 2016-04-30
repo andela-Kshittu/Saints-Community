@@ -23,6 +23,7 @@ PODS:
   - ChameleonFramework (2.0.4):
     - ChameleonFramework/Default (= 2.0.4)
   - ChameleonFramework/Default (2.0.4)
+  - CircleProgressBar (0.31)
   - libwebp (0.5.0):
     - libwebp/core (= 0.5.0)
     - libwebp/dec (= 0.5.0)
@@ -47,6 +48,7 @@ PODS:
   - libwebp/utils (0.5.0):
     - libwebp/core
   - libwebp/webp (0.5.0)
+  - MBProgressHUD (0.9.2)
   - SDWebImage/Core (3.7.5)
   - SDWebImage/WebP (3.7.5):
     - libwebp
@@ -56,13 +58,17 @@ PODS:
 DEPENDENCIES:
   - AFNetworking (~> 2.0)
   - ChameleonFramework
+  - CircleProgressBar (~> 0.31)
+  - MBProgressHUD (~> 0.9.2)
   - SDWebImage/WebP
   - StreamingKit (~> 0.1)
 
 SPEC CHECKSUMS:
   AFNetworking: 8e4e60500beb8bec644cf575beee72990a76d399
   ChameleonFramework: 5abe69b1f2a6cc79c3c435fcd9d3d855748225ee
+  CircleProgressBar: 1de5fc6ba919174b845bc2447720db67f8cb6c08
   libwebp: 68ba2001ba6806ee52837ebd77a551a0b6567e4e
+  MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
   SDWebImage: 69c6303e3348fba97e03f65d65d4fbc26740f461
   StreamingKit: c329785aaef3ac142d4ae388345bfe1ed23cfd45
 

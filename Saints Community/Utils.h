@@ -17,6 +17,8 @@
 @property (nonatomic, assign)  BOOL isUpdatesNetworkError;
 @property (nonatomic, assign) BOOL isAlbumsNetworkError;
 @property (nonatomic, strong) NSArray* fetchedUpdates;
+@property (nonatomic, strong) NSMutableArray* downloadingAlbums;
+@property (nonatomic, strong) NSMutableArray* downloadedAlbums;
 @property (nonatomic, strong) NSArray* fetchedEvents;
 @property (nonatomic, strong) NSMutableArray* fetchedTracks;
 @property (nonatomic, assign) NSInteger selectedIndex;
@@ -29,6 +31,8 @@
 @property NSArray* albumTracks;
 
 @property NSString *albumTitle;
+@property NSURL *downloadedSong;
+@property NSString *albumImageUrl;
 
 @property NSTimer *timer;
 
@@ -43,4 +47,5 @@
 -(void) getAllUpdates;
 -(void) getAllEvents;
 -(void) getAllTracks;
+-(void)download:(NSArray *)tracks inAlbum:(NSString*) albumName;
 @end

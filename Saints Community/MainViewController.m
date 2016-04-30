@@ -7,6 +7,9 @@
 //
 
 #import "MainViewController.h"
+#import "Utils.h"
+#import "UpdatesViewController.h"
+#import "MBProgressHUD.h"
 
 @interface MainViewController ()
 
@@ -17,6 +20,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [[Utils sharedInstance] getAllEvents];
+        [[Utils sharedInstance] getAllUpdates];
+        [[Utils sharedInstance] getAllTracks];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+        });
+    });
 
 }
 

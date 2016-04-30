@@ -8,7 +8,6 @@
 
 #import "AppDelegate.h"
 #import "Utils.h"
-#import "UpdatesViewController.h"
 
 
 
@@ -27,12 +26,6 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     [Utils sharedInstance].managedObjectContext = [self managedObjectContext];
-
-//        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            [[Utils sharedInstance] getAllEvents];
-            [[Utils sharedInstance] getAllUpdates];
-            [[Utils sharedInstance] getAllTracks];
-//        });
     return YES;
 }
 

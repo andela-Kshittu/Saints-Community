@@ -7,6 +7,7 @@
 //
 
 #import "SCAudioPlayerViewController.h"
+#import "Utils.h"
 
 @interface SCAudioPlayerViewController ()
 
@@ -26,21 +27,14 @@
 
 - (void)initPlayer:(NSString*) url
 {
-    
-//    NSURL *audioFileLocationURL = [[NSBundle mainBundle] URLForResource:audioFile withExtension:fileExtension];
     AVAudioSession *session = [AVAudioSession sharedInstance];
     [session setCategory:AVAudioSessionCategoryPlayback error:nil];
     [[AVAudioSession sharedInstance] setActive: YES error: nil];
     [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
-//    http://www.notjustok.com/wp-content/uploads/2012/12/OJURI.mp3
-   
     
     NSURL *musicUrl = [NSURL URLWithString:url];
-    self.musicUrl = musicUrl;
-//    NSData *musicData = [NSData dataWithContentsOfURL:musicUrl];
-//    NSError *error;
-//    self.audioPlayer = [[AVAudioPlayer alloc] initWithData:musicData error:&error];
-    
+    self.musicUrl = [Utils sharedInstance].downloadedSong;
+    NSLog(@"music url %@", self.musicUrl);
     self.customAudioPlayer = [[STKAudioPlayer alloc] init];
     
 }
@@ -66,7 +60,6 @@
  * Simply fire the pause Event
  */
 - (void)pauseAudio {
-//    [self.audioPlayer pause];
      [self.customAudioPlayer pause];
 }
 

@@ -14,6 +14,16 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>CircleProgressBar.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>MBProgressHUD.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-Saints Community.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -37,6 +47,11 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>0CEE88022B83A276B9D5C8D701DD5D07</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>0E44717E0BD8FDC2D8BFA4C4E4AECCDA</key>
 		<dict>
 			<key>primary</key>
@@ -52,17 +67,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>61BEFE7BAD8ABFE34029116016433E98</key>
+		<key>5AC4C09361A77DF09D8A08C031F10F34</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E64619280BA45EA54A28CE1197936E0E</key>
+		<key>CE21103EDF78D4AA9DFAC4B33B07434A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>F0F723C4A5A8A0AD81DFF028AC7A5A0C</key>
+		<key>ED4B44CA33B3FCB0354C4AB6CCC6FAE0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FE2F1D7B9D9FCEA148517E4657B243F4</key>
 		<dict>
 			<key>primary</key>
 			<true/>

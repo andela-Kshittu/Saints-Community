@@ -7,11 +7,14 @@
 //
 
 #import "NowPlayingViewController.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 #import "Utils.h"
 #import "Tracks.h"
+#import "MBProgressHUD.h"
 
-@interface NowPlayingViewController ()
-
+@interface NowPlayingViewController (){
+bool hasLoader;
+}
 @end
 
 @implementation NowPlayingViewController
@@ -19,29 +22,24 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     NSLog(@"View loaded");
-    // Do any additional setup after loading the view.
-//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-//    });
+    
     [Utils initSidebar:self barButton:self.sidebarButton];
      if (![Utils sharedInstance].isResume) {
-         
-    [Utils sharedInstance].currentTrack = 1;
-    [Utils sharedInstance].albumTracks = [[[Utils sharedInstance].fetchedTracks  objectAtIndex:0] valueForKey:@"tracks"];
-    [Utils sharedInstance].albumTitle = [[[Utils sharedInstance].fetchedTracks  objectAtIndex:0] valueForKey:@"name"];
-    
     self.albumName.text = [Utils sharedInstance].albumTitle;
     self.trackName.text = [NSString stringWithFormat:@"Track %d", [Utils sharedInstance].currentTrack];
+    [self.albumImageView sd_setImageWithURL:[NSURL URLWithString: [Utils sharedInstance].albumImageUrl]
+                                             placeholderImage:[UIImage imageNamed:@"ic_logo.png"]];
          
     [Utils sharedInstance].audioPlayer = [[SCAudioPlayerViewController alloc] init];
     [self setupAudioPlayer];
     [self play];
     
      } else {
-         
          self.albumName.text = [Utils sharedInstance].albumTitle;
          self.trackName.text = [NSString stringWithFormat:@"Track %d", [Utils sharedInstance].currentTrack];
+         [self.albumImageView sd_setImageWithURL:[NSURL URLWithString: [Utils sharedInstance].albumImageUrl]
+                                placeholderImage:[UIImage imageNamed:@"ic_logo.png"]];
          [self resume];
-         
      }
     [Utils sharedInstance].isResume = TRUE;
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -61,19 +59,13 @@
  */
 - (void)setupAudioPlayer
 {
-    //insert Filename & FileExtension
-//    NSString *fileExtension = @"mp3";
-    
     //init the Player to get file properties to set the time labels
-//    [self.audioPlayer initPlayer:fileName fileExtension:fileExtension];
-   
         [[Utils sharedInstance].audioPlayer initPlayer:[[Utils sharedInstance].albumTracks objectAtIndex:[Utils sharedInstance].currentTrack - 1]];
         self.currentTimeSlider.maximumValue = [[Utils sharedInstance].audioPlayer getAudioDuration];
         
         //init the current timedisplay and the labels. if a current time was stored
         //for this player then take it and update the time display
         self.timeElapsed.text = @"0:00";
-        
         self.duration.text = [NSString stringWithFormat:@"-%@",
                               [[Utils sharedInstance].audioPlayer timeFormat:[[Utils sharedInstance].audioPlayer getAudioDuration]]];
 
@@ -157,8 +149,20 @@
         [self.currentTimeSlider setValue:[[Utils sharedInstance].audioPlayer getCurrentAudioTime] animated:YES];
     }
      NSLog(@"time update");
-    self.timeElapsed.text = [NSString stringWithFormat:@"%@",
-                             [[Utils sharedInstance].audioPlayer timeFormat:[[Utils sharedInstance].audioPlayer getCurrentAudioTime]]];
+    NSString *elapsedText = [NSString stringWithFormat:@"%@",
+                            [[Utils sharedInstance].audioPlayer timeFormat:[[Utils sharedInstance].audioPlayer getCurrentAudioTime]]];
+    if ([self.timeElapsed.text isEqualToString:elapsedText] && !hasLoader) {
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        hasLoader = true;
+    }
+    
+    if (![self.timeElapsed.text isEqualToString:elapsedText] && hasLoader) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+            hasLoader = false;
+        });
+    }
+    self.timeElapsed.text = elapsedText;
     
     self.duration.text = [NSString stringWithFormat:@"-%@",
                           [[Utils sharedInstance].audioPlayer timeFormat:[[Utils sharedInstance].audioPlayer getAudioDuration] - [[Utils sharedInstance].audioPlayer getCurrentAudioTime]]];
@@ -193,14 +197,17 @@
 //    self.title = [object userInfo][@"album"];
     
     NSLog(@"this is object data %@", object.userInfo);
-    [Utils sharedInstance].albumTitle = [[object userInfo] objectForKey:@"album"];
-    [Utils sharedInstance].currentTrack = [[[object userInfo] objectForKey:@"currentTrack"] intValue];
-    [Utils sharedInstance].albumTracks = [[object userInfo] objectForKey:@"tracks"];
+//    [Utils sharedInstance].albumTitle = [[object userInfo] objectForKey:@"album"];
+//    [Utils sharedInstance].currentTrack = [[[object userInfo] objectForKey:@"currentTrack"] intValue];
+//    [Utils sharedInstance].albumTracks = [[object userInfo] objectForKey:@"tracks"];
+//    [Utils sharedInstance].albumImageUrl = [[object userInfo] objectForKey:@"coverImage"];
     
     
     
     self.albumName.text = [Utils sharedInstance].albumTitle;
     self.trackName.text = [NSString stringWithFormat:@"Track %d", [Utils sharedInstance].currentTrack];
+    [self.albumImageView sd_setImageWithURL:[NSURL URLWithString: [Utils sharedInstance].albumImageUrl]
+                           placeholderImage:[UIImage imageNamed:@"ic_logo.png"]];
     
     [self stop];
     [Utils sharedInstance].isPaused = FALSE;

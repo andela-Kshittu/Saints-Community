@@ -25,6 +25,8 @@ return sharedObject;
 {
     if (! sharedObject) {
         sharedObject = [super init];
+        self.downloadingAlbums = [[NSMutableArray alloc] init];
+        self.downloadedAlbums = [[NSMutableArray alloc] init];
     }
     return sharedObject;
 }
@@ -131,21 +133,52 @@ return sharedObject;
     return fetchedObjects;
 }
 
--(void)download{
+-(void)download:(NSArray *)tracks inAlbum:(NSString*) albumName{
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
     
-    NSURL *URL = [NSURL URLWithString:@"http://example.com/download.zip"];
+    NSURL *URL = [NSURL URLWithString:@"http://www.notjustok.com/wp-content/uploads/2012/12/OJURI.mp3"];
     NSURLRequest *request = [NSURLRequest requestWithURL:URL];
     
     NSURLSessionDownloadTask *downloadTask = [manager downloadTaskWithRequest:request progress:nil destination:^NSURL *(NSURL *targetPath, NSURLResponse *response) {
         NSURL *documentsDirectoryURL = [[NSFileManager defaultManager] URLForDirectory:NSDocumentDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:NO error:nil];
-        return [documentsDirectoryURL URLByAppendingPathComponent:[response suggestedFilename]];
+        
+        
+        NSError *error = nil;
+        NSString *albumPath = [[[documentsDirectoryURL URLByAppendingPathComponent:@"Downloads new"] relativeString] stringByReplacingOccurrencesOfString:@"file:///" withString:@""];
+        
+        
+        // create directory
+        BOOL directoryCreated = [[NSFileManager defaultManager] createDirectoryAtPath:albumPath
+               withIntermediateDirectories:YES
+                                attributes:nil
+                                     error:&error];
+        NSLog(@"url %@", albumPath);
+        if(!error)
+            NSLog(@"directoryCreated = %i with no error", directoryCreated);
+        else
+            NSLog(@"directoryCreated = %i with error %@", directoryCreated, error);
+
+        
+        // delete directory
+        BOOL directoryRemoved =[[NSFileManager defaultManager] removeItemAtPath:albumPath
+                                                       error:&error];
+        if(!error)
+            NSLog(@"directoryRemoved = %i with no error", directoryRemoved);
+        else
+            NSLog(@"directoryRemoved = %i with error %@", directoryRemoved, error);
+        
+        
+        
+        return [documentsDirectoryURL  URLByAppendingPathComponent:[response suggestedFilename]];
+//        return self.downloadedSong;
     } completionHandler:^(NSURLResponse *response, NSURL *filePath, NSError *error) {
         NSLog(@"File downloaded to: %@", filePath);
+        self.downloadedSong = filePath;
     }];
     [downloadTask resume];
 }
+
 
 -(void)updateCoreData:(NSMutableArray *) dataObjects
            withEntity:(NSString *)entityName{
@@ -212,7 +245,7 @@ return sharedObject;
     
     error = nil;
     if (![[Utils sharedInstance].managedObjectContext save:&error]) {
-        NSLog(@"Deleting Whoops, couldn't save: %@", [error localizedDescription]);
+        NSLog(@"Deleting Whoops, couldn't delete: %@", [error localizedDescription]);
     }
 }
 @end

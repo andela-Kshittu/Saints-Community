@@ -19,4 +19,5 @@
 @property (strong, nonatomic) IBOutlet UILabel *albumName;
 @property (strong, nonatomic) IBOutlet UILabel *trackName;
 - (IBAction)previousButtonAction:(id)sender;
+@property (strong, nonatomic) IBOutlet UIImageView *albumImageView;
 @end

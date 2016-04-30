@@ -30,10 +30,10 @@
     
     self.tableView.tableHeaderView.backgroundColor = [UIColor blueColor];
     
-    menuItems = @[@"title", @"home", @"updates", @"events", @"radio", @"streaming"];
-    UIImageView *tempImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"nav_background.png"]];
+    menuItems = @[@"title", @"home", @"updates", @"events", @"radio", @"streaming", @"downloads"];
+//    UIImageView *tempImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"nav_background.png"]];
     
-    self.tableView.backgroundView = tempImageView;
+//    self.tableView.backgroundView = tempImageView;
     
 //    
 //    CGRect oldFrame = self.tableView.tableHeaderView.frame;
@@ -58,16 +58,16 @@
   willDisplayCell:(UITableViewCell *)cell
 forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UIColor *headerCellColor = [UIColor colorWithRed:189.0/255 green:163.0/255 blue:29.0/255 alpha:1.00];
+//    UIColor *headerCellColor = [UIColor colorWithRed:189.0/255 green:163.0/255 blue:29.0/255 alpha:1.00];
     if (indexPath.row > 0) {
         [cell setBackgroundColor:[UIColor clearColor]];
     }else{
-        [cell setBackgroundColor:headerCellColor];
+//        [cell setBackgroundColor:headerCellColor];
     }
     
-    UIView * additionalSeparator = [[UIView alloc] initWithFrame:CGRectMake(0,cell.frame.size.height-1,cell.frame.size.width,1)];
-    additionalSeparator.backgroundColor = [UIColor blackColor];
-    [cell addSubview:additionalSeparator];
+//    UIView * additionalSeparator = [[UIView alloc] initWithFrame:CGRectMake(0,cell.frame.size.height-1,cell.frame.size.width,1)];
+//    additionalSeparator.backgroundColor = [UIColor blackColor];
+//    [cell addSubview:additionalSeparator];
 
 }
 
@@ -93,7 +93,18 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     NSString *CellIdentifier = [menuItems objectAtIndex:indexPath.row];
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
+    //this is an hack for table cells bg on ipad
+    cell.backgroundColor = cell.contentView.backgroundColor;
+    
     return cell;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if ([indexPath row] == 0) {
+        return 180;
+    } else {
+        return 64;
+    }
 }
 
 //-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{

@@ -14,6 +14,7 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <ChameleonFramework/Chameleon.h>
 #import <CoreData/CoreData.h>
+#import "MBProgressHUD.h"
 
 @interface AlbumsViewController ()
 
@@ -40,6 +41,10 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
      self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     [Utils sharedInstance].fetchedTracks = [[NSMutableArray alloc] initWithArray:[[Utils sharedInstance] fetchData:@"Albums"]];
+    [Utils sharedInstance].currentTrack = 1;
+    [Utils sharedInstance].albumTracks = [[[Utils sharedInstance].fetchedTracks  objectAtIndex:0] valueForKey:@"tracks"];
+    [Utils sharedInstance].albumTitle = [[[Utils sharedInstance].fetchedTracks  objectAtIndex:0] valueForKey:@"name"];
+    [Utils sharedInstance].albumImageUrl = [[[Utils sharedInstance].fetchedTracks  objectAtIndex:0] valueForKey:@"coverImage"];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -85,8 +90,9 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 
     static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    
+//    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+
 //    // Configure the cell...
 //    if (cell == nil) {
 //        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
@@ -106,14 +112,13 @@
          rowItem = [Utils sharedInstance].fetchedTracks[indexPath.row];
     }
 
+
     UIImageView * albumImage = (UIImageView *)[cell viewWithTag:1];
     UILabel * title = (UILabel *)[cell viewWithTag:2];
     UILabel * date = (UILabel *)[cell viewWithTag:3];
 
     title.text = [rowItem valueForKey:@"name"];
     date.text = [NSString stringWithFormat: @"Sermon by: %@", [rowItem valueForKey:@"artist"]];
-    
-    
     
         // Here we use the new provided sd_setImageWithURL: method to load the web image
     [albumImage sd_setImageWithURL:[NSURL URLWithString:[rowItem valueForKey:@"coverImage"]]

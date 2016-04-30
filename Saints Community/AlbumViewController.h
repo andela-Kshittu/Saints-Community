@@ -13,4 +13,6 @@
 @interface AlbumViewController : UITableViewController
 @property (nonatomic, strong) NSManagedObject* album;
 @property (nonatomic, strong) NSArray* tracks;
+@property (strong, nonatomic) IBOutlet UILabel *downloadLabel;
+@property (strong, nonatomic) IBOutlet UIProgressView *downloadProgress;
 @end

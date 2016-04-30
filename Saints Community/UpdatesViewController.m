@@ -10,6 +10,7 @@
 #import "Utils.h"
 #import <CoreData/CoreData.h>
 #import <SDWebImage/UIImageView+WebCache.h>
+#import "MBProgressHUD.h"
 
 @interface UpdatesViewController ()
 @end
@@ -29,7 +30,24 @@
 //    self.tableView.tableHeaderView.hidden = YES;
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     [Utils initSidebar:self barButton:self.sidebarButton];
+    
+    // fetch update
     [Utils sharedInstance].fetchedUpdates = [[Utils sharedInstance] fetchData:@"Updates"];
+    
+    //confirm if update were fetched, if not keep retrying
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [self fetchTableData];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+        });
+    });
+}
+
+-(void)fetchTableData{
+    while ([Utils sharedInstance].fetchedUpdates.count < 1 && [Utils sharedInstance].isUpdatesNetworkError) {
+        [Utils sharedInstance].fetchedUpdates = [[Utils sharedInstance] fetchData:@"Updates"];
+    }
 }
 
 - (void)didReceiveMemoryWarning {

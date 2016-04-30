@@ -10,6 +10,7 @@
 #import "Utils.h"
 #import <CoreData/CoreData.h>
 #import <SDWebImage/UIImageView+WebCache.h>
+#import "MBProgressHUD.h"
 
 @interface EventsViewController ()
 @end
@@ -30,8 +31,27 @@
 
     // Do any additional setup after loading the view.
     [Utils initSidebar:self barButton:self.sidebarButton];
-     [Utils sharedInstance].fetchedEvents = [[Utils sharedInstance] fetchData:@"Events"];
+    
+    // fetch events
+    [Utils sharedInstance].fetchedEvents = [[Utils sharedInstance] fetchData:@"Events"];
+    
+    //confirm if update were fetched, if not keep retrying
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [self fetchTableData];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+        });
+    });
+
 }
+
+-(void)fetchTableData{
+    while ([Utils sharedInstance].fetchedUpdates.count < 1 && [Utils sharedInstance].isEventsNetworkError) {
+        [Utils sharedInstance].fetchedEvents = [[Utils sharedInstance] fetchData:@"Events"];
+    }
+}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }

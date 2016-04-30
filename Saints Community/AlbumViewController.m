@@ -146,7 +146,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if ([indexPath row] == 0) {
-        return 120;
+        return 180;
     } else {
         return 64;
     }
@@ -180,8 +180,20 @@
         UILabel *albumInfoLabel = (UILabel *)[cell viewWithTag:102];
         albumInfoLabel.text = [self getAlbumInfo];
         
-//        self.tableView.backgroundColor = AverageColorFromImage(albumArtworkImageView.image);
+        UIButton* downloadButton = (UIButton *)[cell viewWithTag:103];
+        [downloadButton addTarget:self action:@selector(downloadTrack:) forControlEvents:UIControlEventTouchUpInside];
+        downloadButton.layer.borderWidth = 1.0;
+        downloadButton.layer.borderColor = [UIColor blackColor].CGColor;
+        downloadButton.layer.cornerRadius = 10;
         
+        if([[Utils sharedInstance].downloadingAlbums containsObject:[self.album valueForKey:@"name"]]){
+            [downloadButton setTitle:@"Downloading..." forState:UIControlStateNormal];
+            [downloadButton setBackgroundColor:[UIColor darkGrayColor]];
+            [downloadButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        }
+        
+//        self.tableView.backgroundColor = AverageColorFromImage(albumArtworkImageView.image);
+//        cell.backgroundColor = cell.contentView.backgroundColor;
         return cell;
     } else {
         
@@ -191,35 +203,10 @@
         cell.textLabel.text = [NSString stringWithFormat:@"Track %ld", (long)indexPath.row];
         cell.detailTextLabel.text = [self.album valueForKey:@"artist"];
         cell.imageView.image = [UIImage imageNamed:@"music-1.png"];
-//        MPMediaQuery *albumQuery = [MPMediaQuery albumsQuery];
-//        MPMediaPropertyPredicate *albumPredicate = [MPMediaPropertyPredicate predicateWithValue: albumTitle forProperty: MPMediaItemPropertyAlbumTitle];
-//        [albumQuery addFilterPredicate:albumPredicate];
-//        NSArray *albumTracks = [albumQuery items];
         
-//        NSUInteger trackNumber = [[[albumTracks objectAtIndex:(indexPath.row-1)]  valueForProperty:MPMediaItemPropertyAlbumTrackNumber] unsignedIntegerValue];
-//        
-//        if (trackNumber) {
-//            cell.textLabel.text = [NSString stringWithFormat:@"%lu. %@", (unsigned long)trackNumber, [[[albumTracks objectAtIndex:(indexPath.row-1)] representativeItem] valueForProperty:MPMediaItemPropertyTitle]];
-//        } else {
-//            cell.textLabel.text = [[[albumTracks objectAtIndex:(indexPath.row-1)] representativeItem] valueForProperty:MPMediaItemPropertyTitle];
-//        }
-//        
-//        
-//        if ([self sameArtists]) {
-//            
-//            cell.detailTextLabel.text = @"";
-//            
-//        } else {
-//            
-//            if ([[[albumTracks objectAtIndex:(indexPath.row-1)] representativeItem] valueForProperty:MPMediaItemPropertyArtist]) {
-//                cell.detailTextLabel.text = [[[albumTracks objectAtIndex:(indexPath.row-1)] representativeItem] valueForProperty:MPMediaItemPropertyArtist];
-//            } else {
-//                cell.detailTextLabel.text = @"";
-//            }
-//            
-//        }
-        //this is an hack for table cells bg on ipad
-        cell.backgroundColor = cell.contentView.backgroundColor;
+        //cell.backgroundColor = [UIColor whiteColor];
+//        this is an hack for table cells bg on ipad
+//        cell.backgroundColor = cell.contentView.backgroundColor;
         
         return cell;
     }
@@ -227,11 +214,18 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
+    if(indexPath.row > 0){
     NSMutableDictionary *data = [[NSMutableDictionary alloc] init]; // Populate this with your data.
     
-    [data setValue:[self.album valueForKey:@"name"] forKey:@"album"];
-    [data setValue:self.tracks forKey:@"tracks"];
-    [data setValue:[NSNumber numberWithInteger:indexPath.row] forKey:@"currentTrack"];
+//    [data setValue:[self.album valueForKey:@"name"] forKey:@"album"];
+//    [data setValue:self.tracks forKey:@"tracks"];
+//    [data setValue:[self.album valueForKey:@"coverImage"] forKey:@"coverImage"];
+//    [data setValue:[NSNumber numberWithInteger:indexPath.row] forKey:@"currentTrack"];
+        
+        [Utils sharedInstance].albumTitle = [self.album valueForKey:@"name"];
+        [Utils sharedInstance].currentTrack = [[NSNumber numberWithInteger:indexPath.row] intValue];
+        [Utils sharedInstance].albumTracks = self.tracks;
+        [Utils sharedInstance].albumImageUrl = [self.album valueForKey:@"coverImage"];
     
     NSDictionary* userInfo = [[NSDictionary alloc] initWithDictionary:data];
     
@@ -239,6 +233,27 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:@"play" object:self userInfo:userInfo];
     
     [self.parentViewController.tabBarController setSelectedIndex:1];
+    }
+}
+
+- (IBAction)downloadTrack:(UIButton *)sender {
+    NSLog(@"download %ld", (long)sender.tag);
+    if([sender.titleLabel.text  isEqual: @"Download"]){
+//        start download
+         [sender setTitle:@"Downloading..." forState:UIControlStateNormal];
+        [sender setBackgroundColor:[UIColor darkGrayColor]];
+        [sender setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [[Utils sharedInstance] download:self.tracks inAlbum:[self.album valueForKey:@"name"]];
+        
+        [[Utils sharedInstance].downloadingAlbums addObject:[self.album valueForKey:@"name"]];
+    }else{
+        // cancel download
+        [sender setTitle:@"Download" forState:UIControlStateNormal];
+        [sender setBackgroundColor:[UIColor clearColor]];
+        [sender setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        
+        [[Utils sharedInstance].downloadingAlbums removeObject:[self.album valueForKey:@"name"]];
+    }
 }
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
