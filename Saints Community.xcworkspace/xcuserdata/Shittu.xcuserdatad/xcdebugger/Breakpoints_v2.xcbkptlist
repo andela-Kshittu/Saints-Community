@@ -20,11 +20,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Saints Community/NowPlayingViewController.m"
-            timestampString = "483190867.810401"
+            timestampString = "483681182.087806"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "155"
-            endingLineNumber = "155"
+            startingLineNumber = "167"
+            endingLineNumber = "167"
             landmarkName = "-updateTime:"
             landmarkType = "5">
          </BreakpointContent>

@@ -59,8 +59,20 @@ bool hasLoader;
  */
 - (void)setupAudioPlayer
 {
+    NSString * urlString = [[Utils sharedInstance].albumTracks objectAtIndex:[Utils sharedInstance].currentTrack - 1];
+    
+    for(NSString* track in [Utils sharedInstance].downloadedTracks){
+        NSString *currentTrack = [NSString stringWithFormat:@"Track+%d", [Utils sharedInstance].currentTrack];
+        if ([track containsString:currentTrack]) {
+            urlString = track;
+            NSLog(@"Playing downloaded track : %@", urlString);
+        } else {
+            NSLog(@"streaming track : %@", urlString);
+        }
+    }
+    
     //init the Player to get file properties to set the time labels
-        [[Utils sharedInstance].audioPlayer initPlayer:[[Utils sharedInstance].albumTracks objectAtIndex:[Utils sharedInstance].currentTrack - 1]];
+        [[Utils sharedInstance].audioPlayer initPlayer:urlString];
         self.currentTimeSlider.maximumValue = [[Utils sharedInstance].audioPlayer getAudioDuration];
         
         //init the current timedisplay and the labels. if a current time was stored

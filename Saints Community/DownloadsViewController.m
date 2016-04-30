@@ -33,13 +33,18 @@
     NSString *musicDirectory = [docpaths lastObject];
     
     NSError *error = nil;
-    NSArray *listOfFiles = [fileManager contentsOfDirectoryAtPath:musicDirectory error:&error];
+    NSArray *listOfFiles = [fileManager contentsOfDirectoryAtPath:[musicDirectory stringByAppendingString:@"/Downloads/Spiritual-Apathy"] error:&error];
+      NSArray *listOfFiles2 = [fileManager contentsOfDirectoryAtPath:[musicDirectory stringByAppendingString:@"/Downloads"] error:&error];
+     NSArray *listOfFiles3 = [fileManager contentsOfDirectoryAtPath:musicDirectory error:&error];
     
     NSArray *listOfSubPaths = [fileManager subpathsOfDirectoryAtPath:musicDirectory
                                                                error:&error];
     
     NSLog(@"paths in list 1 %@", listOfFiles);
-    [fileManager removeItemAtPath:@"Documents/OJURI.mp3"  error:nil];
+    NSLog(@"paths in list 2 %@", listOfFiles2);
+    NSLog(@"paths in list 3 %@", listOfFiles3);
+    
+    
     NSLog(@"paths in sub list 1 %@", listOfSubPaths);
     
     

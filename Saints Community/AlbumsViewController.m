@@ -39,12 +39,16 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
      self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     [Utils sharedInstance].fetchedTracks = [[NSMutableArray alloc] initWithArray:[[Utils sharedInstance] fetchData:@"Albums"]];
-    [Utils sharedInstance].currentTrack = 1;
-    [Utils sharedInstance].albumTracks = [[[Utils sharedInstance].fetchedTracks  objectAtIndex:0] valueForKey:@"tracks"];
-    [Utils sharedInstance].albumTitle = [[[Utils sharedInstance].fetchedTracks  objectAtIndex:0] valueForKey:@"name"];
-    [Utils sharedInstance].albumImageUrl = [[[Utils sharedInstance].fetchedTracks  objectAtIndex:0] valueForKey:@"coverImage"];
+    
+    if (![Utils sharedInstance].isResume) {
+        [Utils sharedInstance].currentTrack = 1;
+        [Utils sharedInstance].albumTracks = [[[Utils sharedInstance].fetchedTracks  objectAtIndex:0] valueForKey:@"tracks"];
+        [Utils sharedInstance].albumTitle = [[[Utils sharedInstance].fetchedTracks  objectAtIndex:0] valueForKey:@"name"];
+        [Utils sharedInstance].albumImageUrl = [[[Utils sharedInstance].fetchedTracks  objectAtIndex:0] valueForKey:@"coverImage"];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -90,8 +94,8 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 
     static NSString *CellIdentifier = @"Cell";
-//    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 
 //    // Configure the cell...
 //    if (cell == nil) {

@@ -24,14 +24,30 @@
 
 //    self.album = [[Utils sharedInstance].fetchedTracks objectAtIndex:selectedAlbum];
     self.title = [self.album valueForKey:@"name"];
+    [Utils sharedInstance].downloadedTracks = [[NSMutableArray alloc] init];
+    
+    self.albumPath = [NSString stringWithFormat:@"%@%@",[Utils sharedInstance].downloadPath,[[self.album valueForKey:@"name"] stringByReplacingOccurrencesOfString:@" " withString:@"-"]];
+    
+    NSError *error = nil;
+    NSArray *listOfFiles = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:[self.albumPath stringByReplacingOccurrencesOfString:@"file:///" withString:@""] error:&error];
+    NSLog(@"paths in list 1 %@", listOfFiles);
+    
+    for (NSString* track in listOfFiles) {
+        [[Utils sharedInstance].downloadedTracks addObject:[self.albumPath stringByAppendingString:[NSString stringWithFormat:@"/%@", track]]];
+    }
+    NSLog(@"local tracks %@", [Utils sharedInstance].downloadedTracks);
     self.tracks = [self.album valueForKey:@"tracks"];
-     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+}
+-(void)viewWillAppear:(BOOL)animated{
+
 }
 //- (UIImage *) getAlbumArtworkWithSize: (CGSize) albumSize
 //{
@@ -179,6 +195,8 @@
         
         UILabel *albumInfoLabel = (UILabel *)[cell viewWithTag:102];
         albumInfoLabel.text = [self getAlbumInfo];
+        UILabel *offlineTracksLabel = (UILabel *)[cell viewWithTag:104];
+        offlineTracksLabel.text = [NSString stringWithFormat:@"Available offline: %lu", (unsigned long)[Utils sharedInstance].downloadedTracks.count];
         
         UIButton* downloadButton = (UIButton *)[cell viewWithTag:103];
         [downloadButton addTarget:self action:@selector(downloadTrack:) forControlEvents:UIControlEventTouchUpInside];
@@ -190,10 +208,17 @@
             [downloadButton setTitle:@"Downloading..." forState:UIControlStateNormal];
             [downloadButton setBackgroundColor:[UIColor darkGrayColor]];
             [downloadButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        }
+        }else{
         
 //        self.tableView.backgroundColor = AverageColorFromImage(albumArtworkImageView.image);
 //        cell.backgroundColor = cell.contentView.backgroundColor;
+            if ([Utils sharedInstance].downloadedTracks.count == self.tracks.count) {
+                [downloadButton setEnabled:NO];
+                [downloadButton setTitle:@"All tracks downloaded" forState:UIControlStateNormal];
+            }else if ([Utils sharedInstance].downloadedTracks.count > 0){
+                [downloadButton setTitle:@"Download more tracks" forState:UIControlStateNormal];
+            }
+        }
         return cell;
     } else {
         

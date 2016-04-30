@@ -15,4 +15,5 @@
 @property (nonatomic, strong) NSArray* tracks;
 @property (strong, nonatomic) IBOutlet UILabel *downloadLabel;
 @property (strong, nonatomic) IBOutlet UIProgressView *downloadProgress;
+@property NSString * albumPath;
 @end

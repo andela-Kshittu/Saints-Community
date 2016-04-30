@@ -7,7 +7,6 @@
 //
 
 #import "SCAudioPlayerViewController.h"
-#import "Utils.h"
 
 @interface SCAudioPlayerViewController ()
 
@@ -32,11 +31,8 @@
     [[AVAudioSession sharedInstance] setActive: YES error: nil];
     [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
     
-    NSURL *musicUrl = [NSURL URLWithString:url];
-    self.musicUrl = [Utils sharedInstance].downloadedSong;
-    NSLog(@"music url %@", self.musicUrl);
+    self.musicUrl = [NSURL URLWithString:url];
     self.customAudioPlayer = [[STKAudioPlayer alloc] init];
-    
 }
 
 /*
