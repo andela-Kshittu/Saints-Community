@@ -27,7 +27,14 @@ return sharedObject;
         sharedObject = [super init];
         self.downloadingAlbums = [[NSMutableArray alloc] init];
         self.downloadedTracks = [[NSMutableArray alloc] init];
+        NSError *error = nil;
+        
         NSURL *documentsDirectoryURL = [[NSFileManager defaultManager] URLForDirectory:NSDocumentDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:NO error:nil];
+
+       [[NSFileManager defaultManager] createDirectoryAtPath:[[[documentsDirectoryURL relativeString] stringByReplacingOccurrencesOfString:@"file:///" withString:@""] stringByAppendingPathComponent:@"Downloads"]
+                                                          withIntermediateDirectories:YES
+                                                                           attributes:nil
+                                                                                error:&error];
         
         self.downloadPath = [[documentsDirectoryURL URLByAppendingPathComponent:@"Downloads"] relativeString];
     }
@@ -68,6 +75,7 @@ return sharedObject;
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             [self deleteEntityRecords:@"Albums"];
             [self updateCoreDataAlbums:albums];
+             [Utils sharedInstance].fetchedTracks = albums;
         });
         self.isAlbumsNetworkError = NO;
          NSLog(@"JSON: %@", self.fetchedTracks);
@@ -109,11 +117,13 @@ return sharedObject;
         [vc.view addGestureRecognizer:vc.revealViewController.panGestureRecognizer];
     }
 }
-+(void)loadUIWebView:(UIView *) view
++(void)loadUIWebView:(UIViewController *) viewController
                   url:(NSString *) destinationUrl
 {
-    CGRect frame = CGRectMake(view.layer.frame.origin.x, view.layer.frame.origin.y, view.layer.frame.size.width, view.layer.frame.size.height);
+    UIView *view = viewController.view;
+    CGRect frame = CGRectMake(view.layer.frame.origin.x, view.layer.frame.origin.y + 44, view.layer.frame.size.width, view.layer.frame.size.height - 44);
     UIWebView *webView = [[UIWebView alloc] initWithFrame: frame];  //Change self.view.bounds to a smaller CGRect if you don't want it to take up the whole screen
+    webView.delegate = viewController;
     [view addSubview:webView];
     NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:destinationUrl] cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:15.0];
     [webView loadRequest:theRequest];
@@ -138,8 +148,9 @@ return sharedObject;
 
 -(void)download:(NSArray *)tracks inAlbum:(NSString*) albumName{
     
+//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
     // create directory
-    
+      NSLog(@"is downloading array %@",self.downloadingAlbums);
     NSError *error = nil;
     NSString *albumPath = [NSString stringWithFormat:@"%@%@",self.downloadPath,[albumName stringByReplacingOccurrencesOfString:@" " withString:@"-"]];
     
@@ -162,8 +173,10 @@ return sharedObject;
 //        NSLog(@"directoryRemoved = %i with error %@", directoryRemoved, error);
     
     if(directoryCreated && !error){
-    
+        NSMutableArray* downlodedTracks = [[NSMutableArray alloc] init];
         for (NSString* track in tracks) {
+        
+            NSLog(@"download count %@", downlodedTracks);
             NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
             AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
             
@@ -171,17 +184,25 @@ return sharedObject;
             NSURLRequest *request = [NSURLRequest requestWithURL:URL];
             
             NSURLSessionDownloadTask *downloadTask = [manager downloadTaskWithRequest:request progress:nil destination:^NSURL *(NSURL *targetPath, NSURLResponse *response) {
-                
+               
                 return [[NSURL URLWithString:albumPath] URLByAppendingPathComponent:[response suggestedFilename]];
                 //        return self.downloadedSong;
             } completionHandler:^(NSURLResponse *response, NSURL *filePath, NSError *error) {
+                [downlodedTracks addObject:@"downloaded"];
                 NSLog(@"File downloaded to: %@", filePath);
+                if (downlodedTracks.count == tracks.count) {
+                    [self.downloadingAlbums removeObject:albumName];
+                    NSLog(@"removed name %@",albumName);
+                    NSLog(@"removed name from array %@",self.downloadingAlbums);
+                }
+                
             }];
             [downloadTask resume];
         }
       
     }
-    [[Utils sharedInstance].downloadingAlbums removeObject:albumName];
+
+//    });
 }
 
 
@@ -243,14 +264,18 @@ return sharedObject;
     
     NSError *error;
     NSArray *fetchedObjects = [[Utils sharedInstance].managedObjectContext executeFetchRequest:fetchRequest error:&error];
-    for (NSManagedObject *object in fetchedObjects)
-    {
-        [[Utils sharedInstance].managedObjectContext deleteObject:object];
-    }
     
-    error = nil;
-    if (![[Utils sharedInstance].managedObjectContext save:&error]) {
-        NSLog(@"Deleting Whoops, couldn't delete: %@", [error localizedDescription]);
+    if (fetchedObjects.count > 0) {
+        for (NSManagedObject *object in fetchedObjects)
+        {
+            [[Utils sharedInstance].managedObjectContext deleteObject:object];
+        }
+        
+        error = nil;
+        if (![[Utils sharedInstance].managedObjectContext save:&error]) {
+            NSLog(@"Deleting Whoops, couldn't delete: %@", [error localizedDescription]);
+        }
     }
+   
 }
 @end

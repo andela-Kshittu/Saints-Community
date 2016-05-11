@@ -8,6 +8,7 @@
 
 #import "SideBarViewController.h"
 #import "SWRevealViewController.h"
+#import "Utils.h"
 
 
 @interface SideBarViewController ()
@@ -30,7 +31,7 @@
     
     self.tableView.tableHeaderView.backgroundColor = [UIColor blueColor];
     
-    menuItems = @[@"title", @"home", @"updates", @"events", @"radio", @"streaming", @"downloads"];
+    menuItems = @[@"title", @"home", @"updates", @"events", @"radio", @"streaming"];
 //    UIImageView *tempImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"nav_background.png"]];
     
 //    self.tableView.backgroundView = tempImageView;
@@ -101,9 +102,29 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if ([indexPath row] == 0) {
-        return 180;
+        if (IS_IPHONE_4_OR_LESS) {
+            return 140;
+        } else if(IS_IPHONE_5){
+            return 140;
+        } else if (IS_IPHONE_6){
+            return 180;
+        } else if(IS_IPHONE_6P){
+            return 180;
+        } else {
+            return 260;
+        }
     } else {
-        return 64;
+        if (IS_IPHONE_4_OR_LESS) {
+            return 54;
+        } else if(IS_IPHONE_5){
+            return 54;
+        } else if (IS_IPHONE_6){
+            return 64;
+        } else if(IS_IPHONE_6P){
+            return 64;
+        } else {
+            return 100;
+        }
     }
 }
 

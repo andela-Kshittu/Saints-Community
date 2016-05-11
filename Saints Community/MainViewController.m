@@ -29,7 +29,7 @@
             [MBProgressHUD hideHUDForView:self.view animated:YES];
         });
     });
-
+    [Utils sharedInstance].fetchedTracks = [[NSMutableArray alloc] initWithArray:[[Utils sharedInstance] fetchData:@"Albums"]];
 }
 
 - (void)didReceiveMemoryWarning {

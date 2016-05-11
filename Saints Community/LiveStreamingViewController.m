@@ -8,6 +8,7 @@
 
 #import "LiveStreamingViewController.h"
 #import "Utils.h"
+#import "MBProgressHUD.h"
 
 @interface LiveStreamingViewController ()
 @end
@@ -18,12 +19,39 @@ static NSString * LIVE_STREAMING_URl = @"http://live.livingwordmedia.org";
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [Utils initSidebar:self barButton:self.sidebarButton];
-    [Utils loadUIWebView:self.view url:LIVE_STREAMING_URl];
+    
 }
+
+-(void)viewDidAppear:(BOOL)animated{
+    [Utils loadUIWebView:self url:LIVE_STREAMING_URl];
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)webViewDidStartLoad:(UIWebView *)webView{
+    //SHOW HUD
+    NSLog(@"show hud");
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+}
+
+-(void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error{
+    //KILL HUD
+    NSLog(@"kill hud");
+    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+}
+
+-(void)webViewDidFinishLoad:(UIWebView *)webView{
+    
+    if(!webView.loading){
+        //KILL HUD
+        NSLog(@"kill hud");
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+    }
 }
 
 /*

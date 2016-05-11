@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LiveStreamingViewController : UIViewController
+@interface LiveStreamingViewController : UIViewController<UIWebViewDelegate>
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *sidebarButton;
 @end

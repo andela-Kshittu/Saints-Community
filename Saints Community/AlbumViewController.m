@@ -162,9 +162,30 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if ([indexPath row] == 0) {
-        return 180;
+        if (IS_IPHONE_4_OR_LESS) {
+          return 180;
+        } else if(IS_IPHONE_5){
+            return 180;
+        } else if (IS_IPHONE_6){
+            return 180;
+        } else if(IS_IPHONE_6P){
+            return 180;
+        } else {
+            return 300;
+        }
+        
     } else {
-        return 64;
+        if (IS_IPHONE_4_OR_LESS) {
+            return 64;
+        } else if(IS_IPHONE_5){
+            return 64;
+        } else if (IS_IPHONE_6){
+            return 64;
+        } else if(IS_IPHONE_6P){
+            return 64;
+        } else {
+            return 100;
+        }
     }
 }
 
@@ -205,6 +226,7 @@
         downloadButton.layer.cornerRadius = 10;
         
         if([[Utils sharedInstance].downloadingAlbums containsObject:[self.album valueForKey:@"name"]]){
+            [downloadButton setEnabled:NO];
             [downloadButton setTitle:@"Downloading..." forState:UIControlStateNormal];
             [downloadButton setBackgroundColor:[UIColor darkGrayColor]];
             [downloadButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -219,6 +241,7 @@
                 [downloadButton setTitle:@"Download more tracks" forState:UIControlStateNormal];
             }
         }
+         cell.backgroundColor = [UIColor flatSandColor];
         return cell;
     } else {
         
@@ -227,11 +250,22 @@
         
         cell.textLabel.text = [NSString stringWithFormat:@"Track %ld", (long)indexPath.row];
         cell.detailTextLabel.text = [self.album valueForKey:@"artist"];
-        cell.imageView.image = [UIImage imageNamed:@"music-1.png"];
+        cell.imageView.image = [UIImage imageNamed:@"audio_file_filled-1.png"];
+        
+        
+        // name to check in downloaded tracks
+        NSString *currentTrackName = [NSString stringWithFormat:@"Track+%ld", (long)indexPath.row];
+        
+        for(NSString* track in [Utils sharedInstance].downloadedTracks){
+            if ([track containsString:currentTrackName]) {
+              // show offline image
+                cell.imageView.image = [UIImage imageNamed:@"audio_file_filled.png"];
+            }
+        }
         
         //cell.backgroundColor = [UIColor whiteColor];
 //        this is an hack for table cells bg on ipad
-//        cell.backgroundColor = cell.contentView.backgroundColor;
+        cell.backgroundColor = [UIColor clearColor];
         
         return cell;
     }
@@ -265,13 +299,43 @@
     NSLog(@"download %ld", (long)sender.tag);
     if([sender.titleLabel.text  isEqual: @"Download"]){
 //        start download
-         [sender setTitle:@"Downloading..." forState:UIControlStateNormal];
+        [sender setEnabled:NO];
+        [sender setTitle:@"Downloading..." forState:UIControlStateNormal];
         [sender setBackgroundColor:[UIColor darkGrayColor]];
         [sender setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        [[Utils sharedInstance] download:self.tracks inAlbum:[self.album valueForKey:@"name"]];
         
         [[Utils sharedInstance].downloadingAlbums addObject:[self.album valueForKey:@"name"]];
-    }else{
+         NSLog(@"is downloading array %@",[Utils sharedInstance].downloadingAlbums);
+        
+        [[Utils sharedInstance] download:self.tracks inAlbum:[self.album valueForKey:@"name"]];
+        
+  
+        
+       
+    } else if ([sender.titleLabel.text  isEqual: @"Download more tracks"]){
+        //        start download
+        [sender setTitle:@"Downloading..." forState:UIControlStateNormal];
+        [sender setBackgroundColor:[UIColor darkGrayColor]];
+        [sender setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        
+        [[Utils sharedInstance].downloadingAlbums addObject:[self.album valueForKey:@"name"]];
+        NSLog(@"is downloading array %@",[Utils sharedInstance].downloadingAlbums);
+        
+     
+       // remove already downloaded tracks
+        int count = 0;
+        NSMutableArray *trackToDownload = [[NSMutableArray alloc] initWithArray:self.tracks];
+        for(NSString* track in [Utils sharedInstance].downloadedTracks){
+            count++;
+             NSString *currentTrackName = [NSString stringWithFormat:@"Track+%d", count];
+            if ([track containsString:currentTrackName]) {
+                [trackToDownload removeObjectAtIndex:count - 1];
+            }
+        }
+        
+        [[Utils sharedInstance] download:trackToDownload inAlbum:[self.album valueForKey:@"name"]];
+
+    } else {
         // cancel download
         [sender setTitle:@"Download" forState:UIControlStateNormal];
         [sender setBackgroundColor:[UIColor clearColor]];

@@ -25,7 +25,9 @@
     NSInteger index = [Utils sharedInstance].selectedIndex;
     NSManagedObject *info =  [Utils sharedInstance].fetchedUpdates[index];
     self.headerLabel.text = [info valueForKey:@"title"];
+    self.descriptionLabel.editable = YES;
     self.descriptionLabel.text = [info valueForKey:@"entity_description"];
+    self.descriptionLabel.editable = NO;
     self.dateLabel.text = [info valueForKey:@"updated_date"];
 }
 
@@ -64,15 +66,18 @@
 
 -(void)scrollTo:(NSInteger)index{
     
+     self.descriptionLabel.editable = YES;
     CGRect frame = self.scrollView.frame;
     frame.origin.x = pageWidth * index;
     frame.origin.y = 0;
-    [self.scrollView scrollRectToVisible:frame animated:YES];
     
     NSManagedObject *info =  [Utils sharedInstance].fetchedUpdates[index];
     self.headerLabel.text = [info valueForKey:@"title"];
+    [self.scrollView scrollRectToVisible:frame animated:YES];
     self.descriptionLabel.text = [info valueForKey:@"entity_description"];
+    self.descriptionLabel.editable = NO;
     self.dateLabel.text = [info valueForKey:@"updated_date"];
+    
 
 }
 /*

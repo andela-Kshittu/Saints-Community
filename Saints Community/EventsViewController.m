@@ -61,6 +61,21 @@
     return [[Utils sharedInstance].fetchedEvents count];
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (IS_IPHONE_4_OR_LESS) {
+        return 80;
+    } else if(IS_IPHONE_5){
+        return 80;
+    } else if (IS_IPHONE_6){
+        return 80;
+    } else if(IS_IPHONE_6P){
+        return 80;
+    } else {
+        return 120;
+    }
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     

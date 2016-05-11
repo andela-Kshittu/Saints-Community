@@ -27,6 +27,7 @@
 #import <QuartzCore/QuartzCore.h>
 
 #import "SWRevealViewController.h"
+#import "Utils.h"
 
 
 #pragma mark - StatusBar Helper Function
@@ -645,7 +646,18 @@ const int FrontViewPositionNone = 0xff;
     _frontViewPosition = FrontViewPositionLeft;
     _rearViewPosition = FrontViewPositionLeft;
     _rightViewPosition = FrontViewPositionLeft;
-    _rearViewRevealWidth = 260.0f;
+    
+    if (IS_IPHONE_4_OR_LESS) {
+          _rearViewRevealWidth = 260.0f;
+    } else if(IS_IPHONE_5){
+          _rearViewRevealWidth = 260.0f;
+    } else if (IS_IPHONE_6){
+          _rearViewRevealWidth = 260.0f;
+    } else if(IS_IPHONE_6P){
+          _rearViewRevealWidth = 260.0f;
+    } else {
+          _rearViewRevealWidth = 500.0f;
+    }
     _rearViewRevealOverdraw = 60.0f;
     _rearViewRevealDisplacement = 40.0f;
     _rightViewRevealWidth = 260.0f;

@@ -8,6 +8,7 @@
 
 #import "OnlineRadioViewController.h"
 #import "Utils.h"
+#import "MBProgressHUD.h"
 
 @interface OnlineRadioViewController ()
 @end
@@ -18,7 +19,11 @@ static NSString * RADIO_URL = @"http://lwm.radiojar.com/";
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [Utils initSidebar:self barButton:self.sidebarButton];
-    [Utils loadUIWebView:self.view url:RADIO_URL];
+}
+
+-(void)viewDidAppear:(BOOL)animated{
+    [Utils loadUIWebView:self url:RADIO_URL];
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -26,6 +31,26 @@ static NSString * RADIO_URL = @"http://lwm.radiojar.com/";
     // Dispose of any resources that can be recreated.
 }
 
+-(void)webViewDidStartLoad:(UIWebView *)webView{
+    //SHOW HUD
+    NSLog(@"show hud");
+     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+}
+
+-(void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error{
+    //KILL HUD
+     NSLog(@"kill hud");
+     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+}
+
+-(void)webViewDidFinishLoad:(UIWebView *)webView{
+    
+    if(!webView.loading){
+        //KILL HUD
+         NSLog(@"kill hud");
+         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+    }
+}
 /*
 #pragma mark - Navigation
 

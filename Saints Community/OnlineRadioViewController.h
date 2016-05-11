@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface OnlineRadioViewController : UIViewController
+@interface OnlineRadioViewController : UIViewController<UIWebViewDelegate>
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *sidebarButton;
 @end

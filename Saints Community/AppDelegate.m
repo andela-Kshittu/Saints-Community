@@ -26,6 +26,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     [Utils sharedInstance].managedObjectContext = [self managedObjectContext];
+    [[UITabBar appearance] setItemWidth:self.window.frame.size.width/2];
     return YES;
 }
 
@@ -90,7 +91,7 @@
         // Replace this with code to handle the error appropriately.
         // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-//        abort();
+        abort();
     }
     
     return _persistentStoreCoordinator;

@@ -27,11 +27,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [Utils initSidebar:self barButton:self.sidebarButton];
-    if ([Utils sharedInstance].isAlbumsNetworkError) {
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            [[Utils sharedInstance] getAllTracks];
-        });
-    }
     self.tabBarController.tabBarItem.title = @"Audio Folders";
 //    self.tableView.backgroundColor = AverageColorFromImage([UIImage imageNamed:@"music_folder.png"]);
     // Uncomment the following line to preserve selection between presentations.
@@ -41,14 +36,50 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
      self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-    [Utils sharedInstance].fetchedTracks = [[NSMutableArray alloc] initWithArray:[[Utils sharedInstance] fetchData:@"Albums"]];
+    if([Utils sharedInstance].fetchedTracks.count < 1){
+     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [self reloadTableItems];
+    });
+    }
     
     if (![Utils sharedInstance].isResume) {
         [Utils sharedInstance].currentTrack = 1;
-        [Utils sharedInstance].albumTracks = [[[Utils sharedInstance].fetchedTracks  objectAtIndex:0] valueForKey:@"tracks"];
-        [Utils sharedInstance].albumTitle = [[[Utils sharedInstance].fetchedTracks  objectAtIndex:0] valueForKey:@"name"];
-        [Utils sharedInstance].albumImageUrl = [[[Utils sharedInstance].fetchedTracks  objectAtIndex:0] valueForKey:@"coverImage"];
+        if ([[Utils sharedInstance].fetchedTracks  count] > 0) {
+            [Utils sharedInstance].albumTracks = [[[Utils sharedInstance].fetchedTracks  objectAtIndex:0] valueForKey:@"tracks"];
+            [Utils sharedInstance].albumTitle = [[[Utils sharedInstance].fetchedTracks  objectAtIndex:0] valueForKey:@"name"];
+            [Utils sharedInstance].albumImageUrl = [[[Utils sharedInstance].fetchedTracks  objectAtIndex:0] valueForKey:@"coverImage"];
+        }
     }
+}
+
+-(void)reloadTableItems{
+    while ([Utils sharedInstance].fetchedTracks.count < 1) {
+        if ([Utils sharedInstance].isAlbumsNetworkError) {
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                [[Utils sharedInstance] getAllTracks];
+            });
+        }
+    }
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+         [self.tableView reloadData];
+    });
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+        if (IS_IPHONE_4_OR_LESS) {
+            return 80;
+        } else if(IS_IPHONE_5){
+            return 80;
+        } else if (IS_IPHONE_6){
+            return 80;
+        } else if(IS_IPHONE_6P){
+            return 80;
+        } else {
+            return 120;
+        }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -134,10 +165,10 @@
     return cell;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return 80;
-}
+//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    return 80;
+//}
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
@@ -155,6 +186,18 @@
     AlbumViewController *detailViewController = [segue destinationViewController];
     detailViewController.album = selectedAlbum;
 }
+
+//-(NSString*)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section   {
+//    
+//    NSString *message = @"";
+//    NSInteger numberOfRowsInSection = [self tableView:self.tableView numberOfRowsInSection:section ];
+//    
+//    if (numberOfRowsInSection == 0) {
+//        message = @"This list is now empty";
+//    }
+//    
+//    return message;
+//}
 
 /*
 // Override to support conditional editing of the table view.

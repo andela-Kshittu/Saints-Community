@@ -24,7 +24,9 @@
     NSInteger index = [Utils sharedInstance].selectedIndex;
     NSManagedObject *info =  [Utils sharedInstance].fetchedEvents[index];
     self.headerLabel.text = [info valueForKey:@"title"];
+    self.descriptionLabel.editable = YES;
     self.descriptionLabel.text = [info valueForKey:@"entity_description"];
+    self.descriptionLabel.editable = YES;
     self.dateLabel.text = [info valueForKey:@"updated_date"];
     
 
@@ -72,7 +74,9 @@
     
     NSManagedObject *info =  [Utils sharedInstance].fetchedEvents[index];
     self.headerLabel.text = [info valueForKey:@"title"];
+    self.descriptionLabel.editable = YES;
     self.descriptionLabel.text = [info valueForKey:@"entity_description"];
+    self.descriptionLabel.editable = YES;
     self.dateLabel.text = [info valueForKey:@"updated_date"];
     
 }
