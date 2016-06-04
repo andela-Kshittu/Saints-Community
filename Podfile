@@ -7,6 +7,7 @@ target 'Saints Community' do
 pod "AFNetworking", "~> 2.0"
 pod "StreamingKit", "~> 0.1"
 pod 'CircleProgressBar', '~> 0.31’
+pod 'ACPDownload', '~> 1.1.0'
 pod 'MBProgressHUD', '~> 0.9.2'
 pod 'SDWebImage/WebP'
 pod 'ChameleonFramework'

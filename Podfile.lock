@@ -1,4 +1,5 @@
 PODS:
+  - ACPDownload (1.1.0)
   - AFNetworking (2.6.1):
     - AFNetworking/NSURLConnection (= 2.6.1)
     - AFNetworking/NSURLSession (= 2.6.1)
@@ -56,6 +57,7 @@ PODS:
   - StreamingKit (0.1.29)
 
 DEPENDENCIES:
+  - ACPDownload (~> 1.1.0)
   - AFNetworking (~> 2.0)
   - ChameleonFramework
   - CircleProgressBar (~> 0.31)
@@ -64,6 +66,7 @@ DEPENDENCIES:
   - StreamingKit (~> 0.1)
 
 SPEC CHECKSUMS:
+  ACPDownload: 9c6349be96019b6c8c87ad46570af1cbc7106bf4
   AFNetworking: 8e4e60500beb8bec644cf575beee72990a76d399
   ChameleonFramework: 5abe69b1f2a6cc79c3c435fcd9d3d855748225ee
   CircleProgressBar: 1de5fc6ba919174b845bc2447720db67f8cb6c08
@@ -72,4 +75,6 @@ SPEC CHECKSUMS:
   SDWebImage: 69c6303e3348fba97e03f65d65d4fbc26740f461
   StreamingKit: c329785aaef3ac142d4ae388345bfe1ed23cfd45
 
-COCOAPODS: 0.39.0
+PODFILE CHECKSUM: 7d8a9ce95e77655c8de5d529fd3fbcfdb74fa946
+
+COCOAPODS: 1.0.0

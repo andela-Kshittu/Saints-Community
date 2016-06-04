@@ -25,7 +25,7 @@
 #define IS_IPHONE_6P (IS_IPHONE && SCREEN_MAX_LENGTH == 736.0)
 #define IS_IPAD_PRO (IS_IPAD && SCREEN_MAX_LENGTH == 1366.0)
 
-@interface Utils : NSObject
+@interface Utils : NSObject <NSURLSessionDataDelegate, NSURLSessionDelegate, NSURLSessionTaskDelegate>
 @property (nonatomic, strong) NSManagedObjectContext  *managedObjectContext;
 @property (nonatomic, assign) BOOL isEventsNetworkError;
 @property (nonatomic, assign)  BOOL isUpdatesNetworkError;

@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>ACPDownload.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>AFNetworking.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -29,6 +34,16 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-Saints CommunityTests.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-Saints CommunityUITests.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>SDWebImage.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -47,12 +62,12 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>0CEE88022B83A276B9D5C8D701DD5D07</key>
+		<key>0E44717E0BD8FDC2D8BFA4C4E4AECCDA</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>0E44717E0BD8FDC2D8BFA4C4E4AECCDA</key>
+		<key>204ED4F2C8CEFDADD62F5DE1D9B7522E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -67,12 +82,27 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>5AC4C09361A77DF09D8A08C031F10F34</key>
+		<key>4D7EC53D94B0AE27D7BE0816013233B4</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>CE21103EDF78D4AA9DFAC4B33B07434A</key>
+		<key>86C93D3F5FC84BD14DB8C12205156591</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>8F6DE4B3F6392B5E9555E030BF049A21</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CC99354656BA4827F0B2D691A263070F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>DE848402A4AE981DA258AAE43C7D3BE0</key>
 		<dict>
 			<key>primary</key>
 			<true/>

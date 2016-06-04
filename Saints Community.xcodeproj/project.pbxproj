@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		162909DD4C79921C5AE64B4E /* libPods-Saints CommunityTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E836F964F2196EF0580D75A4 /* libPods-Saints CommunityTests.a */; };
 		427159E71CA70F3E000D27B4 /* Tracks.m in Sources */ = {isa = PBXBuildFile; fileRef = 427159E61CA70F3D000D27B4 /* Tracks.m */; };
 		427159EA1CA7FB19000D27B4 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 427159E91CA7FB19000D27B4 /* MainViewController.m */; };
 		4292C29D1CD3CDE300022B21 /* DownloadingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4292C29C1CD3CDE300022B21 /* DownloadingViewController.m */; };
@@ -39,7 +40,8 @@
 		42E5B6B71CA2E1B300981797 /* AlbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42E5B6B61CA2E1B300981797 /* AlbumViewController.m */; };
 		42E5B6BA1CA2F90900981797 /* SCAudioPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42E5B6B91CA2F90900981797 /* SCAudioPlayerViewController.m */; };
 		42E5B6BD1CA2F95300981797 /* NowPlayingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42E5B6BC1CA2F95300981797 /* NowPlayingViewController.m */; };
-		D7E415DF26B7881C2B2C9FBF /* libPods-Saints Community.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 89CF894516391BD176AB3C5A /* libPods-Saints Community.a */; };
+		B47578A61400D07636C700AB /* libPods-Saints CommunityUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 39D57B7BF3BC84A1126E55D1 /* libPods-Saints CommunityUITests.a */; };
+		E60B1CFA25885FFF5CB0E93F /* libPods-Saints Community.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 421C3CCE53A605BD9B11B6EE /* libPods-Saints Community.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +62,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0028179FC76BF4DFDD6836BD /* Pods-Saints CommunityTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Saints CommunityTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Saints CommunityTests/Pods-Saints CommunityTests.debug.xcconfig"; sourceTree = "<group>"; };
+		0D3B800B434EC62D9A023EF8 /* Pods-Saints Community.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Saints Community.release.xcconfig"; path = "Pods/Target Support Files/Pods-Saints Community/Pods-Saints Community.release.xcconfig"; sourceTree = "<group>"; };
+		39D57B7BF3BC84A1126E55D1 /* libPods-Saints CommunityUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Saints CommunityUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3EA818E3E29EA44B95CEF9BE /* Pods-Saints CommunityTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Saints CommunityTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Saints CommunityTests/Pods-Saints CommunityTests.release.xcconfig"; sourceTree = "<group>"; };
+		421C3CCE53A605BD9B11B6EE /* libPods-Saints Community.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Saints Community.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		427159E51CA70F3D000D27B4 /* Tracks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tracks.h; sourceTree = "<group>"; };
 		427159E61CA70F3D000D27B4 /* Tracks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tracks.m; sourceTree = "<group>"; };
 		427159E81CA7FB19000D27B4 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
@@ -120,9 +127,10 @@
 		42E5B6B91CA2F90900981797 /* SCAudioPlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCAudioPlayerViewController.m; sourceTree = "<group>"; };
 		42E5B6BB1CA2F95300981797 /* NowPlayingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NowPlayingViewController.h; sourceTree = "<group>"; };
 		42E5B6BC1CA2F95300981797 /* NowPlayingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NowPlayingViewController.m; sourceTree = "<group>"; };
-		4CC6A131BCA0D88D6BD8B26B /* Pods-Saints Community.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Saints Community.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Saints Community/Pods-Saints Community.debug.xcconfig"; sourceTree = "<group>"; };
-		89CF894516391BD176AB3C5A /* libPods-Saints Community.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Saints Community.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		F99E17757DD386AC3D57C915 /* Pods-Saints Community.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Saints Community.release.xcconfig"; path = "Pods/Target Support Files/Pods-Saints Community/Pods-Saints Community.release.xcconfig"; sourceTree = "<group>"; };
+		6FAD9F5578DDC28EA72E25C6 /* Pods-Saints Community.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Saints Community.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Saints Community/Pods-Saints Community.debug.xcconfig"; sourceTree = "<group>"; };
+		8BBD9926DD4B998E15F946E9 /* Pods-Saints CommunityUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Saints CommunityUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Saints CommunityUITests/Pods-Saints CommunityUITests.release.xcconfig"; sourceTree = "<group>"; };
+		965B31FDD0E3BC28E19C9FBA /* Pods-Saints CommunityUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Saints CommunityUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Saints CommunityUITests/Pods-Saints CommunityUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		E836F964F2196EF0580D75A4 /* libPods-Saints CommunityTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Saints CommunityTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,7 +139,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				42E5B6AD1CA2D35000981797 /* MediaPlayer.framework in Frameworks */,
-				D7E415DF26B7881C2B2C9FBF /* libPods-Saints Community.a in Frameworks */,
+				E60B1CFA25885FFF5CB0E93F /* libPods-Saints Community.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -139,6 +147,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				162909DD4C79921C5AE64B4E /* libPods-Saints CommunityTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -146,6 +155,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B47578A61400D07636C700AB /* libPods-Saints CommunityUITests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -156,7 +166,9 @@
 			isa = PBXGroup;
 			children = (
 				42E5B6AC1CA2D35000981797 /* MediaPlayer.framework */,
-				89CF894516391BD176AB3C5A /* libPods-Saints Community.a */,
+				421C3CCE53A605BD9B11B6EE /* libPods-Saints Community.a */,
+				E836F964F2196EF0580D75A4 /* libPods-Saints CommunityTests.a */,
+				39D57B7BF3BC84A1126E55D1 /* libPods-Saints CommunityUITests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -178,8 +190,8 @@
 				42C1F27E1BE4A3B40070C39C /* Saints CommunityTests */,
 				42C1F2891BE4A3B40070C39C /* Saints CommunityUITests */,
 				42C1F2601BE4A3B30070C39C /* Products */,
-				6D0A0F1869A91A142E3491E6 /* Pods */,
 				1A101EFEA76847449F12BB46 /* Frameworks */,
+				551DC43769CD052D63B36C85 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -323,11 +335,15 @@
 			name = Utils;
 			sourceTree = "<group>";
 		};
-		6D0A0F1869A91A142E3491E6 /* Pods */ = {
+		551DC43769CD052D63B36C85 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				4CC6A131BCA0D88D6BD8B26B /* Pods-Saints Community.debug.xcconfig */,
-				F99E17757DD386AC3D57C915 /* Pods-Saints Community.release.xcconfig */,
+				6FAD9F5578DDC28EA72E25C6 /* Pods-Saints Community.debug.xcconfig */,
+				0D3B800B434EC62D9A023EF8 /* Pods-Saints Community.release.xcconfig */,
+				0028179FC76BF4DFDD6836BD /* Pods-Saints CommunityTests.debug.xcconfig */,
+				3EA818E3E29EA44B95CEF9BE /* Pods-Saints CommunityTests.release.xcconfig */,
+				965B31FDD0E3BC28E19C9FBA /* Pods-Saints CommunityUITests.debug.xcconfig */,
+				8BBD9926DD4B998E15F946E9 /* Pods-Saints CommunityUITests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -339,12 +355,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 42C1F28F1BE4A3B40070C39C /* Build configuration list for PBXNativeTarget "Saints Community" */;
 			buildPhases = (
-				2EC4AF8D5B058610E93CCAD9 /* Check Pods Manifest.lock */,
+				BB1C514C0716074DCA4E0C7E /* 📦 Check Pods Manifest.lock */,
 				42C1F25B1BE4A3B30070C39C /* Sources */,
 				42C1F25C1BE4A3B30070C39C /* Frameworks */,
 				42C1F25D1BE4A3B30070C39C /* Resources */,
-				0C7E9FD817F665B822625748 /* Embed Pods Frameworks */,
-				BC3F6A429076A2C093AC51ED /* Copy Pods Resources */,
+				C47141F2B6852B1209DE7FF5 /* 📦 Embed Pods Frameworks */,
+				55BC316A602A4D7AA5700709 /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -359,9 +375,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 42C1F2921BE4A3B40070C39C /* Build configuration list for PBXNativeTarget "Saints CommunityTests" */;
 			buildPhases = (
+				0784F87AE7D1C9AAD1501933 /* 📦 Check Pods Manifest.lock */,
 				42C1F2771BE4A3B40070C39C /* Sources */,
 				42C1F2781BE4A3B40070C39C /* Frameworks */,
 				42C1F2791BE4A3B40070C39C /* Resources */,
+				D098EFA5D41CE9C963141F1F /* 📦 Embed Pods Frameworks */,
+				B16851681A7A149299C09C1C /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -377,9 +396,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 42C1F2951BE4A3B40070C39C /* Build configuration list for PBXNativeTarget "Saints CommunityUITests" */;
 			buildPhases = (
+				B6916878FF08069A6DDDFD8C /* 📦 Check Pods Manifest.lock */,
 				42C1F2821BE4A3B40070C39C /* Sources */,
 				42C1F2831BE4A3B40070C39C /* Frameworks */,
 				42C1F2841BE4A3B40070C39C /* Resources */,
+				E86D5DE55A5FEEEB1C5A5DDD /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -470,29 +491,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0C7E9FD817F665B822625748 /* Embed Pods Frameworks */ = {
+		0784F87AE7D1C9AAD1501933 /* 📦 Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Saints Community/Pods-Saints Community-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		2EC4AF8D5B058610E93CCAD9 /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
+			name = "📦 Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -500,19 +506,109 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		BC3F6A429076A2C093AC51ED /* Copy Pods Resources */ = {
+		55BC316A602A4D7AA5700709 /* 📦 Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "📦 Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Saints Community/Pods-Saints Community-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B16851681A7A149299C09C1C /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Saints CommunityTests/Pods-Saints CommunityTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B6916878FF08069A6DDDFD8C /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		BB1C514C0716074DCA4E0C7E /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		C47141F2B6852B1209DE7FF5 /* 📦 Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Saints Community/Pods-Saints Community-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D098EFA5D41CE9C963141F1F /* 📦 Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Saints CommunityTests/Pods-Saints CommunityTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E86D5DE55A5FEEEB1C5A5DDD /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Saints CommunityUITests/Pods-Saints CommunityUITests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -682,7 +778,7 @@
 		};
 		42C1F2901BE4A3B40070C39C /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4CC6A131BCA0D88D6BD8B26B /* Pods-Saints Community.debug.xcconfig */;
+			baseConfigurationReference = 6FAD9F5578DDC28EA72E25C6 /* Pods-Saints Community.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -699,7 +795,7 @@
 		};
 		42C1F2911BE4A3B40070C39C /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F99E17757DD386AC3D57C915 /* Pods-Saints Community.release.xcconfig */;
+			baseConfigurationReference = 0D3B800B434EC62D9A023EF8 /* Pods-Saints Community.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Kehinde Shittu (4644UP3453)";
@@ -716,6 +812,7 @@
 		};
 		42C1F2931BE4A3B40070C39C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0028179FC76BF4DFDD6836BD /* Pods-Saints CommunityTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = "Saints CommunityTests/Info.plist";
@@ -728,6 +825,7 @@
 		};
 		42C1F2941BE4A3B40070C39C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3EA818E3E29EA44B95CEF9BE /* Pods-Saints CommunityTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = "Saints CommunityTests/Info.plist";
@@ -740,6 +838,7 @@
 		};
 		42C1F2961BE4A3B40070C39C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 965B31FDD0E3BC28E19C9FBA /* Pods-Saints CommunityUITests.debug.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = "Saints CommunityUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -752,6 +851,7 @@
 		};
 		42C1F2971BE4A3B40070C39C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8BBD9926DD4B998E15F946E9 /* Pods-Saints CommunityUITests.release.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = "Saints CommunityUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
