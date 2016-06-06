@@ -32,23 +32,6 @@
     self.tableView.tableHeaderView.backgroundColor = [UIColor blueColor];
     
     menuItems = @[@"title", @"home", @"updates", @"events", @"radio", @"streaming"];
-//    UIImageView *tempImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"nav_background.png"]];
-    
-//    self.tableView.backgroundView = tempImageView;
-    
-//    
-//    CGRect oldFrame = self.tableView.tableHeaderView.frame;
-//    CGRect newFrame = CGRectMake(oldFrame.origin.x, oldFrame.origin.y + 44.0, oldFrame.size.width, oldFrame.size.height+44);
-    
-//    
-//    [self.tableView.tableHeaderView setFrame:newFrame];
-    
-//    [self.tableView.tableHeaderView layoutIfNeeded];
-//    [self.tableView layoutSubviews];
-//      [self.tableView layoutIfNeeded];
-
-    
-
 }
 
 -(void)viewWillLayoutSubviews{
@@ -59,17 +42,10 @@
   willDisplayCell:(UITableViewCell *)cell
 forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    UIColor *headerCellColor = [UIColor colorWithRed:189.0/255 green:163.0/255 blue:29.0/255 alpha:1.00];
     if (indexPath.row > 0) {
         [cell setBackgroundColor:[UIColor clearColor]];
     }else{
-//        [cell setBackgroundColor:headerCellColor];
     }
-    
-//    UIView * additionalSeparator = [[UIView alloc] initWithFrame:CGRectMake(0,cell.frame.size.height-1,cell.frame.size.width,1)];
-//    additionalSeparator.backgroundColor = [UIColor blackColor];
-//    [cell addSubview:additionalSeparator];
-
 }
 
 - (void)didReceiveMemoryWarning {

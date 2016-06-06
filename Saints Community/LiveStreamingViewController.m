@@ -23,8 +23,11 @@ static NSString * LIVE_STREAMING_URl = @"http://live.livingwordmedia.org";
 }
 
 -(void)viewDidAppear:(BOOL)animated{
-    [Utils loadUIWebView:self url:LIVE_STREAMING_URl];
-    [MBProgressHUD hideHUDForView:self.view animated:YES];
+    if ([Utils hasConnectivity]) {
+        [Utils loadUIWebView:self url:LIVE_STREAMING_URl];
+    } else {
+        [Utils connectionAlert:self];
+    }
 }
 
 
@@ -35,13 +38,11 @@ static NSString * LIVE_STREAMING_URl = @"http://live.livingwordmedia.org";
 
 -(void)webViewDidStartLoad:(UIWebView *)webView{
     //SHOW HUD
-    NSLog(@"show hud");
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
 }
 
 -(void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error{
     //KILL HUD
-    NSLog(@"kill hud");
     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
 }
 
@@ -49,7 +50,6 @@ static NSString * LIVE_STREAMING_URl = @"http://live.livingwordmedia.org";
     
     if(!webView.loading){
         //KILL HUD
-        NSLog(@"kill hud");
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
     }
 }

@@ -28,19 +28,15 @@
     [super viewDidLoad];
     [Utils initSidebar:self barButton:self.sidebarButton];
     self.tabBarController.tabBarItem.title = @"Audio Folders";
-//    self.tableView.backgroundColor = AverageColorFromImage([UIImage imageNamed:@"music_folder.png"]);
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    
      self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-    if([Utils sharedInstance].fetchedTracks.count < 1){
+    if([Utils sharedInstance].fetchedTracks.count < 1 && ![Utils hasConnectivity]){
+        [Utils connectionAlert:self];
      [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         [self reloadTableItems];
     });
+    } else if ([Utils sharedInstance].fetchedTracks.count > 1 &&![Utils hasConnectivity]){
+        [Utils offlineAlert:self];
     }
     
     if (![Utils sharedInstance].isResume) {
@@ -55,6 +51,7 @@
 
 -(void)reloadTableItems{
     while ([Utils sharedInstance].fetchedTracks.count < 1) {
+        [NSThread sleepForTimeInterval:5.0f];
         if ([Utils sharedInstance].isAlbumsNetworkError) {
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
                 [[Utils sharedInstance] getAllTracks];
@@ -96,8 +93,6 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 #warning Incomplete implementation, return the number of rows
-//    MPMediaQuery *albumsQuery = [MPMediaQuery albumsQuery];
-//    NSArray *albums = [albumsQuery collections];
     if (tableView == self.searchDisplayController.searchResultsTableView) {
         return [searchResults count];
         
@@ -126,18 +121,7 @@
 
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-
-//    // Configure the cell...
-//    if (cell == nil) {
-//        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-//    }
-    
-//    if(tableView == self.searchDisplayController.searchResultsTableView){
-//    }
     NSManagedObject *rowItem = nil;
-//    NSManagedObject *info = nil;
-//    info =  [Utils sharedInstance].fetchedTracks[indexPath.row];
     if (tableView == self.searchDisplayController.searchResultsTableView) {
          rowItem = searchResults[indexPath.row];
          self.searchDisplayController.searchResultsTableView.backgroundColor = self.searchDisplayController.searchBar.backgroundColor;
@@ -165,11 +149,6 @@
     return cell;
 }
 
-//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    return 80;
-//}
-
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     NSIndexPath *indexPath = nil;
@@ -186,26 +165,6 @@
     AlbumViewController *detailViewController = [segue destinationViewController];
     detailViewController.album = selectedAlbum;
 }
-
-//-(NSString*)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section   {
-//    
-//    NSString *message = @"";
-//    NSInteger numberOfRowsInSection = [self tableView:self.tableView numberOfRowsInSection:section ];
-//    
-//    if (numberOfRowsInSection == 0) {
-//        message = @"This list is now empty";
-//    }
-//    
-//    return message;
-//}
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
 
 /*
 // Override to support editing the table view.

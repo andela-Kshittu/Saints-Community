@@ -16,14 +16,18 @@
 @implementation OnlineRadioViewController
 static NSString * RADIO_URL = @"http://lwm.radiojar.com/";
 - (void)viewDidLoad {
+    [Utils initSidebar:self barButton:self.sidebarButton];
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [Utils initSidebar:self barButton:self.sidebarButton];
+    
 }
 
 -(void)viewDidAppear:(BOOL)animated{
-    [Utils loadUIWebView:self url:RADIO_URL];
-    [MBProgressHUD hideHUDForView:self.view animated:YES];
+    if ([Utils hasConnectivity]) {
+        [Utils loadUIWebView:self url:RADIO_URL];
+    } else {
+        [Utils connectionAlert:self];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -33,13 +37,11 @@ static NSString * RADIO_URL = @"http://lwm.radiojar.com/";
 
 -(void)webViewDidStartLoad:(UIWebView *)webView{
     //SHOW HUD
-    NSLog(@"show hud");
      [MBProgressHUD showHUDAddedTo:self.view animated:YES];
 }
 
 -(void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error{
     //KILL HUD
-     NSLog(@"kill hud");
      [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
 }
 
@@ -47,7 +49,6 @@ static NSString * RADIO_URL = @"http://lwm.radiojar.com/";
     
     if(!webView.loading){
         //KILL HUD
-         NSLog(@"kill hud");
          [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
     }
 }

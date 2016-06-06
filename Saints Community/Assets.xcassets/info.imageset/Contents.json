@@ -2,15 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "info.png",
+      "filename" : "Advertising Filled-100.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "Advertising Filled-102.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
+      "filename" : "Advertising Filled-101.png",
       "scale" : "3x"
     }
   ],

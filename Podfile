@@ -4,7 +4,7 @@
 # use_frameworks!
 
 target 'Saints Community' do
-pod "AFNetworking", "~> 2.0"
+pod "AFNetworking", "~> 2.2"
 pod "StreamingKit", "~> 0.1"
 pod 'CircleProgressBar', '~> 0.31’
 pod 'ACPDownload', '~> 1.1.0'

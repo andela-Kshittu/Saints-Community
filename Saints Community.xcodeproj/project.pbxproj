@@ -10,8 +10,6 @@
 		162909DD4C79921C5AE64B4E /* libPods-Saints CommunityTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E836F964F2196EF0580D75A4 /* libPods-Saints CommunityTests.a */; };
 		427159E71CA70F3E000D27B4 /* Tracks.m in Sources */ = {isa = PBXBuildFile; fileRef = 427159E61CA70F3D000D27B4 /* Tracks.m */; };
 		427159EA1CA7FB19000D27B4 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 427159E91CA7FB19000D27B4 /* MainViewController.m */; };
-		4292C29D1CD3CDE300022B21 /* DownloadingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4292C29C1CD3CDE300022B21 /* DownloadingViewController.m */; };
-		4292C2A01CD3CE0600022B21 /* DownloadsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4292C29F1CD3CE0600022B21 /* DownloadsViewController.m */; };
 		4294142C1CE0B6070094B919 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4294142B1CE0B6070094B919 /* Default-568h@2x.png */; };
 		42C1F2641BE4A3B30070C39C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 42C1F2631BE4A3B30070C39C /* main.m */; };
 		42C1F2671BE4A3B30070C39C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 42C1F2661BE4A3B30070C39C /* AppDelegate.m */; };
@@ -40,6 +38,9 @@
 		42E5B6B71CA2E1B300981797 /* AlbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42E5B6B61CA2E1B300981797 /* AlbumViewController.m */; };
 		42E5B6BA1CA2F90900981797 /* SCAudioPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42E5B6B91CA2F90900981797 /* SCAudioPlayerViewController.m */; };
 		42E5B6BD1CA2F95300981797 /* NowPlayingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42E5B6BC1CA2F95300981797 /* NowPlayingViewController.m */; };
+		42EECB971D0352D7003250AE /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42EECB961D0352D7003250AE /* CoreData.framework */; };
+		42EECB991D0352F4003250AE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42EECB981D0352F4003250AE /* UIKit.framework */; };
+		42EECB9B1D03FE81003250AE /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42EECB9A1D03FE81003250AE /* SystemConfiguration.framework */; };
 		B47578A61400D07636C700AB /* libPods-Saints CommunityUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 39D57B7BF3BC84A1126E55D1 /* libPods-Saints CommunityUITests.a */; };
 		E60B1CFA25885FFF5CB0E93F /* libPods-Saints Community.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 421C3CCE53A605BD9B11B6EE /* libPods-Saints Community.a */; };
 /* End PBXBuildFile section */
@@ -73,10 +74,6 @@
 		427159E91CA7FB19000D27B4 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		427159EB1CA86D17000D27B4 /* Quicksand-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quicksand-Bold.otf"; sourceTree = "<group>"; };
 		427159EC1CA86D27000D27B4 /* JosefinSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JosefinSans-Light.ttf"; sourceTree = "<group>"; };
-		4292C29B1CD3CDE300022B21 /* DownloadingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadingViewController.h; sourceTree = "<group>"; };
-		4292C29C1CD3CDE300022B21 /* DownloadingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadingViewController.m; sourceTree = "<group>"; };
-		4292C29E1CD3CE0600022B21 /* DownloadsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadsViewController.h; sourceTree = "<group>"; };
-		4292C29F1CD3CE0600022B21 /* DownloadsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadsViewController.m; sourceTree = "<group>"; };
 		4294142B1CE0B6070094B919 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		42BEFF4C1CDCCEAB00B84E37 /* Model1.0.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model1.0.xcdatamodel; sourceTree = "<group>"; };
 		42C1F25F1BE4A3B30070C39C /* Saints Community.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Saints Community.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -127,6 +124,9 @@
 		42E5B6B91CA2F90900981797 /* SCAudioPlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCAudioPlayerViewController.m; sourceTree = "<group>"; };
 		42E5B6BB1CA2F95300981797 /* NowPlayingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NowPlayingViewController.h; sourceTree = "<group>"; };
 		42E5B6BC1CA2F95300981797 /* NowPlayingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NowPlayingViewController.m; sourceTree = "<group>"; };
+		42EECB961D0352D7003250AE /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		42EECB981D0352F4003250AE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		42EECB9A1D03FE81003250AE /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		6FAD9F5578DDC28EA72E25C6 /* Pods-Saints Community.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Saints Community.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Saints Community/Pods-Saints Community.debug.xcconfig"; sourceTree = "<group>"; };
 		8BBD9926DD4B998E15F946E9 /* Pods-Saints CommunityUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Saints CommunityUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Saints CommunityUITests/Pods-Saints CommunityUITests.release.xcconfig"; sourceTree = "<group>"; };
 		965B31FDD0E3BC28E19C9FBA /* Pods-Saints CommunityUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Saints CommunityUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Saints CommunityUITests/Pods-Saints CommunityUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -138,6 +138,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				42EECB9B1D03FE81003250AE /* SystemConfiguration.framework in Frameworks */,
+				42EECB991D0352F4003250AE /* UIKit.framework in Frameworks */,
+				42EECB971D0352D7003250AE /* CoreData.framework in Frameworks */,
 				42E5B6AD1CA2D35000981797 /* MediaPlayer.framework in Frameworks */,
 				E60B1CFA25885FFF5CB0E93F /* libPods-Saints Community.a in Frameworks */,
 			);
@@ -165,6 +168,9 @@
 		1A101EFEA76847449F12BB46 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				42EECB9A1D03FE81003250AE /* SystemConfiguration.framework */,
+				42EECB981D0352F4003250AE /* UIKit.framework */,
+				42EECB961D0352D7003250AE /* CoreData.framework */,
 				42E5B6AC1CA2D35000981797 /* MediaPlayer.framework */,
 				421C3CCE53A605BD9B11B6EE /* libPods-Saints Community.a */,
 				E836F964F2196EF0580D75A4 /* libPods-Saints CommunityTests.a */,
@@ -297,10 +303,6 @@
 				42E5B6BC1CA2F95300981797 /* NowPlayingViewController.m */,
 				427159E81CA7FB19000D27B4 /* MainViewController.h */,
 				427159E91CA7FB19000D27B4 /* MainViewController.m */,
-				4292C29B1CD3CDE300022B21 /* DownloadingViewController.h */,
-				4292C29C1CD3CDE300022B21 /* DownloadingViewController.m */,
-				4292C29E1CD3CE0600022B21 /* DownloadsViewController.h */,
-				4292C29F1CD3CE0600022B21 /* DownloadsViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -619,7 +621,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				42C1F26A1BE4A3B30070C39C /* HomeViewController.m in Sources */,
-				4292C29D1CD3CDE300022B21 /* DownloadingViewController.m in Sources */,
 				42C1F2A51BE4C3B80070C39C /* OnlineRadioViewController.m in Sources */,
 				42E5B6B11CA2D80B00981797 /* SongsViewController.m in Sources */,
 				427159E71CA70F3E000D27B4 /* Tracks.m in Sources */,
@@ -627,7 +628,6 @@
 				42C1F2BE1BE4CFEB0070C39C /* Utils.m in Sources */,
 				42E5B6BA1CA2F90900981797 /* SCAudioPlayerViewController.m in Sources */,
 				42E5B6B41CA2DB9F00981797 /* AlbumsViewController.m in Sources */,
-				4292C2A01CD3CE0600022B21 /* DownloadsViewController.m in Sources */,
 				42E5B6BD1CA2F95300981797 /* NowPlayingViewController.m in Sources */,
 				42C1F2671BE4A3B30070C39C /* AppDelegate.m in Sources */,
 				42C1F29C1BE4B5F80070C39C /* SWRevealViewController.m in Sources */,
@@ -731,7 +731,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -769,7 +769,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;

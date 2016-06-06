@@ -83,7 +83,6 @@
  * playing audio File
  */
 - (void)setCurrentAudioTime:(double)value {
-//    [self.audioPlayer setCurrentTime:value];
      [self.customAudioPlayer seekToTime:value];
 }
 
@@ -91,7 +90,6 @@
  * Get the time where audio is playing right now
  */
 - (NSTimeInterval)getCurrentAudioTime {
-//    return [self.audioPlayer currentTime];
     return [self.customAudioPlayer progress];
 }
 
@@ -99,7 +97,6 @@
  * Get the whole length of the audio file
  */
 - (double)getAudioDuration {
-//    return [self.audioPlayer duration];
     return  [self.customAudioPlayer duration];
 }
 

@@ -141,7 +141,6 @@ bool hasLoader;
         //player is paused and Button is pressed again
         [self.playButton setBackgroundImage:[UIImage imageNamed:@"play.png"]
                                    forState:UIControlStateNormal];
-        
         [[Utils sharedInstance].audioPlayer pauseAudio];
         [Utils sharedInstance].isPaused = FALSE;
     }
@@ -206,16 +205,7 @@ bool hasLoader;
 
 - (void)handleNotification:(NSNotification *)object {
     // Use your NSDictionary object here.
-//    self.title = [object userInfo][@"album"];
-    
     NSLog(@"this is object data %@", object.userInfo);
-//    [Utils sharedInstance].albumTitle = [[object userInfo] objectForKey:@"album"];
-//    [Utils sharedInstance].currentTrack = [[[object userInfo] objectForKey:@"currentTrack"] intValue];
-//    [Utils sharedInstance].albumTracks = [[object userInfo] objectForKey:@"tracks"];
-//    [Utils sharedInstance].albumImageUrl = [[object userInfo] objectForKey:@"coverImage"];
-    
-    
-    
     self.albumName.text = [Utils sharedInstance].albumTitle;
     self.trackName.text = [NSString stringWithFormat:@"Track %d", [Utils sharedInstance].currentTrack];
     [self.albumImageView sd_setImageWithURL:[NSURL URLWithString: [Utils sharedInstance].albumImageUrl]
@@ -245,7 +235,6 @@ bool hasLoader;
 
 - (IBAction)nextButtonAction:(id)sender {
     NSLog(@"total tracks %@", [NSNumber numberWithInteger:[Utils sharedInstance].albumTracks.count]);
-    
     NSLog(@"current tracks %d", [Utils sharedInstance].currentTrack);
     
     if ([Utils sharedInstance].currentTrack < [Utils sharedInstance].albumTracks.count) {
@@ -253,7 +242,6 @@ bool hasLoader;
         [Utils sharedInstance].currentTrack++;
     } else {
         NSLog(@"is equal or more");
-        
         [Utils sharedInstance].currentTrack = 1;
     }
     self.trackName.text = [NSString stringWithFormat:@"Track %d", [Utils sharedInstance].currentTrack];

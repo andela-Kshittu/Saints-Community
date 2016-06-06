@@ -27,7 +27,6 @@
     // Do any additional setup after loading the view.
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
-//    self.tableView.tableHeaderView.hidden = YES;
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     [Utils initSidebar:self barButton:self.sidebarButton];
     
@@ -45,7 +44,13 @@
 }
 
 -(void)fetchTableData{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if (![Utils hasConnectivity]) {
+            [Utils connectionAlert:self];
+        }
+    });
     while ([Utils sharedInstance].fetchedUpdates.count < 1 && [Utils sharedInstance].isUpdatesNetworkError) {
+         [NSThread sleepForTimeInterval:5.0f];
         [Utils sharedInstance].fetchedUpdates = [[Utils sharedInstance] fetchData:@"Updates"];
     }
 }
@@ -92,7 +97,7 @@
     UILabel * date = (UILabel *)[cell viewWithTag:3];
     
     [updateImage sd_setImageWithURL:[NSURL URLWithString:[info valueForKey:@"image_url"]]
-                   placeholderImage:[UIImage imageNamed:@"news.png"]];
+                   placeholderImage:[UIImage imageNamed:@"info.png"]];
     title.text = [info valueForKey:@"title"];
     date.text = [info valueForKey:@"updated_date"];
     

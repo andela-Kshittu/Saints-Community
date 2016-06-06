@@ -11,9 +11,10 @@
 #import <CoreData/CoreData.h>
 
 @interface AlbumViewController : UITableViewController
+{
+    NSTimer *_timer;
+}
 @property (nonatomic, strong) NSManagedObject* album;
 @property (nonatomic, strong) NSArray* tracks;
-@property (strong, nonatomic) IBOutlet UILabel *downloadLabel;
-@property (strong, nonatomic) IBOutlet UIProgressView *downloadProgress;
 @property NSString * albumPath;
 @end

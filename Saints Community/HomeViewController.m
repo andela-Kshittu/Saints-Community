@@ -22,7 +22,6 @@ static NSString * HOME_URl = @"http://livingwordmedia.org";
     
     UITabBarController *tabBarController =[[UITabBarController alloc] initWithNibName:@"TabBarController" bundle:nil];
     [self.navigationController pushViewController:tabBarController animated:YES];
-//    [Utils loadUIWebView:self.view url:HOME_URl];
 }
 
 - (void)didReceiveMemoryWarning {

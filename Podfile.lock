@@ -1,24 +1,24 @@
 PODS:
   - ACPDownload (1.1.0)
-  - AFNetworking (2.6.1):
-    - AFNetworking/NSURLConnection (= 2.6.1)
-    - AFNetworking/NSURLSession (= 2.6.1)
-    - AFNetworking/Reachability (= 2.6.1)
-    - AFNetworking/Security (= 2.6.1)
-    - AFNetworking/Serialization (= 2.6.1)
-    - AFNetworking/UIKit (= 2.6.1)
-  - AFNetworking/NSURLConnection (2.6.1):
+  - AFNetworking (2.6.3):
+    - AFNetworking/NSURLConnection (= 2.6.3)
+    - AFNetworking/NSURLSession (= 2.6.3)
+    - AFNetworking/Reachability (= 2.6.3)
+    - AFNetworking/Security (= 2.6.3)
+    - AFNetworking/Serialization (= 2.6.3)
+    - AFNetworking/UIKit (= 2.6.3)
+  - AFNetworking/NSURLConnection (2.6.3):
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
-  - AFNetworking/NSURLSession (2.6.1):
+  - AFNetworking/NSURLSession (2.6.3):
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
-  - AFNetworking/Reachability (2.6.1)
-  - AFNetworking/Security (2.6.1)
-  - AFNetworking/Serialization (2.6.1)
-  - AFNetworking/UIKit (2.6.1):
+  - AFNetworking/Reachability (2.6.3)
+  - AFNetworking/Security (2.6.3)
+  - AFNetworking/Serialization (2.6.3)
+  - AFNetworking/UIKit (2.6.3):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
   - ChameleonFramework (2.0.4):
@@ -50,15 +50,15 @@ PODS:
     - libwebp/core
   - libwebp/webp (0.5.0)
   - MBProgressHUD (0.9.2)
-  - SDWebImage/Core (3.7.5)
-  - SDWebImage/WebP (3.7.5):
+  - SDWebImage/Core (3.7.6)
+  - SDWebImage/WebP (3.7.6):
     - libwebp
     - SDWebImage/Core
   - StreamingKit (0.1.29)
 
 DEPENDENCIES:
   - ACPDownload (~> 1.1.0)
-  - AFNetworking (~> 2.0)
+  - AFNetworking (~> 2.2)
   - ChameleonFramework
   - CircleProgressBar (~> 0.31)
   - MBProgressHUD (~> 0.9.2)
@@ -67,14 +67,14 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   ACPDownload: 9c6349be96019b6c8c87ad46570af1cbc7106bf4
-  AFNetworking: 8e4e60500beb8bec644cf575beee72990a76d399
+  AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
   ChameleonFramework: 5abe69b1f2a6cc79c3c435fcd9d3d855748225ee
   CircleProgressBar: 1de5fc6ba919174b845bc2447720db67f8cb6c08
   libwebp: 68ba2001ba6806ee52837ebd77a551a0b6567e4e
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
-  SDWebImage: 69c6303e3348fba97e03f65d65d4fbc26740f461
+  SDWebImage: c325cf02c30337336b95beff20a13df489ec0ec9
   StreamingKit: c329785aaef3ac142d4ae388345bfe1ed23cfd45
 
-PODFILE CHECKSUM: 7d8a9ce95e77655c8de5d529fd3fbcfdb74fa946
+PODFILE CHECKSUM: 6f656ba575a3911517d5cf3a5eb2d1af3b2176d2
 
 COCOAPODS: 1.0.0

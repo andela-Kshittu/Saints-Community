@@ -66,27 +66,6 @@
     
 }
 
-- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-//    MPMediaQuery *songsQuery = [MPMediaQuery songsQuery];
-//    NSArray *songs = [songsQuery items];
-    
-//    int selectedIndex = [[self.tableView indexPathForSelectedRow] row];
-    
-//     NowPlayingViewController *detailViewController = [segue destinationViewController];
-//        [Utils sharedInstance].albumTitle = @"Album Name";
-    
-//    MPMediaItem *selectedItem = [[songs objectAtIndex:selectedIndex] representativeItem];
-//    
-//    MPMusicPlayerController *musicPlayer = [MPMusicPlayerController iPodMusicPlayer];
-//    
-//    [musicPlayer setQueueWithItemCollection:[MPMediaItemCollection collectionWithItems:[songsQuery items]]];
-//    [musicPlayer setNowPlayingItem:selectedItem];
-//    
-//    [musicPlayer play];
-}
-
-
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {

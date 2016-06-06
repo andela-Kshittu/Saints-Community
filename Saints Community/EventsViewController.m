@@ -47,7 +47,13 @@
 }
 
 -(void)fetchTableData{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if (![Utils hasConnectivity]) {
+            [Utils connectionAlert:self];
+        }
+    });
     while ([Utils sharedInstance].fetchedUpdates.count < 1 && [Utils sharedInstance].isEventsNetworkError) {
+        [NSThread sleepForTimeInterval:5.0f];
         [Utils sharedInstance].fetchedEvents = [[Utils sharedInstance] fetchData:@"Events"];
     }
 }

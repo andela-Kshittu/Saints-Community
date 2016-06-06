@@ -9,6 +9,11 @@
 #import <Foundation/Foundation.h>
 #import "SWRevealViewController.h"
 #import "SCAudioPlayerViewController.h"
+#import "ACPDownloadView.h"
+#import <AFNetworking.h>
+#import <sys/socket.h>
+#import <netinet/in.h>
+#import <SystemConfiguration/SystemConfiguration.h>
 
 #define IS_IPAD (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
 #define IS_IPHONE (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
@@ -25,17 +30,19 @@
 #define IS_IPHONE_6P (IS_IPHONE && SCREEN_MAX_LENGTH == 736.0)
 #define IS_IPAD_PRO (IS_IPAD && SCREEN_MAX_LENGTH == 1366.0)
 
-@interface Utils : NSObject <NSURLSessionDataDelegate, NSURLSessionDelegate, NSURLSessionTaskDelegate>
+@interface Utils : NSObject
 @property (nonatomic, strong) NSManagedObjectContext  *managedObjectContext;
 @property (nonatomic, assign) BOOL isEventsNetworkError;
 @property (nonatomic, assign)  BOOL isUpdatesNetworkError;
 @property (nonatomic, assign) BOOL isAlbumsNetworkError;
 @property (nonatomic, strong) NSArray* fetchedUpdates;
 @property (nonatomic, strong) NSMutableArray* downloadingAlbums;
+@property (nonatomic, strong) NSMutableDictionary* downloadingAlbumsProgress;
 @property (nonatomic, strong) NSMutableArray* downloadedTracks;
 @property (nonatomic, strong) NSArray* fetchedEvents;
 @property (nonatomic, strong) NSMutableArray* fetchedTracks;
 @property (nonatomic, assign) NSInteger selectedIndex;
+@property (nonatomic, assign) float progress;
 
 @property (nonatomic, strong) SCAudioPlayerViewController *audioPlayer;
 @property BOOL isPaused;
@@ -52,13 +59,18 @@
 
 
 +(Utils *)sharedInstance;
++(void)connectionAlert:(UIViewController *)controller;
++(void)offlineAlert:(UIViewController *)controller;
 +(void)initSidebar:(UIViewController *) vc
          barButton:(UIBarButtonItem *) barButton;
 +(void)loadUIWebView:(UIViewController *) viewController
                  url:(NSString *) destinationUrl;
++(BOOL)hasConnectivity;
 -(NSArray *)fetchData:(NSString *)entityName;
 -(void) getAllUpdates;
 -(void) getAllEvents;
 -(void) getAllTracks;
--(void)download:(NSArray *)tracks inAlbum:(NSString*) albumName;
+-(void)download:(NSArray *)tracks
+   progressView:(ACPDownloadView*) downloadView
+        inAlbum:(NSString*) albumName;
 @end

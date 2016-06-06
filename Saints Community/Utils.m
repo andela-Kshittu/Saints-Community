@@ -8,8 +8,6 @@
 
 #import "Utils.h"
 #import <CoreData/CoreData.h>
-#import <AFNetworking.h>
-
 @implementation Utils
 
 static Utils * sharedObject = nil;
@@ -26,6 +24,7 @@ return sharedObject;
     if (! sharedObject) {
         sharedObject = [super init];
         self.downloadingAlbums = [[NSMutableArray alloc] init];
+        self.downloadingAlbumsProgress = [[NSMutableDictionary alloc] init];
         self.downloadedTracks = [[NSMutableArray alloc] init];
         NSError *error = nil;
         
@@ -129,6 +128,78 @@ return sharedObject;
     [webView loadRequest:theRequest];
 }
 
++(BOOL)hasConnectivity {
+    struct sockaddr_in zeroAddress;
+    bzero(&zeroAddress, sizeof(zeroAddress));
+    zeroAddress.sin_len = sizeof(zeroAddress);
+    zeroAddress.sin_family = AF_INET;
+    
+    SCNetworkReachabilityRef reachability = SCNetworkReachabilityCreateWithAddress(kCFAllocatorDefault, (const struct sockaddr*)&zeroAddress);
+    if (reachability != NULL) {
+        //NetworkStatus retVal = NotReachable;
+        SCNetworkReachabilityFlags flags;
+        if (SCNetworkReachabilityGetFlags(reachability, &flags)) {
+            if ((flags & kSCNetworkReachabilityFlagsReachable) == 0)
+            {
+                // If target host is not reachable
+                return NO;
+            }
+            
+            if ((flags & kSCNetworkReachabilityFlagsConnectionRequired) == 0)
+            {
+                // If target host is reachable and no connection is required
+                //  then we'll assume (for now) that your on Wi-Fi
+                return YES;
+            }
+            
+            
+            if ((((flags & kSCNetworkReachabilityFlagsConnectionOnDemand ) != 0) ||
+                 (flags & kSCNetworkReachabilityFlagsConnectionOnTraffic) != 0))
+            {
+                // ... and the connection is on-demand (or on-traffic) if the
+                //     calling application is using the CFSocketStream or higher APIs.
+                
+                if ((flags & kSCNetworkReachabilityFlagsInterventionRequired) == 0)
+                {
+                    // ... and no [user] intervention is needed
+                    return YES;
+                }
+            }
+            
+            if ((flags & kSCNetworkReachabilityFlagsIsWWAN) == kSCNetworkReachabilityFlagsIsWWAN)
+            {
+                // ... but WWAN connections are OK if the calling application
+                //     is using the CFNetwork (CFSocketStream?) APIs.
+                return YES;
+            }
+        }
+    }
+    
+    return NO;
+}
++(void)connectionAlert:(UIViewController *)controller{
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Connection Error!"
+                                                                                 message:@"Please ensure you have a working connection."
+                                                                          preferredStyle:UIAlertControllerStyleAlert];
+        //We add buttons to the alert controller by creating UIAlertActions:
+        UIAlertAction *actionOk = [UIAlertAction actionWithTitle:@"Ok"
+                                                           style:UIAlertActionStyleDefault
+                                                         handler:nil]; //You can use a block here to handle a press on this button
+        [alertController addAction:actionOk];
+        [controller presentViewController:alertController animated:YES completion:nil];
+}
++(void)offlineAlert:(UIViewController *)controller{
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Warning"
+                                                                             message:@"Unable to connect, switching to offline mode.Media streaming won't be available but you can still play downloaded tracks."
+                                                                      preferredStyle:UIAlertControllerStyleAlert];
+    //We add buttons to the alert controller by creating UIAlertActions:
+    UIAlertAction *actionOk = [UIAlertAction actionWithTitle:@"Ok"
+                                                       style:UIAlertActionStyleDefault
+                                                     handler:nil]; //You can use a block here to handle a press on this button
+    [alertController addAction:actionOk];
+    [controller presentViewController:alertController animated:YES completion:nil];
+}
+
 -(NSArray *)fetchData:(NSString *)entityName{
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription
@@ -137,18 +208,12 @@ return sharedObject;
     [fetchRequest setEntity:entity];
     NSError *error;
     NSArray *fetchedObjects = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
-    
-//    for (NSManagedObject *info in fetchedObjects) {
-//        NSLog(@"Name: %@", [info valueForKey:@"name"]);
-//        NSManagedObject *details = [info valueForKey:@"details"];
-//        NSLog(@"Zip: %@", [details valueForKey:@"zip"]);
-//    }
     return fetchedObjects;
 }
 
--(void)download:(NSArray *)tracks inAlbum:(NSString*) albumName{
-    
-//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+-(void)download:(NSArray *)tracks
+   progressView:(ACPDownloadView*) downloadView
+        inAlbum:(NSString*) albumName{
     // create directory
       NSLog(@"is downloading array %@",self.downloadingAlbums);
     NSError *error = nil;
@@ -163,14 +228,6 @@ return sharedObject;
         NSLog(@"directoryCreated = %i with no error", directoryCreated);
     else
         NSLog(@"directoryCreated = %i with error %@", directoryCreated, error);
-//    
-//    // delete directory
-//    BOOL directoryRemoved =[[NSFileManager defaultManager] removeItemAtPath:albumPath
-//                                                                      error:&error];
-//    if(!error)
-//        NSLog(@"directoryRemoved = %i with no error", directoryRemoved);
-//    else
-//        NSLog(@"directoryRemoved = %i with error %@", directoryRemoved, error);
     
     if(directoryCreated && !error){
         NSMutableArray* downlodedTracks = [[NSMutableArray alloc] init];
@@ -182,9 +239,9 @@ return sharedObject;
             
             NSURL *URL = [NSURL URLWithString:track];
             NSURLRequest *request = [NSURLRequest requestWithURL:URL];
-            
-            NSURLSessionDownloadTask *downloadTask = [manager downloadTaskWithRequest:request progress:nil destination:^NSURL *(NSURL *targetPath, NSURLResponse *response) {
-               
+            NSProgress *progress;
+            NSURLSessionDownloadTask *downloadTask = [manager downloadTaskWithRequest:request progress:&progress destination:^NSURL *(NSURL *targetPath, NSURLResponse *response) {
+               [progress removeObserver:self forKeyPath:@"fractionCompleted" context:NULL];
                 return [[NSURL URLWithString:albumPath] URLByAppendingPathComponent:[response suggestedFilename]];
                 //        return self.downloadedSong;
             } completionHandler:^(NSURLResponse *response, NSURL *filePath, NSError *error) {
@@ -192,19 +249,36 @@ return sharedObject;
                 NSLog(@"File downloaded to: %@", filePath);
                 if (downlodedTracks.count == tracks.count) {
                     [self.downloadingAlbums removeObject:albumName];
+                    [self.downloadingAlbumsProgress removeObjectForKey:albumName];
                     NSLog(@"removed name %@",albumName);
                     NSLog(@"removed name from array %@",self.downloadingAlbums);
                 }
                 
             }];
             [downloadTask resume];
+            [manager setDownloadTaskDidWriteDataBlock:^(NSURLSession *session, NSURLSessionDownloadTask *downloadTask, int64_t bytesWritten, int64_t totalBytesWritten, int64_t totalBytesExpectedToWrite) {
+                if ([self.downloadingAlbums containsObject:albumName ]) {
+                    NSNumber* oldState = (NSNumber*)[self.downloadingAlbumsProgress valueForKey:albumName];
+                    NSNumber* numBytesWritten = @(bytesWritten);
+                    NSNumber* numTotalBytesWritten = @(totalBytesWritten);
+                    NSNumber* numTotalBytesExpectedToWrite = @(totalBytesExpectedToWrite);
+                    
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.downloadingAlbumsProgress setValue:@([oldState floatValue] + [numBytesWritten floatValue]/[numTotalBytesExpectedToWrite floatValue]/tracks.count) forKey:albumName];
+                    NSLog(@"download progress object 1 %@", self.downloadingAlbumsProgress);
+                });
+                    NSLog(@"total Progress…calculated number %@", @([oldState floatValue] + [numBytesWritten floatValue]/[numTotalBytesExpectedToWrite floatValue]/tracks.count));
+                } else{
+                    [downloadTask cancel];
+                }
+              
+
+            }];
+            
         }
       
     }
-
-//    });
 }
-
 
 -(void)updateCoreData:(NSMutableArray *) dataObjects
            withEntity:(NSString *)entityName{
@@ -216,9 +290,6 @@ return sharedObject;
         NSString * imageUrl = [NSString stringWithFormat:@"http://charmms.sensorbitgroup.info/src/images/uploads/%@",dataObject[@"imagepath"]];
         
         NSLog(@"image url is : %@", imageUrl);
-        
-//        NSData * imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: imageUrl]];
-        
         [managedObject setValue:dataObject[@"id"] forKey:@"id"];
         [managedObject setValue:imageUrl forKey:@"image_url"];
         [managedObject setValue:dataObject[@"title"] forKey:@"title"];
